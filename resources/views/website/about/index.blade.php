@@ -25,7 +25,7 @@
     <section class="about-area section-gap" id="about">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12" data-aos="fade-down">
+				<div class="col-md-12" data-aos="fade-down" id="our-history">
 					<h3 class="mt-20 subtitle">OUR HISTORY / TIMELINE</h3>
 
 					@if (!empty($company_history))
@@ -51,7 +51,7 @@
 						<h5>No History</h5>
 					@endif
 				</div>
-				<div class="col-md-12" data-aos="fade-right">
+				<div class="col-md-12" data-aos="fade-right" id="our-mission">
 					<h3 class="mt-20 pb-10 subtitle">OUR MISSION</h3>
 					<blockquote class="generic-blockquote">
 						{{ $company_information->mission }}
@@ -81,7 +81,7 @@
 						</ol> --}}
 					</p>
 				</div>
-				<div class="col-md-12">
+				<div class="col-md-12" id="scope-and-services">
 					<div class="container cat-area">
 						<h3 class="mt-20 pb-10 subtitle" data-aos="fade-down-right">SCOPE AND SERVICES</h3>
 						
