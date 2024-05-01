@@ -164,7 +164,7 @@
 					@endforeach
 
 					<div class="col-lg-12 text-center">
-						<a href="#" class="genric-btn danger-border circle mt-30">Explore Projects</a>
+						<a href="{{ route('website.projects') }}" class="genric-btn danger-border circle mt-30">Explore Projects</a>
 					</div>
 						
 				</div>
