@@ -236,7 +236,7 @@
 					<p class="pb-20">
 						We at Dalkia Inc. are searching for people that are excited to grow and use their abilities to influence the future. Apply by emailing your resume to info@dalkiainc.com if you are already qualified, experienced, and competent and would want to be considered for any of the positions listed below. We would love to speak with someone who is driven to achieve.
 					</p>
-					<a class="primary-btn" href="careers.html">Apply Now</a>
+					<a class="primary-btn" href="{{ route('website.careers') }}">Apply Now</a>
 				</div>
 				<div class="col-lg-4 col-md-12">
 					<img src="{{ asset('assets/img/careers/apply-now.jpg') }}" alt="" class="img-fluid">
