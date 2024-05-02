@@ -10,11 +10,11 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{ asset('assets/img/epldt-suite-logo.png') }}" rel="icon">
-    <link href="{{ asset('assets/img/epldt-suite-logo.png') }}" rel="epldt-suite-logo">
+    <link href="{{ asset('assets/website/img/epldt-suite-logo.png') }}" rel="icon">
+    <link href="{{ asset('assets/website/img/epldt-suite-logo.png') }}" rel="epldt-suite-logo">
 
-    <link rel="stylesheet" href="{{ asset('assets/css/luno-style.css') }}">
-    <script src="{{ asset('assets/js/plugins.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('assets/website/css/luno-style.css') }}">
+    <script src="{{ asset('assets/website/js/plugins.js') }}"></script>
 
 </head>
 
@@ -30,7 +30,7 @@
 
                             {{-- <div class="d-flex justify-content-center pb-4">
                                 <div class="logo d-flex align-items-center w-auto">
-                                    <img src="{{ asset('assets/img/epldt-suite-logo.png') }}" height="50" width="50" alt="">
+                                    <img src="{{ asset('assets/website/img/epldt-suite-logo.png') }}" height="50" width="50" alt="">
                                     <h4 class="px-2 d-none d-lg-block mb-0" style="font-weight: bolder; color: #d0021b;">ePLDT</h4>
                                 </div>
                             </div> --}}

@@ -7,7 +7,7 @@
         <div class="row align-items-center justify-content-between d-flex">
             <div id="logo">
                 <a href="{{ route('website.index') }}">
-                    <img src="{{ asset('assets/img/logo/logo.png') }}" alt="Dalkia Inc. Logo" title="Dalkia Inc. Logo" style="max-width: 284px; max-height: 60px; width: 100%;">
+                    <img src="{{ asset('assets/website/img/logo/logo.png') }}" alt="Dalkia Inc. Logo" title="Dalkia Inc. Logo" style="max-width: 284px; max-height: 60px; width: 100%;">
                 </a>
             </div>
             <nav id="nav-menu-container">

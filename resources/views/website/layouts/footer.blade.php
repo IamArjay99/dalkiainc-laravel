@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-12 d-flex flex-column address-wrap">
-                    <img src="{{ asset('assets/img/logo/dalikiainc-fav.png') }}" alt="Dalkia Inc. Logo" title="Dalkia Inc. Logo" style="max-width: 284px; max-height: 60px; width: 30px; padding-bottom: 20px;">
+                    <img src="{{ asset('assets/website/img/logo/dalikiainc-fav.png') }}" alt="Dalkia Inc. Logo" title="Dalkia Inc. Logo" style="max-width: 284px; max-height: 60px; width: 30px; padding-bottom: 20px;">
                     <p class="text-white" style="padding-right: 40px;">
                         {{ $company_information->brief_description }}
                     </p>
@@ -79,24 +79,24 @@
         </p>
     </div>
 
-    <script src="{{ asset('assets/js/vendor/jquery-2.2.4.min.js') }}"></script>
-    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/js/vendor/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/easing.min.js') }}"></script>
-    <script src="{{ asset('assets/js/hoverIntent.js') }}"></script>
-    <script src="{{ asset('assets/js/superfish.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.ajaxchimp.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('assets/js/hexagons.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.nice-select.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
-    <script src="{{ asset('assets/js/waypoints.min.js') }}"></script>
-    <script src="{{ asset('assets/js/mail-script.js') }}"></script>
-    <script src="{{ asset('assets/js/timeline.min.js') }}"></script>
-    <script src="{{ asset('assets/js/aos.js') }}"></script>
-    <script src="{{ asset('assets/js/main.js') }}"></script>
-    <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script src="{{ asset('assets/website/js/vendor/jquery-2.2.4.min.js') }}"></script>
+    <script src="{{ asset('assets/website/js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/website/js/vendor/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/website/js/easing.min.js') }}"></script>
+    <script src="{{ asset('assets/website/js/hoverIntent.js') }}"></script>
+    <script src="{{ asset('assets/website/js/superfish.min.js') }}"></script>
+    <script src="{{ asset('assets/website/js/jquery.ajaxchimp.min.js') }}"></script>
+    <script src="{{ asset('assets/website/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('assets/website/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('assets/website/js/hexagons.min.js') }}"></script>
+    <script src="{{ asset('assets/website/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('assets/website/js/jquery.counterup.min.js') }}"></script>
+    <script src="{{ asset('assets/website/js/waypoints.min.js') }}"></script>
+    <script src="{{ asset('assets/website/js/mail-script.js') }}"></script>
+    <script src="{{ asset('assets/website/js/timeline.min.js') }}"></script>
+    <script src="{{ asset('assets/website/js/aos.js') }}"></script>
+    <script src="{{ asset('assets/website/js/main.js') }}"></script>
+    <script src="{{ asset('assets/website/js/custom.js') }}"></script>
 </body>
 
 </html>

@@ -6,10 +6,10 @@
     <section class="banner-area about-carousel relative" id="banner">
 		<div class="owl-carousel">
 			<div class="item">
-				<img src="{{ asset('assets/img/carousel/c-1.jpg') }}" alt="Image 1">
+				<img src="{{ asset('assets/website/img/carousel/c-1.jpg') }}" alt="Image 1">
 			</div>
 			<div class="item">
-				<img src="{{ asset('assets/img/carousel/c-2.jpg') }}" alt="Image 2">
+				<img src="{{ asset('assets/website/img/carousel/c-2.jpg') }}" alt="Image 2">
 			</div>
 		</div>
         <div class="container page-title">

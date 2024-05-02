@@ -6,10 +6,10 @@
     <section class="banner-area about-carousel relative" id="banner">
 		<div class="owl-carousel">
 			<div class="item">
-				<img src="{{ asset('assets/img/carousel/c-1.jpg') }}" alt="Image 1">
+				<img src="{{ asset('assets/website/img/carousel/c-1.jpg') }}" alt="Image 1">
 			</div>
 			<div class="item">
-				<img src="{{ asset('assets/img/carousel/c-2.jpg') }}" alt="Image 2">
+				<img src="{{ asset('assets/website/img/carousel/c-2.jpg') }}" alt="Image 2">
 			</div>
 		</div>
         <div class="container page-title">
@@ -91,7 +91,7 @@
 								@foreach ( $company_services as $service )
 									<div class="col-lg-4 mt-10">
 										<div class="single-cat d-flex flex-column service-item service-border" data-aos="flip-left">
-											<img src="{{ asset('assets/img/services/'.$service->image) }}" alt="{{ $service->title }}" class="service-img">
+											<img src="{{ asset('assets/website/img/services/'.$service->image) }}" alt="{{ $service->title }}" class="service-img">
 											<h4 class="mb-20 service-title">{{ $service->title }}</h4>
 											<p class="text-justify">
 												{{ $service->description }}

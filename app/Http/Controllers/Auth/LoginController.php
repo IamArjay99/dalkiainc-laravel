@@ -16,7 +16,7 @@ class LoginController extends Controller
     {
         if (Auth::check())
         {
-            return redirect()->route('dashboard');
+            return redirect()->route('admin.dashboard');
         }
 
         $data['page_title'] = 'Login';
@@ -33,7 +33,7 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials))
         {
-            return redirect()->intended('dashboard')->withSuccess('Signed in');
+            return redirect()->intended('admin/dashboard')->withSuccess('Signed in');
         }
         else
         {

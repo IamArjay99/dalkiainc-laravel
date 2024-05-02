@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\WebsiteController;
+use App\Http\Controllers\ProjectController;
 
 // WEBSITE
 Route::get('/', [WebsiteController::class, 'index'])->name('website.index');
@@ -35,5 +36,6 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('auth.logout');
 Route::group(['middleware' => 'auth'], function () {
 
     // DASHBOARD
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/projects', [ProjectController::class, 'index'])->name('admin.projects');
 });

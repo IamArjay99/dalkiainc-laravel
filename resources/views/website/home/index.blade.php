@@ -6,10 +6,10 @@
     <section class="banner-area relative" id="banner">
 		<div class="owl-carousel">
 			<div class="item">
-				<img src="{{ asset('assets/img/carousel/c-1.jpg') }}" alt="Image 1">
+				<img src="{{ asset('assets/website/img/carousel/c-1.jpg') }}" alt="Image 1">
 			</div>
 			<div class="item">
-				<img src="{{ asset('assets/img/carousel/c-2.jpg') }}" alt="Image 2">
+				<img src="{{ asset('assets/website/img/carousel/c-2.jpg') }}" alt="Image 2">
 			</div>
 		</div>
 	</section>
@@ -24,7 +24,7 @@
 					</p>
 				</div>
 				<div class="col-md-6 d-flex align-items-center justify-content-center">
-					<img src="{{ asset('assets/img/about/our-company.png') }}" alt="Our Company" class="img-fluid">
+					<img src="{{ asset('assets/website/img/about/our-company.png') }}" alt="Our Company" class="img-fluid">
 				</div>
 			</div>
 		</div>
@@ -105,7 +105,7 @@
 								@foreach ( $company_services as $service )
 									<div class="col-lg-4 mt-10">
 										<div class="single-cat d-flex flex-column service-item service-border" data-aos="flip-left">
-											<img src="{{ asset('assets/img/services/'.$service->image) }}" alt="{{ $service->title }}" class="service-img">
+											<img src="{{ asset('assets/website/img/services/'.$service->image) }}" alt="{{ $service->title }}" class="service-img">
 											<h4 class="mb-20 service-title">{{ $service->title }}</h4>
 											<p class="text-justify">
 												{{ $service->description }}
@@ -142,7 +142,7 @@
 						<div class="col-lg-4">
 							<div class="single-service">
 								<div class="thumb">
-									<img src="{{ asset('assets/img/projects/'.$project->image) }}" alt="{{ $project->name }}">
+									<img src="{{ asset('assets/website/img/projects/'.$project->image) }}" alt="{{ $project->name }}">
 								</div>
 								<h4 class="text-uppercase">{{ $project->name }}</h4>
 								<div class="project-details">
@@ -191,7 +191,7 @@
 						<div class="section-award" data-aos="fade-up">
 							<div class="row award-left">
 								<div class="col-md-3">
-									<img src="{{ asset('assets/img/awards/'.$award->image) }}" alt="{{ $award->title }}" class="img-fluid">
+									<img src="{{ asset('assets/website/img/awards/'.$award->image) }}" alt="{{ $award->title }}" class="img-fluid">
 								</div>
 								<div class="col-md-9 mt-sm-20 award-description">
 									<h3 class="mb-20 subtitle text-uppercase">{{ $award->title }}</h3>
@@ -211,7 +211,7 @@
 									</p>
 								</div>
 								<div class="col-md-3">
-									<img src="{{ asset('assets/img/awards/'.$award->image) }}" alt="{{ $award->title }}" class="img-fluid">
+									<img src="{{ asset('assets/website/img/awards/'.$award->image) }}" alt="{{ $award->title }}" class="img-fluid">
 								</div>
 							</div>
 						</div>
@@ -239,7 +239,7 @@
 					<a class="primary-btn" href="{{ route('website.careers') }}">Apply Now</a>
 				</div>
 				<div class="col-lg-4 col-md-12">
-					<img src="{{ asset('assets/img/careers/apply-now.jpg') }}" alt="" class="img-fluid">
+					<img src="{{ asset('assets/website/img/careers/apply-now.jpg') }}" alt="" class="img-fluid">
 				</div>
 			</div>
 		</div>
