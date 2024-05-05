@@ -129,7 +129,7 @@
 										<div class="col-lg-4">
 											<div class="single-service">
 												<div class="thumb">
-													<img src="{{ asset('assets/website/img/projects/'.$project->image) }}" alt="{{ $project->name }}">
+													<img src="{{ asset('uploads/img/projects/'.$project->image) }}" alt="{{ $project->name }}">
 												</div>
 												<h4 class="text-uppercase">{{ $project->name }}</h4>
 												<div class="project-details">
