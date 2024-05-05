@@ -4,4 +4,4 @@
 
 @yield('content')
 
-@include('admin.layouts.footer')
+@include('admin.layouts.footer');

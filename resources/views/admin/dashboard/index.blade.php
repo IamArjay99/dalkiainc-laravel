@@ -1,30 +1,28 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="main_content_iner overly_inner ">
-    <div class="container-fluid p-0 ">
-        <div class="row">
-            <div class="col-12">
-                <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
-                    <div class="page_title_left">
-                        <h3 class="mb-0">Dashboard</h3>
-                        <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol>
-                    </div>
+<main id="main" class="main">
+    <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
+        <div class="container-fluid">
+            <div class="row g-3 align-items-center">
+                <div class="col">
+                    <h4 class="mb-0">Dashboard</h4>
+                    <ol class="breadcrumb bg-transparent mb-0">
+                        <li class="breadcrumb-item"><a class="text-secondary" href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                    </ol>
                 </div>
-            </div>
-        </div>
-
-        <div class="white_card card_height_100 mb_30">
-            <div class="white_card_body">
-                <div class="row">
-                    <div class="col-12">
-                    </div>
+                <div class="col text-end">
+                    <h6 class="mb-0 fw-bold" id="realTime">{{ date('h:i:s A') }}</h6>
+                    <small>{{ date('F d, Y') }}</small>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+    <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0">
+        <div class="container-fluid">
+        </div>
+    </div>
+</main>
 @endsection

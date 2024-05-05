@@ -28,7 +28,7 @@ Route::get('/careers/{id}', [WebsiteController::class, 'career_details'])->name(
 Route::get('/contacts', [WebsiteController::class, 'contacts'])->name('website.contacts');
 
 // LOGIN & LOGOUT
-Route::get('/admin', [LoginController::class, 'index'])->name('auth.login');
+Route::get('/admin', [LoginController::class, 'index'])->name('login');
 Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('auth.authenticate');
 Route::get('/logout', [LoginController::class, 'logout'])->name('auth.logout');
 
@@ -37,5 +37,13 @@ Route::group(['middleware' => 'auth'], function () {
 
     // DASHBOARD
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+    // PROJECTS
     Route::get('/admin/projects', [ProjectController::class, 'index'])->name('admin.projects');
+    Route::get('/admin/projects/create', [ProjectController::class, 'create'])->name('admin.projects.create');
+    Route::post('/admin/projects/save', [ProjectController::class, 'save'])->name('admin.projects.save');
+    Route::get('/admin/projects/{id}/view', [ProjectController::class, 'view'])->name('admin.projects.view');
+    Route::get('/admin/projects/{id}/edit', [ProjectController::class, 'edit'])->name('admin.projects.edit');
+    Route::put('/admin/projects/{id}/update', [ProjectController::class, 'update'])->name('admin.projects.update');
+    Route::delete('/admin/projects/{id}/delete', [ProjectController::class, 'delete'])->name('admin.projects.delete');
 });

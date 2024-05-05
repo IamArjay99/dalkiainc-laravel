@@ -1,58 +1,62 @@
-<div class="footer_part">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="footer_iner text-center">
-                    <p>Copyright © 2024. All Rights Reserved.</p>
+        <div class="modal fade" id="custom-modal" tabindex="-1" data-bs-backdrop="static" data-backdrop="static"
+                data-bs-keyboard="false">
+                <div class="modal-dialog modal-dialog-centered modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title mb-0">Title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                        </div>
+                    </div>
                 </div>
-            </div>
         </div>
+
+        <footer class="page-footer px-xl-4 px-sm-2 px-0 pt-3 d-flex justify-content-center align-items-center">
+            <p class="text-muted">© 2024 <a href="#" title="Dalkia Inc.">Dalkia Inc.</a>, All Rights Reserved.</p>
+        </footer>
     </div>
-</div>
-</section>
+
+    <!-- Jquery Page Js -->
+    <script src="{{ asset('assets/admin/js/theme.js') }}"></script>
+    <!-- Plugin Js -->
+    <script src="{{ asset('assets/admin/js/bundle/apexcharts.bundle.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/bundle/datatablescripts.bundle.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/bundle/daterangepicker.bundle.js') }}"></script>
+    <!-- Vendor Script -->
+    <script src="{{ asset('assets/admin/js/moment.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/jquery-confirm.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/bs5-toast.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/drag-arrange.js') }}"></script>
+
+    <!-- Custom -->
+    <script src="{{ asset('assets/admin/js/custom.js') }}"></script>
+
+    <?php
+        if (Session::get('status'))
+        {
+            echo "
+            <script>
+                $(window).on('load', function() {
+                    showToast('". Session::get('status') ."', '". Session::get('message') ."')
+                })
+            </script>";
+        }
+    ?>
 
 
-<script src="{{ asset('assets/admin/js/jquery1-3.4.1.min.js') }}"></script>
-<script src="{{ asset('assets/admin/js/popper1.min.js') }}"></script>
-<script src="{{ asset('assets/admin/js/bootstrap1.min.js') }}"></script>
-<script src="{{ asset('assets/admin/js/metisMenu.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/count_up/jquery.waypoints.min.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/chartlist/Chart.min.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/count_up/jquery.counterup.min.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/niceselect/js/jquery.nice-select.min.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/owl_carousel/js/owl.carousel.min.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/datatable/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/datatable/js/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/datatable/js/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/datatable/js/buttons.flash.min.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/datatable/js/jszip.min.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/datatable/js/pdfmake.min.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/datatable/js/vfs_fonts.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/datatable/js/buttons.html5.min.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/datatable/js/buttons.print.min.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/datepicker/datepicker.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/datepicker/datepicker.en.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/datepicker/datepicker.custom.js') }}"></script>
-<script src="{{ asset('assets/admin/js/chart.min.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/chartjs/roundedBar.min.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/progressbar/jquery.barfiller.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/tagsinput/tagsinput.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/text_editor/summernote-bs4.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/am_chart/amcharts.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/scroll/perfect-scrollbar.min.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/scroll/scrollable-custom.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/vectormap-home/vectormap-2.0.2.min.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/vectormap-home/vectormap-world-mill-en.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/apex_chart/apex-chart2.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/apex_chart/apex_dashboard.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/chart_am/core.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/chart_am/charts.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/chart_am/animated.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/chart_am/kelly.js') }}"></script>
-<script src="{{ asset('assets/admin/vendors/chart_am/chart-custom.js') }}"></script>
-<script src="{{ asset('assets/admin/js/dashboard_init.js') }}"></script>
-<script src="{{ asset('assets/admin/js/custom.js') }}"></script>
+    <script>
+        function updateRealTime() {
+            $('#realTime').html(moment(new Date).format('hh:mm:ss A'));
+        }
+
+        $(function() {
+            setInterval(updateRealTime, 1000);
+        });
+    </script>
 
 </body>
-
 </html>

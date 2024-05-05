@@ -1,116 +1,191 @@
-<nav class="sidebar">
-    <div class="logo d-flex justify-content-between">
-        <a class="large_logo" href="{{ route('admin.dashboard') }}"><img src="{{ asset('assets/website/img/logo/logo.png') }}" alt></a>
-        <a class="small_logo" href="{{ route('admin.dashboard') }}"><img src="{{ asset('assets/website/img/logo/dalikiainc-fav.png') }}" alt></a>
-        <div class="sidebar_close_icon d-lg-none">
-            <i class="ti-close"></i>
+<?php
+    $uri_mainpage = Request::segment(2);
+    $uri_subpage  = Request::segment(3);
+?>
+
+<div class="sidebar p-2 py-md-3 @@cardClass version-2">
+    <div class="container-fluid">
+        <div class="title-text d-flex align-items-center mb-4 mt-1">
+            <img class="sidebar-img img-thumbnail shadow" src="{{ asset('assets/website/img/logo/dalikiainc-fav.png') }}"
+                height="50" width="50" alt="Dalkia Inc. Logo">
+            <h4 class="sidebar-title mb-0 flex-grow-1 px-2 d-none d-xl-block">
+                <span class="sm-txt fw-bold">Dalkia Inc.</span>
+            </h4>
+        </div>
+
+        <div class="main-menu flex-grow-1 pb-3">
+            <ul class="menu-list">
+                <li>
+                    <a class="m-link {{ $uri_mainpage == 'dashboard' ? 'active' : '' }}"
+                        href="{{ route('admin.dashboard') }}">
+                        <img src="{{ asset('assets/admin/img/icons/dashboard.png') }}" alt="Dashboard" width="20" height="20">
+                        <span class="ms-2">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="m-link {{ $uri_mainpage == 'projects' ? 'active' : '' }}"
+                        href="{{ route('admin.projects') }}">
+                        <img src="{{ asset('assets/admin/img/icons/projects.png') }}" alt="Projects" width="20" height="20">
+                        <span class="ms-2">Projects</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="m-link {{ $uri_mainpage == 'certifications-and-awards' ? 'active' : '' }}"
+                        href="{{ '#' }}">
+                        <img src="{{ asset('assets/admin/img/icons/certifications-and-awards.png') }}" alt="Certification & Awards" width="20" height="20">
+                        <span class="ms-2">Certification & Awards</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="m-link {{ $uri_mainpage == 'careers' ? 'active' : '' }}"
+                        href="{{ '#' }}">
+                        <img src="{{ asset('assets/admin/img/icons/careers.png') }}" alt="Careers" width="20" height="20">
+                        <span class="ms-2">Careers</span>
+                    </a>
+                </li>
+                <li class="{{ $uri_mainpage == 'company-information' ? 'collapsed' : '' }}">
+                    <a class="m-link"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#menu-company-information"
+                        href="#"
+                        aria-expanded="{{ $uri_mainpage == 'company-information' ? 'true' : 'false' }}">
+                        <img src="{{ asset('assets/admin/img/icons/company-information.png') }}" alt="Company Information" width="20" height="20">
+                        <span class="ms-2">Company Information</span>
+                        <span class="arrow fa fa-angle-right ms-auto text-end"></span>
+                    </a>
+                    <ul class="sub-menu collapse {{ $uri_mainpage == 'company-information' ? 'collapsed show' : '' }}" id="menu-company-information">
+                        <li>
+                            <a class="ms-link {{ $uri_subpage == 'our-history' ? 'active' : '' }}" href="#">Our History</a>
+                        </li>
+                        <li>
+                            <a class="ms-link {{ $uri_subpage == 'our-mission-and-vision' ? 'active' : '' }}" href="#">Our Mission and Vision</a>
+                        </li>
+                        <li>
+                            <a class="ms-link {{ $uri_subpage == 'scope-and-services' ? 'active' : '' }}" href="#">Scope and Services</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="{{ $uri_mainpage == 'reports' ? 'collapsed' : '' }}">
+                    <a class="m-link"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#menu-reports"
+                        href="#"
+                        aria-expanded="{{ $uri_mainpage == 'reports' ? 'true' : 'false' }}">
+                        <img src="{{ asset('assets/admin/img/icons/reports.png') }}" alt="Reports" width="20" height="20">
+                        <span class="ms-2">Reports</span>
+                        <span class="arrow fa fa-angle-right ms-auto text-end"></span>
+                    </a>
+                    <ul class="sub-menu collapse {{ $uri_mainpage == 'reports' ? 'collapsed show' : '' }}" id="menu-reports">
+                        <li>
+                            <a class="ms-link {{ $uri_subpage == 'applicant-report' ? 'active' : '' }}" href="#">Applicant Report</a>
+                        </li>
+                        <li>
+                            <a class="ms-link {{ $uri_subpage == 'inquiry-report' ? 'active' : '' }}" href="#">Inquiry Report</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </div>
-    <ul id="sidebar_menu">
-        <li class>
-            <a href="#" aria-expanded="false">
-                <div class="nav_icon_small">
-                    <img src="{{ asset('assets/admin/img/nav-icon/dashboard.png') }}" alt>
-                </div>
-                <div class="nav_title">
-                    <span>Dashboard</span>
-                </div>
-            </a>
-        </li>
-        <li class>
-            <a href="{{ route('admin.projects') }}" aria-expanded="false">
-                <div class="nav_icon_small">
-                    <img src="{{ asset('assets/admin/img/nav-icon/project.png') }}" alt>
-                </div>
-                <div class="nav_title">
-                    <span>Projects</span>
-                </div>
-            </a>
-        </li>
-        <li class>
-            <a href="#" aria-expanded="false">
-                <div class="nav_icon_small">
-                    <img src="{{ asset('assets/admin/img/nav-icon/awards.png') }}" alt>
-                </div>
-                <div class="nav_title">
-                    <span>Certifications & Awards</span>
-                </div>
-            </a>
-        </li>
-        <li class>
-            <a href="#" aria-expanded="false">
-                <div class="nav_icon_small">
-                    <img src="{{ asset('assets/admin/img/nav-icon/career.png') }}" alt>
-                </div>
-                <div class="nav_title">
-                    <span>Careers</span>
-                </div>
-            </a>
-        </li>
-        <li class>
-            <a class="has-arrow" href="#" aria-expanded="false">
-                <div class="nav_icon_small">
-                    <img src="{{ asset('assets/admin/img/nav-icon/company.png') }}" alt>
-                </div>
-                <div class="nav_title">
-                    <span>Company Information </span>
-                </div>
-            </a>
-            <ul>
-                <li><a href="#">Our History</a></li>
-                <li><a href="#">Our Mission and Vision</a></li>
-                <li><a href="#">Scope and Services</a></li>
-            </ul>
-        </li>
-        <li class>
-            <a class="has-arrow" href="#" aria-expanded="false">
-                <div class="nav_icon_small">
-                    <img src="{{ asset('assets/admin/img/nav-icon/report.png') }}" alt>
-                </div>
-                <div class="nav_title">
-                    <span>Reports </span>
-                </div>
-            </a>
-            <ul>
-                <li><a href="#">Applicant Report</a></li>
-                <li><a href="#">Inquiry Report</a></li>
-            </ul>
-        </li>
-    </ul>
-</nav>
+</div>
 
-<section class="main_content dashboard_part large_header_bg">
 
-    <div class="container-fluid g-0">
-        <div class="row">
-            <div class="col-lg-12 p-0 ">
-                <div class="header_iner d-flex justify-content-between align-items-center">
-                    <div class="sidebar_icon d-lg-none">
-                        <i class="ti-menu"></i>
-                    </div>
-                    <div class="line_icon open_miniSide d-none d-lg-block">
-                        <img src="{{ asset('assets/admin/img/line_img.png') }}" alt>
-                    </div>
-                    <div class="header_right d-flex justify-content-between align-items-center">
-                        <div class="profile_info d-flex align-items-center">
-                            <div class="profile_thumb mr_20">
-                                <img src="{{ asset('assets/admin/img/transfer/4.png') }}" alt="#">
-                            </div>
-                            <div class="profile_info_iner">
-                                <div class="profile_author_name">
-                                    <h5 class="mb-0">{{ Auth::user()->name }}</h5>
-                                    <small class="text-muted">System Administrator</small>
-                                </div>
-                                <div class="profile_info_details">
-                                    <a href="#">My Profile </a>
-                                    <a href="{{ route('auth.logout') }}">Log Out </a>
+<div class="wrapper">
+    <header class="page-header sticky-top px-xl-4 px-sm-2 px-0 py-lg-2 py-1">
+        <div class="container-fluid">
+            <nav class="navbar">
+                <div class="d-flex">
+                    <button type="button" class="btn btn-link d-none d-xl-block sidebar-mini-btn p-0 text-primary">
+                        <span class="hamburger-icon">
+                            <span class="line"></span>
+                            <span class="line"></span>
+                            <span class="line"></span>
+                        </span>
+                    </button>
+                    <button type="button" class="btn btn-link d-block d-xl-none menu-toggle p-0 text-primary">
+                        <span class="hamburger-icon">
+                            <span class="line"></span>
+                            <span class="line"></span>
+                            <span class="line"></span>
+                        </span>
+                    </button>
+                </div>
+                <ul class="header-right justify-content-end d-flex align-items-center mb-0">
+                    <li>
+                        <div class="dropdown morphing scale-left notifications">
+                            <a class="nav-link dropdown-toggle after-none" href="#" role="button"
+                                data-bs-toggle="dropdown">
+                                <i class="bi bi-bell"></i>
+                                <span class='badge bg-warning'
+                                    id='lblCartCount'
+                                    style="position: absolute; right: 0; top: 0;">
+                                    0
+                                </span>
+                            </a>
+                            <div id="NotificationsDiv" class="dropdown-menu shadow rounded-4 border-0 p-0 m-0">
+
+                                <div class="card w380">
+                                    <div class="card-header p-3">
+                                        <h6 class="card-title mb-0">Notifications</h6>
+                                    </div>
+                                    <div class="tab-content card-body custom_scroll px-3 py-2">
+                                        <div class="tab-pane fade show active">
+                                            <ul class="list-unstyled list mb-0">
+                                                <li class="py-2 mb-1 border-bottom">
+                                                    <div class="d-flex btnViewNotification"
+                                                        style="cursor: pointer;">
+                                                        <img src="{{ asset('assets/admin/img/icons/default.png') }}" height="30" width="30">
+                                                        <div class="flex-fill ms-3">
+                                                            <div class="mb-0">
+                                                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus, vero.
+                                                            </div>
+                                                            <small>January 10, 2020</small>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                    </li>
 
-    
+                    <li>
+                        <div class="dropdown morphing scale-left user-profile mx-lg-3 mx-2">
+                            <a class="nav-link dropdown-toggle rounded-circle after-none p-0" href="#"
+                                role="button" data-bs-toggle="dropdown">
+                                <img class="avatar img-thumbnail rounded-circle shadow"
+                                    src="{{ asset('assets/admin/img/profile/default.png') }}"
+                                    alt="">
+                            </a>
+                            <div class="dropdown-menu border-0 rounded-4 shadow p-0">
+                                <div class="card border-0 w240">
+                                    <div class="card-body border-bottom d-flex">
+                                        <img class="avatar rounded-circle"
+                                            src="{{ asset('assets/admin/img/profile/default.png') }}"
+                                            alt="">
+                                        <div class="flex-fill ms-3">
+                                            <h6 class="card-title mb-0">
+                                                John Doe
+                                            </h6>
+                                            <small class="text-muted">
+                                                System Administrator
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="list-group m-2 mb-3">
+                                        <a class="list-group-item list-group-item-action border-0" href="#">
+                                            <i class="w30 fa fa-user"></i>My Profile
+                                        </a>
+                                    </div>
+                                    <a href="{{ route('auth.logout') }}"
+                                        class="btn bg-secondary text-light text-uppercase rounded-0">Sign out</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>

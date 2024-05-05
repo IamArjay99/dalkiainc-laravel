@@ -31,7 +31,7 @@
 
 <body>
 
-	<div class="wrapper" id="preloader">
+	<div id="pageloader">
 		<div class="cssload-loader"></div>
 		<h5 class="cssload-text">Please wait...</h5>
 	</div>
