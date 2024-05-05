@@ -142,7 +142,10 @@
 						<div class="col-lg-4">
 							<div class="single-service">
 								<div class="thumb">
-									<img src="{{ asset('assets/website/img/projects/'.$project->image) }}" alt="{{ $project->name }}">
+									<img src="{{ asset('uploads/img/projects/'.$project->image) }}" alt="{{ $project->name }}"
+										class="img-fluid"
+										loading="lazy"
+										style="height: 230px !important;">
 								</div>
 								<h4 class="text-uppercase">{{ $project->name }}</h4>
 								<div class="project-details">
@@ -164,7 +167,7 @@
 					@endforeach
 
 					<div class="col-lg-12 text-center">
-						<a href="{{ route('website.projects') }}" class="genric-btn danger-border circle mt-30">Explore Projects</a>
+						<a href="{{ route('website.projects') }}" class="genric-btn danger-border circle mt-30">Explore More Projects</a>
 					</div>
 						
 				</div>

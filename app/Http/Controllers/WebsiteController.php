@@ -136,7 +136,7 @@ class WebsiteController extends Controller
     private function get_project_category()
     {
         $data = DB::table('project_category')
-            ->select('id', 'category')
+            ->select('id', 'name')
             ->selectRaw('(SELECT COUNT(*) FROM projects WHERE project_category_id = project_category.id GROUP BY project_category_id) as project_count')
             ->orderBy('id', 'asc')
             ->get();

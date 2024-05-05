@@ -36,7 +36,7 @@
 							@foreach ($project_category as $pcat)
 								<div class="row align-items-center justify-content-between">
 									<div class="col-10">
-										<p>{{ $pcat->category }} <span class="text-muted" style="font-size: 0.9rem;">({{ $pcat->project_count }})</span></p>
+										<p>{{ $pcat->name }} <span class="text-muted" style="font-size: 0.9rem;">({{ $pcat->project_count }})</span></p>
 									</div>
 									<div class="col-2">
 										<input class="project-checkbox" type="checkbox" value="{{ $pcat->id }}" name="project-category">
@@ -69,7 +69,11 @@
 										<div class="col-lg-4">
 											<div class="single-service">
 												<div class="thumb">
-													<img src="{{ asset('assets/website/img/projects/'.$project->image) }}" alt="{{ $project->name }}">
+													<img src="{{ asset('uploads/img/projects/'.$project->image) }}" 
+													alt="{{ $project->name }}"
+													class="img-fluid"
+													loading="lazy"
+													style="height: 180px !important;">
 												</div>
 												<h4 class="text-uppercase">{{ $project->name }}</h4>
 												<div class="project-details">
