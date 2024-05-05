@@ -294,7 +294,7 @@
                                                     alt="image" height="250" width="250">
                                             @else
                                                 <input type="file" class="form-control" id="image" name="image" placeholder="image">
-                                                <input type="hidden" class="form-control" id="image_store" name="image_store" placeholder="image_store">
+                                                <input type="hidden" class="form-control" id="image_store" name="image_store" placeholder="image_store" value="{{ $image_store }}">
                                                 <img class="preview-image mt-2" src="{{ asset('uploads/img/projects/'. (old('image_store') ?? $image ?? 'default.png')) }}" alt="image" height="200" width="200">
                                             @endif
                                         </div>
