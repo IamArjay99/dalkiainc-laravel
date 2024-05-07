@@ -86,7 +86,7 @@ class ProjectController extends Controller
                 ->route('admin.projects')
                 ->with([
                     'status' => 'success',
-                    'message' => "$name - Project created successfully"
+                    'message' => "$name created successfully"
                 ]);
         }
         else
@@ -102,7 +102,7 @@ class ProjectController extends Controller
 
     public function view($id)
     {
-        $data['page_title'] = 'Project';
+        $data['page_title'] = 'View Project';
         $data['form_todo'] = 'READ';
         $data['data'] = DB::table('projects')
             ->leftJoin('project_category', 'project_category.id', '=', 'projects.project_category_id')
@@ -115,7 +115,7 @@ class ProjectController extends Controller
 
     public function edit($id)
     {
-        $data['page_title'] = 'Project';
+        $data['page_title'] = 'Edit Project';
         $data['form_todo'] = 'UPDATE';
         $data['data'] = DB::table('projects')
             ->leftJoin('project_category', 'project_category.id', '=', 'projects.project_category_id')
@@ -185,7 +185,7 @@ class ProjectController extends Controller
                 ->route('admin.projects')
                 ->with([
                     'status' => 'success',
-                    'message' => "$name - Project updated successfully"
+                    'message' => "$name updated successfully"
                 ]);
         }
         else
@@ -211,7 +211,7 @@ class ProjectController extends Controller
                 ->route('admin.projects')
                 ->with([
                     'status' => 'success',
-                    'message' => "$name - Project deleted successfully"
+                    'message' => "$name deleted successfully"
                 ]);
         }
         else

@@ -38,7 +38,7 @@
                 </li>
                 <li>
                     <a class="m-link {{ $uri_mainpage == 'careers' ? 'active' : '' }}"
-                        href="{{ '#' }}">
+                        href="{{ route('admin.careers') }}">
                         <img src="{{ asset('assets/admin/img/icons/careers.png') }}" alt="Careers" width="20" height="20">
                         <span class="ms-2">Careers</span>
                     </a>

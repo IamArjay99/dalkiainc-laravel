@@ -18,6 +18,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\CertificationsAndAwardsController;
+use App\Http\Controllers\CareerController;
 
 // WEBSITE
 Route::get('/', [WebsiteController::class, 'index'])->name('website.index');
@@ -56,4 +57,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/certifications-and-awards/{id}/edit', [CertificationsAndAwardsController::class, 'edit'])->name('admin.certifications-and-awards.edit');
     Route::put('/admin/certifications-and-awards/{id}/update', [CertificationsAndAwardsController::class, 'update'])->name('admin.certifications-and-awards.update');
     Route::delete('/admin/certifications-and-awards/{id}/delete', [CertificationsAndAwardsController::class, 'delete'])->name('admin.certifications-and-awards.delete');
+
+    // CAREERS
+    Route::get('/admin/careers', [CareerController::class, 'index'])->name('admin.careers');
+    Route::get('/admin/careers/create', [CareerController::class, 'create'])->name('admin.careers.create');
+    Route::post('/admin/careers/save', [CareerController::class, 'save'])->name('admin.careers.save');
+    Route::get('/admin/careers/{id}/view', [CareerController::class, 'view'])->name('admin.careers.view');
+    Route::get('/admin/careers/{id}/edit', [CareerController::class, 'edit'])->name('admin.careers.edit');
+    Route::put('/admin/careers/{id}/update', [CareerController::class, 'update'])->name('admin.careers.update');
+    Route::delete('/admin/careers/{id}/delete', [CareerController::class, 'delete'])->name('admin.careers.delete');
 });

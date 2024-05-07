@@ -146,6 +146,7 @@ class WebsiteController extends Controller
     private function get_careers()
     {
         $data = DB::table('careers')
+            ->where('status', 1)
             ->orderBy('id', 'asc')
             ->get();
         return $data;
