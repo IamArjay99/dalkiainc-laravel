@@ -6,10 +6,10 @@
             <div class="container-fluid">
                 <div class="row g-3 align-items-center">
                     <div class="col">
-                        <h4 class="mb-0">Projects</h4>
+                        <h4 class="mb-0">Certifications and Awards</h4>
                         <ol class="breadcrumb bg-transparent mb-0">
                             <li class="breadcrumb-item"><a class="text-secondary" href="#">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Projects</li>
+                            <li class="breadcrumb-item active" aria-current="page">Certifications and Awards</li>
                         </ol>
                     </div>
                 </div>
@@ -21,45 +21,33 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="w-100 text-end mb-3">
-                            <a href="{{ route('admin.projects.create') }}" class="btn btn-outline-primary px-2 py-1 w-sm-100">
+                            <a href="{{ route('admin.certifications-and-awards.create') }}" class="btn btn-outline-primary px-2 py-1 w-sm-100">
                                 <i class="bi bi-plus-lg"></i> New
                             </a>
                         </div>
 
-                        <table class="table table-striped table-hover" id="tableProject">
+                        <table class="table table-striped table-hover" id="tableCertificationAwards">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Project Name</th>
-                                    <th>Project Category</th>
-                                    <th>Client</th>
-                                    <th>Scope of Work</th>
-                                    <th>Status</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
                                     <th>&nbsp;</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @if (isset($data) && !empty($data))
                                     @foreach ($data as $index => $dt)
-                                        @php
-                                            $status = $dt->status == 'COMPLETED' ? "<span class='badge bg-success'>Completed</span>" : "<span class='badge bg-warning'>Ongoing</span>";
-                                        @endphp
-
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
                                             <td>
-                                                <a href="{{ route('admin.projects.view', ['id' => $dt->id]) }}" class="d-flex align-items-center justify-content-start gap-2">
-                                                    <img src="{{ asset('uploads/img/projects/' . $dt->image ?? 'default.png') }}" alt="Project" width="50" height="50">
-                                                    <div>{{ $dt->name }}</div>
+                                                <a href="{{ route('admin.certifications-and-awards.view', ['id' => $dt->id]) }}" class="d-flex align-items-center justify-content-start gap-2">
+                                                    <img src="{{ asset('uploads/img/certifications-and-awards/' . $dt->image ?? 'default.png') }}" 
+                                                        alt="CertificationAwards" width="50" height="50">
+                                                    <div>{{ $dt->title }}</div>
                                                 </a>
                                             </td>
-                                            <td>{{ $dt->project_category ?? '-' }}</td>
-                                            <td>{{ $dt->client ?? '-' }}</td>
-                                            <td>
-                                                <div>{{ $dt->scope_of_work ?? '-' }}</div>
-                                                <small>{{ 'No. of Floors: ' . $dt->floor ?? '-' }}</small>
-                                            </td>
-                                            <td><?= $status ?></td>
+                                            <td>{{ $dt->description ?? '-' }}</td>
                                             <td class="text-end">
                                                 <a href="#" class="more-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                                     <i class="fa fa-ellipsis-v"></i>
@@ -67,19 +55,19 @@
                                                 <ul class="dropdown-menu shadow border-0 p-2">
                                                     <li>
                                                         <a class="dropdown-item" 
-                                                            href="{{ route('admin.projects.edit', ['id' => $dt->id]) }}">
+                                                            href="{{ route('admin.certifications-and-awards.edit', ['id' => $dt->id]) }}">
                                                             <i class="bi bi-pencil"></i> Edit
                                                         </a>
                                                     </li>
 
                                                     <li>
                                                         <a class="dropdown-item btnDeleteForm"
-                                                            title="{{ $dt->name }}"
+                                                            title="{{ $dt->title }}"
                                                             index="{{ $index }}"
                                                             href="#"><i class="bi bi-trash"></i> Delete</a>
 
                                                         <!-- ----- FORM DELETE ----- -->
-                                                        <form action="{{ route('admin.projects.delete', ['id' => $dt->id]) }}" method="POST" id="formDelete{{ $index }}">
+                                                        <form action="{{ route('admin.certifications-and-awards.delete', ['id' => $dt->id]) }}" method="POST" id="formDelete{{ $index }}">
                                                             @csrf
                                                             @method('DELETE')
                                                         </form>
@@ -101,23 +89,18 @@
     <script>
         $(document).ready(function() {
             // ----- DATATABLES -----
-            let tableProject = $('#tableProject')
+            let tableCertificationAwards = $('#tableCertificationAwards')
                 .css({ "min-width": "99%" })
                 .removeAttr("width")
                 .DataTable({
-                    // scrollX: true,
-                    // scrollY: '300px',
                     sorting: [],
                     scrollCollapse: true,
                     responsive: true,
                     columnDefs: [
                         { targets: 0,  width: 10  },
                         { targets: 1,  width: 200 },
-                        { targets: 2,  width: 150 },
-                        { targets: 3,  width: 150 },
-                        { targets: 4,  width: 300 },
-                        { targets: 5,  width: 100 },
-                        { targets: 6,  width: 10  },
+                        { targets: 2,  width: 300 },
+                        { targets: 3,  width: 10  },
                     ],
                 });
             // ----- END DATATABLES -----

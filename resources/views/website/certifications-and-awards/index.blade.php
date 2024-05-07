@@ -31,7 +31,7 @@
 						<div class="section-award" data-aos="fade-up">
 							<div class="row award-left">
 								<div class="col-md-3">
-									<img src="{{ asset('assets/website/img/awards/'.$award->image) }}" alt="{{ $award->title }}" class="img-fluid">
+									<img src="{{ asset('uploads/img/certifications-and-awards/'.$award->image) }}" alt="{{ $award->title }}" class="img-fluid">
 								</div>
 								<div class="col-md-9 mt-sm-20 award-description">
 									<h3 class="mb-20 subtitle text-uppercase">{{ $award->title }}</h3>
@@ -51,7 +51,7 @@
 									</p>
 								</div>
 								<div class="col-md-3">
-									<img src="{{ asset('assets/website/img/awards/'.$award->image) }}" alt="{{ $award->title }}" class="img-fluid">
+									<img src="{{ asset('uploads/img/certifications-and-awards/'.$award->image) }}" alt="{{ $award->title }}" class="img-fluid">
 								</div>
 							</div>
 						</div>

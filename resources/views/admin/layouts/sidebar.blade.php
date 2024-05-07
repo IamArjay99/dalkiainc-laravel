@@ -31,7 +31,7 @@
                 </li>
                 <li>
                     <a class="m-link {{ $uri_mainpage == 'certifications-and-awards' ? 'active' : '' }}"
-                        href="{{ '#' }}">
+                        href="{{ route('admin.certifications-and-awards') }}">
                         <img src="{{ asset('assets/admin/img/icons/certifications-and-awards.png') }}" alt="Certification & Awards" width="20" height="20">
                         <span class="ms-2">Certification & Awards</span>
                     </a>

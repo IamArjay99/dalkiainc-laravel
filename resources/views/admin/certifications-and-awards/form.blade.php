@@ -7,24 +7,19 @@
         if (!isset($form_todo) || $form_todo == 'CREATE')
         {
             // TABLE FIELDS
-            $id                  = null;
-            $name                = old('name');
-            $project_category_id = old('project_category_id');
-            $client              = old('client');
-            $description         = old('description');
-            $floor               = old('floor');
-            $scope_of_work       = old('scope_of_work');
-            $image               = old('image');
-            $image_store         = old('image_store') ?? 'default.png';
-            $status              = old('status');
+            $id          = null;
+            $title       = old('title');
+            $description = old('description');
+            $image       = old('image');
+            $image_store = old('image_store') ?? 'default.png';
 
             $prevent_refresh = 'true';
-            $form_action = route('admin.projects.save');
+            $form_action = route('admin.certifications-and-awards.save');
             $form_method = 'POST';
             $form_required = "<code>*</code>";
             $form_button = "
             <button type='button'
-                target-module='". route('admin.projects') ."'
+                target-module='". route('admin.certifications-and-awards') ."'
                 class='btn btn-outline-secondary btnCancel'>
                 <i class='fa fa-ban' aria-hidden='true'></i> Cancel
             </button>
@@ -38,16 +33,11 @@
         else if ($form_todo == 'READ')
         {
             // TABLE FIELDS
-            $id                  = $data->id;
-            $name                = $data->name;
-            $project_category_id = $data->project_category_id;
-            $client              = $data->client;
-            $description         = $data->description;
-            $floor               = $data->floor;
-            $scope_of_work       = $data->scope_of_work;
-            $image               = $data->image;
-            $image_store         = $data->image ?? 'default.png';
-            $status              = $data->status;
+            $id          = $data->id;
+            $title       = $data->title;
+            $description = $data->description;
+            $image       = $data->image;
+            $image_store = $data->image ?? 'default.png';
 
             $prevent_refresh = 'false';
             $form_action = '';
@@ -57,10 +47,10 @@
             <div class='d-flex justify-content-end'>
                 <button type='button'
                     class='btn btn-danger btnDeleteForm'
-                    title='". $name ."'>
+                    title='". $title ."'>
                     <i class='bi bi-trash'></i> Delete
                 </button>
-                <a href=". route('admin.projects.edit', ['id' => $id]) ."
+                <a href=". route('admin.certifications-and-awards.edit', ['id' => $id]) ."
                     class='btn btn-warning mx-1'>
                     <i class='bi bi-pencil'></i> Edit
                 </a>
@@ -71,29 +61,24 @@
         else if ($form_todo == 'UPDATE')
         {
             // TABLE FIELDS
-            $id                  = old('id') ?? $data->id;
-            $name                = old('name') ?? $data->name;
-            $project_category_id = old('project_category_id') ?? $data->project_category_id;
-            $client              = old('client') ?? $data->client;
-            $description         = old('description') ?? $data->description;
-            $floor               = old('floor') ?? $data->floor;
-            $scope_of_work       = old('scope_of_work') ?? $data->scope_of_work;
-            $image               = old('image') ?? $data->image;
-            $image_store         = old('image_store') ?? $data->image;
-            $status              = old('status') ?? $data->status;
+            $id          = old('id') ?? $data->id;
+            $title       = old('title') ?? $data->title;
+            $description = old('description') ?? $data->description;
+            $image       = old('image') ?? $data->image;
+            $image_store = old('image_store') ?? $data->image;
 
             $prevent_refresh = 'true';
-            $form_action = route('admin.projects.update', ['id' => $id]);
+            $form_action = route('admin.certifications-and-awards.update', ['id' => $id]);
             $form_method = 'PUT';
             $form_required = "<code>*</code>";
             $form_button = "
             <button type='button'
                 class='btn btn-danger btnDeleteForm'
-                title='". $name ."'>
+                title='". $title ."'>
                 <i class='bi bi-trash'></i> Delete
             </button>
             <button type='button'
-                target-module='". route('admin.projects') ."'
+                target-module='". route('admin.certifications-and-awards') ."'
                 class='btn btn-outline-secondary btnCancel'>
                 <i class='fa fa-ban' aria-hidden='true'></i> Cancel
             </button>
@@ -109,17 +94,17 @@
         <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
             <div class="container-fluid">
                 <div class="row g-3 align-items-center">
-                    <div class="col">
+                    <div class="col-9">
                         <h4 class="mb-0">{{ $page_title }}</h4>
                         <ol class="breadcrumb bg-transparent mb-0">
                             <li class="breadcrumb-item"><a class="text-secondary" href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a class="btnCancel" href="#" target-module="{{ route('admin.projects') }}">Projects</a></li>
+                            <li class="breadcrumb-item"><a class="btnCancel" href="#" target-module="{{ route('admin.certifications-and-awards') }}">Certifications and Awards</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{ $page_title }}</li>
                         </ol>
                     </div>
-                    <div class="col text-end">
+                    <div class="col-3 text-end">
                         <button type="button"
-                            target-module="{{ route('admin.projects') }}"
+                            target-module="{{ route('admin.certifications-and-awards') }}"
                             class="btn btn-secondary btnCancel">
                             <i class="fa fa-arrow-left" aria-hidden="true"></i> Back
                         </button>
@@ -135,7 +120,7 @@
 
                         <form action="{{ $form_action }}"
                             method="POST"
-                            id="formProjects"
+                            id="formCertificationsAndAwards"
                             form-todo="{{ $form_todo }}"
                             validated="false"
                             enctype="multipart/form-data">
@@ -159,108 +144,22 @@
                             <div class="card">
                                 <div class="card-body py-3">
                                     <div class="form-group row my-2">
-                                        <label for="name" class="col-sm-2 col-form-label">
-                                            Project Name <?= $form_required ?>
+                                        <label for="title" class="col-sm-2 col-form-label">
+                                            Title <?= $form_required ?>
                                         </label>
                                         <div class="col-sm-10">
                                             @if ($form_todo == 'READ')
                                                 <input type="text"
                                                     class="form-control"
-                                                    value="{{ $name ?? '-' }}"
+                                                    value="{{ $title ?? '-' }}"
                                                     disabled>
                                             @else
                                                 <input type="text"
                                                     class="form-control"
-                                                    id="name"
-                                                    name="name"
-                                                    placeholder="Enter project name"
-                                                    value="{{ $name }}"
-                                                    autocomplete="off"
-                                                    required>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="form-group row my-2">
-                                        <label for="project_category_id" class="col-sm-2 col-form-label">
-                                            Project Category <?= $form_required ?>
-                                        </label>
-                                        <div class="col-sm-10">
-                                            @if ($form_todo == 'READ')
-                                                <input type="text"
-                                                    class="form-control"
-                                                    value="{{ $data->project_category ?? '-' }}"
-                                                    disabled>
-                                            @else
-                                                <select name="project_category_id" id="project_category_id" class="form-select" required select2>
-                                                    <option value="" selected disabled>Please select project category</option>
-                                                    @foreach ($form_data['project_category'] as $dt)
-                                                        <option value="{{ $dt->id }}"
-                                                            {{ $dt->id == $project_category_id ? 'selected' : '' }}>
-                                                            {{ $dt->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="form-group row my-2">
-                                        <label for="client" class="col-sm-2 col-form-label">
-                                            Client
-                                        </label>
-                                        <div class="col-sm-10">
-                                            @if ($form_todo == 'READ')
-                                                <input type="text"
-                                                    class="form-control"
-                                                    value="{{ $client ?? '-' }}"
-                                                    disabled>
-                                            @else
-                                                <input type="text"
-                                                    class="form-control"
-                                                    id="client"
-                                                    name="client"
-                                                    placeholder="Enter client"
-                                                    value="{{ $client }}"
-                                                    autocomplete="off">
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="form-group row my-2">
-                                        <label for="client" class="col-sm-2 col-form-label">
-                                            Description
-                                        </label>
-                                        <div class="col-sm-10">
-                                            @if ($form_todo == 'READ')
-                                                <input type="text"
-                                                    class="form-control"
-                                                    value="{{ $description ?? '-' }}"
-                                                    disabled>
-                                            @else
-                                                <input type="text"
-                                                    class="form-control"
-                                                    id="description"
-                                                    name="description"
-                                                    placeholder="Enter description"
-                                                    value="{{ $description }}"
-                                                    autocomplete="off">
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="form-group row my-2">
-                                        <label for="client" class="col-sm-2 col-form-label">
-                                            Scope of Work <?= $form_required ?>
-                                        </label>
-                                        <div class="col-sm-10">
-                                            @if ($form_todo == 'READ')
-                                                <input type="text"
-                                                    class="form-control"
-                                                    value="{{ $scope_of_work ?? '-' }}"
-                                                    disabled>
-                                            @else
-                                                <input type="text"
-                                                    class="form-control"
-                                                    id="scope_of_work"
-                                                    name="scope_of_work"
-                                                    placeholder="Enter scope of work"
-                                                    value="{{ $scope_of_work }}"
+                                                    id="title"
+                                                    name="title"
+                                                    placeholder="Enter title"
+                                                    value="{{ $title }}"
                                                     autocomplete="off"
                                                     required>
                                             @endif
@@ -268,23 +167,15 @@
                                     </div>
                                     <div class="form-group row my-2">
                                         <label for="client" class="col-sm-2 col-form-label">
-                                            No. of Floors <?= $form_required ?>
+                                            Description <?= $form_required ?>
                                         </label>
                                         <div class="col-sm-10">
                                             @if ($form_todo == 'READ')
-                                                <input type="text"
-                                                    class="form-control"
-                                                    value="{{ $floor ?? '-' }}"
-                                                    disabled>
+                                                <textarea name="description" id="description" rows="8" style="resize: none;"
+                                                    class="form-control" disabled>{{ $description ?? '-' }}</textarea>
                                             @else
-                                                <input type="text"
-                                                    class="form-control"
-                                                    id="floor"
-                                                    name="floor"
-                                                    placeholder="Enter number of floors"
-                                                    value="{{ $floor }}"
-                                                    autocomplete="off"
-                                                    required>
+                                                <textarea name="description" id="description" rows="8" style="resize: none;"
+                                                    class="form-control" autocomplete="off" required>{{ $description }}</textarea>
                                             @endif
                                         </div>
                                     </div>
@@ -292,26 +183,12 @@
                                         <label for="image" class="col-sm-2 col-form-label">Image</label>
                                         <div class="col-sm-10">
                                             @if ($form_todo == 'READ')
-                                                <img class="preview-image mt-2" src="{{ asset('uploads/img/projects/'. (old('image_store') ?? $image ?? 'default.png')) }}" 
+                                                <img class="preview-image mt-2" src="{{ asset('uploads/img/certifications-and-awards/'. (old('image_store') ?? $image ?? 'default.png')) }}" 
                                                     alt="image" height="250" width="250">
                                             @else
                                                 <input type="file" class="form-control" id="image" name="image" placeholder="image">
                                                 <input type="hidden" class="form-control" id="image_store" name="image_store" placeholder="image_store" value="{{ $image_store }}">
-                                                <img class="preview-image mt-2" src="{{ asset('uploads/img/projects/'. (old('image_store') ?? $image ?? 'default.png')) }}" alt="image" height="200" width="200">
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="form-group row my-2">
-                                        <label for="status" class="col-sm-2 col-form-label">Status</label>
-                                        <div class="col-sm-10">
-                                            @if ($form_todo == 'READ')
-                                                <?= $data->status == 'COMPLETED' ? "<span class='badge bg-success'>COMPLETED</span>" : "<span class='badge bg-warning'>ONOGOING</span></span>" ?>
-                                            @else
-                                                <select name="status" id="status" class="form-select" select2>
-                                                    <option value="COMPLETED" {{ $status == 'COMPLETED' ? 'selected' : '' }}>COMPLETED</option>
-                                                    <option value="ONGOING" {{ $status == 'ONGOING' ? 'selected' : '' }}>ONGOING
-                                                    </option>
-                                                </select>
+                                                <img class="preview-image mt-2" src="{{ asset('uploads/img/certifications-and-awards/'. (old('image_store') ?? $image ?? 'default.png')) }}" alt="image" height="200" width="200">
                                             @endif
                                         </div>
                                     </div>
@@ -325,8 +202,8 @@
 
                         @if ($form_todo != 'CREATE')
                             <!-- ----- FORM DELETE ----- -->
-                            <form action='{{ route('admin.projects.delete', ['id' => $id]) }}' method='POST' id='formDelete'>
-                                @csrf 
+                            <form action='{{ route('admin.certifications-and-awards.delete', ['id' => $id]) }}' method='POST' id='formDelete'>
+                                @csrf
                                 @method('DELETE')
                             </form>
                             <!-- ----- END FORM DELETE ----- -->
@@ -389,7 +266,7 @@
 
 
             // ----- SUBMIT FORM -----
-            $(document).on('submit', '#formProjects', function(e) {
+            $(document).on('submit', '#formCertificationsAndAwards', function(e) {
                 let is_validated = $(this).attr('validated') == "true";
                 let form_todo = $(this).attr('form-todo');
 
@@ -419,7 +296,7 @@
                                 keys: ['enter'],
                                 action: function() {
                                     preventRefresh(false);
-                                    $('#formProjects').attr('validated', 'true').submit();
+                                    $('#formCertificationsAndAwards').attr('validated', 'true').submit();
 
                                     confirmation.buttons.yes.setText(`<span class="spinner-border spinner-border-sm"></span> Please wait...`);
                                     confirmation.buttons.yes.disable();
