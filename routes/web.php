@@ -19,6 +19,7 @@ use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\CertificationsAndAwardsController;
 use App\Http\Controllers\CareerController;
+use App\Http\Controllers\CompanyHistoryController;
 
 // WEBSITE
 Route::get('/', [WebsiteController::class, 'index'])->name('website.index');
@@ -57,7 +58,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/certifications-and-awards/{id}/edit', [CertificationsAndAwardsController::class, 'edit'])->name('admin.certifications-and-awards.edit');
     Route::put('/admin/certifications-and-awards/{id}/update', [CertificationsAndAwardsController::class, 'update'])->name('admin.certifications-and-awards.update');
     Route::delete('/admin/certifications-and-awards/{id}/delete', [CertificationsAndAwardsController::class, 'delete'])->name('admin.certifications-and-awards.delete');
-
+    
     // CAREERS
     Route::get('/admin/careers', [CareerController::class, 'index'])->name('admin.careers');
     Route::get('/admin/careers/create', [CareerController::class, 'create'])->name('admin.careers.create');
@@ -66,4 +67,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/careers/{id}/edit', [CareerController::class, 'edit'])->name('admin.careers.edit');
     Route::put('/admin/careers/{id}/update', [CareerController::class, 'update'])->name('admin.careers.update');
     Route::delete('/admin/careers/{id}/delete', [CareerController::class, 'delete'])->name('admin.careers.delete');
+    
+    // COMPANY HISTORY
+    Route::get('/admin/company-history', [CompanyHistoryController::class, 'index'])->name('admin.company-history');
+    Route::get('/admin/company-history/create', [CompanyHistoryController::class, 'create'])->name('admin.company-history.create');
+    Route::post('/admin/company-history/save', [CompanyHistoryController::class, 'save'])->name('admin.company-history.save');
+    Route::get('/admin/company-history/{id}/view', [CompanyHistoryController::class, 'view'])->name('admin.company-history.view');
+    Route::get('/admin/company-history/{id}/edit', [CompanyHistoryController::class, 'edit'])->name('admin.company-history.edit');
+    Route::put('/admin/company-history/{id}/update', [CompanyHistoryController::class, 'update'])->name('admin.company-history.update');
+    Route::delete('/admin/company-history/{id}/delete', [CompanyHistoryController::class, 'delete'])->name('admin.company-history.delete');
 });

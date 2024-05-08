@@ -6,45 +6,45 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class CareerController extends Controller
+class CompanyHistoryController extends Controller
 {
     public function index()
     {
-        $data['page_title'] = 'Career';
-        $data['data'] = DB::table('careers')
-            ->orderBy('careers.id', 'asc')
+        $data['page_title'] = 'Company History';
+        $data['data'] = DB::table('company_history')
+            ->orderBy('year', 'desc')
             ->get();
 
-        return view('admin.careers.index', $data);
+        return view('admin.company-history.index', $data);
     }
 
     public function create()
     {
-        $data['page_title'] = 'New Career';
+        $data['page_title'] = 'New Company History';
         $data['form_todo'] = 'CREATE';
 
-        return view('admin.careers.form', $data);
+        return view('admin.company-history.form', $data);
     }
 
     public function save(Request $request)
     {
         $request->validate([
-            'job_title' => [
+            'year' => [
                 'required',
-                'string',
-                'max:100',
-                'unique:careers,job_title'
+                'digits:4',
+                'integer',
+                'min:2000',
+                'max:'.date('Y'),
+                'unique:company_history,year'
             ],
-            'job_description' => 'required|string|max:2000',
-            'status' => 'required'
+            'description' => 'required|string|max:2000'
         ]);
 
-        $job_title = $request->job_title;
+        $year = $request->year;
 
-        $insert = DB::table('careers')->insert([
-            'job_title' => $job_title,
-            'job_description' => $request->job_description,
-            'status' => $request->status,
+        $insert = DB::table('company_history')->insert([
+            'year' => $year,
+            'description' => $request->description,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
@@ -52,16 +52,16 @@ class CareerController extends Controller
         if ($insert)
         {
             return redirect()
-                ->route('admin.careers')
+                ->route('admin.company-history')
                 ->with([
                     'status' => 'success',
-                    'message' => "$job_title created successfully"
+                    'message' => "$year created successfully"
                 ]);
         }
         else
         {
             return redirect()
-                ->route('admin.careers')
+                ->route('admin.company-history')
                 ->with([
                     'status' => 'error',
                     'message' => 'Something went wrong, please contact your system administrator.'
@@ -71,63 +71,63 @@ class CareerController extends Controller
 
     public function view($id)
     {
-        $data['page_title'] = 'View Career';
+        $data['page_title'] = 'View Company History';
         $data['form_todo'] = 'READ';
-        $data['data'] = DB::table('careers')
-            ->where('careers.id', $id)
+        $data['data'] = DB::table('company_history')
+            ->where('company_history.id', $id)
             ->first();
 
-        return view('admin.careers.form', $data);
+        return view('admin.company-history.form', $data);
     }
 
     public function edit($id)
     {
-        $data['page_title'] = 'Edit Career';
+        $data['page_title'] = 'Edit Company History';
         $data['form_todo'] = 'UPDATE';
-        $data['data'] = DB::table('careers')
-            ->where('careers.id', $id)
+        $data['data'] = DB::table('company_history')
+            ->where('company_history.id', $id)
             ->first();
 
-        return view('admin.careers.form', $data);
+        return view('admin.company-history.form', $data);
     }
 
     public function update($id, Request $request)
     {
         $request->validate([
-            'job_title' => [
+            'year' => [
                 'required',
-                'string',
-                'max:100',
-                'unique:careers,job_title,'.$id
+                'digits:4',
+                'integer',
+                'min:2000',
+                'max:'.date('Y'),
+                'unique:company_history,year,'.$id
             ],
-            'job_description' => 'required|string|max:2000',
-            'status' => 'required'
+            'description' => 'required|string|max:2000'
         ]);
         
-        $job_title = $request->job_title;
+        $year = $request->year;
 
-        $update = DB::table('careers')
+        $update = DB::table('company_history')
             ->where('id', $id)
             ->update([
-                'job_title' => $job_title,
-                'job_description' => $request->job_description,
-                'status' => $request->status,
+                'year' => $year,
+                'description' => $request->description,
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
 
         if ($update)
         {
             return redirect()
-                ->route('admin.careers')
+                ->route('admin.company-history')
                 ->with([
                     'status' => 'success',
-                    'message' => "$job_title updated successfully"
+                    'message' => "$year updated successfully"
                 ]);
         }
         else
         {
             return redirect()
-                ->route('admin.careers')
+                ->route('admin.company-history')
                 ->with([
                     'status' => 'error',
                     'message' => 'Something went wrong, please contact your system administrator.'
@@ -137,23 +137,23 @@ class CareerController extends Controller
 
     public function delete($id)
     {
-        $data = DB::table('careers')->where('id', $id)->first();
-        $job_title = $data->job_title;
+        $data = DB::table('company_history')->where('id', $id)->first();
+        $year = $data->year;
 
-        $delete = DB::table('careers')->where('id', $id)->delete();
+        $delete = DB::table('company_history')->where('id', $id)->delete();
         if ($delete)
         {
             return redirect()
-                ->route('admin.careers')
+                ->route('admin.company-history')
                 ->with([
                     'status' => 'success',
-                    'message' => "$job_title deleted successfully"
+                    'message' => "$year deleted successfully"
                 ]);
         }
         else
         {
             return redirect()
-                ->route('admin.careers')
+                ->route('admin.company-history')
                 ->with([
                     'status' => 'error',
                     'message' => 'Something went wrong, please contact your system administrator.'

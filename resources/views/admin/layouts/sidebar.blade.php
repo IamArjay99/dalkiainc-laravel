@@ -43,25 +43,25 @@
                         <span class="ms-2">Careers</span>
                     </a>
                 </li>
-                <li class="{{ $uri_mainpage == 'company-information' ? 'collapsed' : '' }}">
+                <li class="{{ in_array($uri_mainpage, ['company-history', 'mission-and-vision', 'scope-and-services']) ? 'collapsed' : '' }}">
                     <a class="m-link"
                         data-bs-toggle="collapse"
                         data-bs-target="#menu-company-information"
                         href="#"
-                        aria-expanded="{{ $uri_mainpage == 'company-information' ? 'true' : 'false' }}">
+                        aria-expanded="{{ in_array($uri_mainpage, ['company-history', 'mission-and-vision', 'scope-and-services']) ? 'true' : 'false' }}">
                         <img src="{{ asset('assets/admin/img/icons/company-information.png') }}" alt="Company Information" width="20" height="20">
                         <span class="ms-2">Company Information</span>
                         <span class="arrow fa fa-angle-right ms-auto text-end"></span>
                     </a>
-                    <ul class="sub-menu collapse {{ $uri_mainpage == 'company-information' ? 'collapsed show' : '' }}" id="menu-company-information">
+                    <ul class="sub-menu collapse {{ in_array($uri_mainpage, ['company-history', 'mission-and-vision', 'scope-and-services']) ? 'collapsed show' : '' }}" id="menu-company-information">
                         <li>
-                            <a class="ms-link {{ $uri_subpage == 'our-history' ? 'active' : '' }}" href="#">Our History</a>
+                            <a class="ms-link {{ $uri_mainpage == 'company-history' ? 'active' : '' }}" href="{{ route('admin.company-history') }}">History</a>
                         </li>
                         <li>
-                            <a class="ms-link {{ $uri_subpage == 'our-mission-and-vision' ? 'active' : '' }}" href="#">Our Mission and Vision</a>
+                            <a class="ms-link {{ $uri_mainpage == 'our-mission-and-vision' ? 'active' : '' }}" href="#">Mission and Vision</a>
                         </li>
                         <li>
-                            <a class="ms-link {{ $uri_subpage == 'scope-and-services' ? 'active' : '' }}" href="#">Scope and Services</a>
+                            <a class="ms-link {{ $uri_mainpage == 'scope-and-services' ? 'active' : '' }}" href="#">Scope and Services</a>
                         </li>
                     </ul>
                 </li>
