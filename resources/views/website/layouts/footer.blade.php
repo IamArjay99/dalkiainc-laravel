@@ -88,10 +88,7 @@
         </p>
     </div>
 
-    <script src="https://www.google.com/recaptcha/api.js"></script>
-
     <!-- JS Files -->
-    <script src="{{ asset('assets/website/js/vendor/jquery-2.2.4.min.js') }}"></script>
     <script src="{{ asset('assets/website/js/popper.min.js') }}"></script>
     <script src="{{ asset('assets/website/js/vendor/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/website/js/easing.min.js') }}"></script>

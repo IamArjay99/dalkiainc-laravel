@@ -33,7 +33,7 @@
 				<div class="col-lg-3"></div>
 				<div class="col-lg-6">
 					<h3 class="subtitle mt-20 mb-20">WRITE US A MESSAGE</h3>
-					<form action="#" id="contactForm">
+					<form action="#">
 						<div class="input-group-icon mt-10">
 							<div class="icon">
 								<i class="fa fa-user" aria-hidden="true"></i>
@@ -59,22 +59,13 @@
 							<textarea class="single-textarea" name="message" placeholder="Message" onfocus="this.placeholder = ''"
 								onblur="this.placeholder = 'Message'" required="" rows="3"></textarea>
 						</div>
-						<button class="genric-btn primary circle mt-30 g-recaptcha" style="float: right;"
-							data-sitekey="6LcJ0tYpAAAAAG70DIDAzqpjpHDtQ6vwi0VwUxqc" 
-							data-callback='onSubmit' 
-							data-action='submit'>
-						Send Message</button>
+						<button class="genric-btn primary circle mt-30" style="float: right;">Send
+							Message</button>
 					</form>
 				</div>
 			</div>
 		</div>
 	</section>
 </main>
-
-<script>
-	function onSubmit(token) {
-	  document.getElementById("contactForm").submit();
-	}
-  </script>
 
 @endsection

@@ -27,6 +27,8 @@
 	
 	<link rel="stylesheet" href="{{ asset('assets/website/css/custom-loader.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/website/css/main.css') }}">
+
+	<script src="{{ asset('assets/website/js/vendor/jquery-2.2.4.min.js') }}"></script>
 </head>
 
 <body>

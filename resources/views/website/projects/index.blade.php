@@ -36,13 +36,17 @@
 							@foreach ($project_category as $pcat)
 								<div class="row align-items-center justify-content-between">
 									<div class="col-10">
-										<p>{{ $pcat->name }} <span class="text-muted" style="font-size: 0.9rem;">({{ $pcat->project_count }})</span></p>
+										<p>{{ $pcat->name }} <span class="text-muted" style="font-size: 0.9rem;">({{ $pcat->project_count ?? 0 }})</span></p>
 									</div>
 									<div class="col-2">
 										<input class="project-checkbox" type="checkbox" value="{{ $pcat->id }}" name="project-category">
 									</div>
 								</div>
 							@endforeach
+
+							<div class="text-center">
+								<button class="primary-btn mt-20" onclick="getProjectBasedOnCategory()">Apply</button>
+							</div>
 						@else
 							<h5>No Project Category</h5>
 						@endif
@@ -161,5 +165,27 @@
 		</div>
 	</section>
 </main>
+
+
+<script>
+
+	function getProjectBasedOnCategory() {
+		let projectCategories = $('.project-checkbox:checked').map(function() {
+			return $(this).val();
+		}).get();
+
+		$.ajax({
+			method: 'GET',
+			url: "{{ route('website.projects.filter') }}",
+			data: {
+				projectCategories: projectCategories
+			},
+			success: function(data) {
+				console.log(data);
+			}
+		})
+	}
+	
+</script>
 
 @endsection

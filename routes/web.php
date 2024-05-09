@@ -30,6 +30,7 @@ use App\Http\Controllers\CompanySettingsController;
 Route::get('/', [WebsiteController::class, 'index'])->name('website.index');
 Route::get('/about', [WebsiteController::class, 'about'])->name('website.about');
 Route::get('/projects', [WebsiteController::class, 'projects'])->name('website.projects');
+Route::get('/projects/filter', [WebsiteController::class, 'project_filter'])->name('website.projects.filter');
 Route::get('/certifications-and-awards', [WebsiteController::class, 'certifications_and_awards'])->name('website.certifications-and-awards');
 Route::get('/careers', [WebsiteController::class, 'careers'])->name('website.careers');
 Route::get('/careers/{id}', [WebsiteController::class, 'career_details'])->name('website.careers.details');

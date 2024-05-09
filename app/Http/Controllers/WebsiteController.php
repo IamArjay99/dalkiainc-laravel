@@ -40,6 +40,22 @@ class WebsiteController extends Controller
         return view('website.projects.index', $data);
     }
 
+    public function project_filter(Request $request)
+    {
+        $project_categories = $request->projectCategories;
+        if (empty($project_categories)) {
+            $data = $this->get_projects();
+        }
+        else {
+            $data = DB::table('projects')
+                ->whereIn('project_category_id', $project_categories)
+                ->get();
+        }
+
+        
+        echo json_encode($data);
+    }
+
     public function certifications_and_awards()
     {
         $data['page_title'] = 'Certifications and Awards';
