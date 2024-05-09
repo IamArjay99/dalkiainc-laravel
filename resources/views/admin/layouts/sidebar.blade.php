@@ -53,7 +53,7 @@
                         <span class="ms-2">Company Information</span>
                         <span class="arrow fa fa-angle-right ms-auto text-end"></span>
                     </a>
-                    <ul class="sub-menu collapse {{ in_array($uri_mainpage, ['company-history', 'mission-and-vision', 'scope-and-services']) ? 'collapsed show' : '' }}" id="menu-company-information">
+                    <ul class="sub-menu collapse {{ in_array($uri_mainpage, ['company-history', 'mission-and-vision', 'quality-policy', 'scope-and-services']) ? 'collapsed show' : '' }}" id="menu-company-information">
                         <li>
                             <a class="ms-link {{ $uri_mainpage == 'company-history' ? 'active' : '' }}" href="{{ route('admin.company-history') }}">History</a>
                         </li>
@@ -64,7 +64,7 @@
                             <a class="ms-link {{ $uri_mainpage == 'quality-policy' ? 'active' : '' }}" href="{{ route('admin.quality-policy') }}">Quality Policy</a>
                         </li>
                         <li>
-                            <a class="ms-link {{ $uri_mainpage == 'scope-and-services' ? 'active' : '' }}" href="#">Scope and Services</a>
+                            <a class="ms-link {{ $uri_mainpage == 'scope-and-services' ? 'active' : '' }}" href="{{ route('admin.scope-and-services') }}">Scope and Services</a>
                         </li>
                     </ul>
                 </li>

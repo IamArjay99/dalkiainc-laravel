@@ -30,7 +30,7 @@ class MissionAndVisionController extends Controller
                 ->route('admin.mission-and-vision')
                 ->with([
                     'status' => 'error',
-                    'message' => "Mission and Vision not found"
+                    'message' => 'Something went wrong, please contact your system administrator.'
                 ]);
         }
 

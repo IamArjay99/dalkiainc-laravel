@@ -1,8 +1,11 @@
 $(window).on('load', function () {
     $('#pageloader').fadeOut();
+
+    AOS.init();
 });
 
 $(document).ready(function () {
+    // HOME
     $('.owl-carousel').owlCarousel({
         loop: true,
         margin: 10,
@@ -13,6 +16,7 @@ $(document).ready(function () {
         animateOut: 'fadeOut'
     });
 
+    // ABOUT
     $('.timeline').timeline({
         forceVerticalMode: 500,
         mode: 'horizontal',
@@ -20,5 +24,12 @@ $(document).ready(function () {
         rtlMode: true
     });
 
-    AOS.init();
+    // SCOPE AND SERVICES
+    $('.owl-carousel-scope-and-services').owlCarousel({
+        loop: true,
+        margin: 20,
+        items: 3,
+        autoplay: false,
+        animateOut: 'fadeOut'
+    });
 });

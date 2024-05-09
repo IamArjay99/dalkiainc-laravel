@@ -74,12 +74,12 @@
 						<h3 class="mt-20 pb-10 subtitle" data-aos="fade-down-right">SCOPE AND SERVICES</h3>
 						
 						@if (!empty($company_services))
-							<div class="row mt-20">
-								
+							<div class="owl-carousel-scope-and-services" data-aos="fade-up">
 								@foreach ( $company_services as $service )
-									<div class="col-lg-4 mt-10">
-										<div class="single-cat d-flex flex-column service-item service-border" data-aos="flip-left">
-											<img src="{{ asset('assets/website/img/services/'.$service->image) }}" alt="{{ $service->title }}" class="service-img">
+									<div class="item">
+										<div class="single-cat d-flex flex-column align-items-center justify-content-center service-item service-border">
+											<img src="{{ asset('uploads/img/scope-and-services/'.$service->image) }}" alt="{{ $service->title }}" 
+												class="service-img" loading="lazy" style="height: 180px !important; width: auto;">
 											<h4 class="mb-20 service-title">{{ $service->title }}</h4>
 											<p class="text-justify">
 												{{ $service->description }}
@@ -87,11 +87,10 @@
 										</div>
 									</div>
 								@endforeach
-
-								</div>
-							@else
-								<h5>No Services</h5>
-							@endif
+							</div>
+						@else
+							<h5>No Services</h5>
+						@endif
 
 					</div>
 				</div>

@@ -22,6 +22,7 @@ use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CompanyHistoryController;
 use App\Http\Controllers\MissionAndVisionController;
 use App\Http\Controllers\QualityPolicyController;
+use App\Http\Controllers\ScopeAndServicesController;
 
 // WEBSITE
 Route::get('/', [WebsiteController::class, 'index'])->name('website.index');
@@ -88,4 +89,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/quality-policy', [QualityPolicyController::class, 'index'])->name('admin.quality-policy');
     Route::get('/admin/quality-policy/{id}/edit', [QualityPolicyController::class, 'edit'])->name('admin.quality-policy.edit');
     Route::put('/admin/quality-policy/{id}/update', [QualityPolicyController::class, 'update'])->name('admin.quality-policy.update');
+
+    // SCOPE AND SERVICES
+    Route::get('/admin/scope-and-services', [ScopeAndServicesController::class, 'index'])->name('admin.scope-and-services');
+    Route::get('/admin/scope-and-services/create', [ScopeAndServicesController::class, 'create'])->name('admin.scope-and-services.create');
+    Route::post('/admin/scope-and-services/save', [ScopeAndServicesController::class, 'save'])->name('admin.scope-and-services.save');
+    Route::get('/admin/scope-and-services/{id}/view', [ScopeAndServicesController::class, 'view'])->name('admin.scope-and-services.view');
+    Route::get('/admin/scope-and-services/{id}/edit', [ScopeAndServicesController::class, 'edit'])->name('admin.scope-and-services.edit');
+    Route::put('/admin/scope-and-services/{id}/update', [ScopeAndServicesController::class, 'update'])->name('admin.scope-and-services.update');
+    Route::delete('/admin/scope-and-services/{id}/delete', [ScopeAndServicesController::class, 'delete'])->name('admin.scope-and-services.delete');
 });

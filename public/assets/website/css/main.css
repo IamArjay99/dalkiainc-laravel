@@ -1859,6 +1859,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .cat-area .single-cat {
   text-align: center;
+  min-height: 350px;
 }
 
 .cat-area .single-cat p {
