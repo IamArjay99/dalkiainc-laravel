@@ -8,15 +8,21 @@
         {
             // TABLE FIELDS
             $id             = old('id') ?? $data->id;
-            $quality_policy = old('quality_policy') ?? $data->quality_policy;
+            $address        = old('address') ?? $data->address;
+            $contact_number = old('contact_number') ?? $data->contact_number;
+            $email_address  = old('email_address') ?? $data->email_address;
+            $business_hours = old('business_hours') ?? $data->business_hours;
+            $facebook_link  = old('facebook_link') ?? $data->facebook_link;
+            $instagram_link = old('instagram_link') ?? $data->instagram_link;
+            $twitter_link   = old('twitter_link') ?? $data->twitter_link;
 
             $prevent_refresh = 'true';
-            $form_action = route('admin.quality-policy.update', ['id' => $id]);
+            $form_action = route('admin.company-settings.update', ['id' => $id]);
             $form_method = 'PUT';
             $form_required = "<code>*</code>";
             $form_button = "
             <button type='button'
-                target-module='". route('admin.quality-policy') ."'
+                target-module='". route('admin.company-settings') ."'
                 class='btn btn-outline-secondary btnCancel'>
                 <i class='fa fa-ban' aria-hidden='true'></i> Cancel
             </button>
@@ -35,14 +41,14 @@
                     <div class="col-9">
                         <h4 class="mb-0">{{ $page_title }}</h4>
                         <ol class="breadcrumb bg-transparent mb-0">
-                            <li class="breadcrumb-item"><a class="text-secondary" href="#">Company Information</a></li>
-                            <li class="breadcrumb-item"><a class="btnCancel" href="#" target-module="{{ route('admin.quality-policy') }}">Quality Policy</a></li>
+                            <li class="breadcrumb-item"><a class="text-secondary" href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a class="btnCancel" href="#" target-module="{{ route('admin.company-settings') }}">Company Settings</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{ $page_title }}</li>
                         </ol>
                     </div>
                     <div class="col-3 text-end">
                         <button type="button"
-                            target-module="{{ route('admin.quality-policy') }}"
+                            target-module="{{ route('admin.company-settings') }}"
                             class="btn btn-secondary btnCancel">
                             <i class="fa fa-arrow-left" aria-hidden="true"></i> Back
                         </button>
@@ -58,7 +64,7 @@
 
                         <form action="{{ $form_action }}"
                             method="POST"
-                            id="formQualityPolicy"
+                            id="formCompanySettings"
                             form-todo="{{ $form_todo }}"
                             validated="false"
                             enctype="multipart/form-data">
@@ -82,12 +88,66 @@
                             <div class="card">
                                 <div class="card-body py-3">
                                     <div class="form-group row my-2">
-                                        <label for="quality_policy" class="col-sm-2 col-form-label">
-                                            Quality Policy <?= $form_required ?>
+                                        <label for="address" class="col-sm-2 col-form-label">
+                                            Address <?= $form_required ?>
                                         </label>
                                         <div class="col-sm-10">
-                                            <textarea name="quality_policy" id="quality_policy" rows="16" style="resize: none;"
-                                                    class="form-control" autocomplete="off" required>{{ $quality_policy }}</textarea>
+                                            <textarea name="address" id="address" rows="3" style="resize: none;"
+                                                    class="form-control" autocomplete="off" required>{{ $address }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row my-2">
+                                        <label for="contact_number" class="col-sm-2 col-form-label">
+                                            Contact Number <?= $form_required ?>
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="contact_number" id="contact_number"
+                                                value="{{ $data->contact_number ?? '' }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row my-2">
+                                        <label for="email_address" class="col-sm-2 col-form-label">
+                                            Email Address <?= $form_required ?>
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input type="email" class="form-control" name="email_address" id="email_address"
+                                                value="{{ $data->email_address ?? '' }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row my-2">
+                                        <label for="business_hours" class="col-sm-2 col-form-label">
+                                            Business Hours <?= $form_required ?>
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="business_hours" id="business_hours"
+                                                value="{{ $data->business_hours ?? '' }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row my-2">
+                                        <label for="facebook_link" class="col-sm-2 col-form-label">
+                                            Facebook Link
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="facebook_link" id="facebook_link"
+                                                value="{{ $data->facebook_link ?? '' }}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row my-2">
+                                        <label for="instagram_link" class="col-sm-2 col-form-label">
+                                            Instagram Link
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="instagram_link" id="instagram_link"
+                                                value="{{ $data->instagram_link ?? '' }}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row my-2">
+                                        <label for="twitter_link" class="col-sm-2 col-form-label">
+                                            Twitter Link
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="twitter_link" id="twitter_link"
+                                                value="{{ $data->twitter_link ?? '' }}">
                                         </div>
                                     </div>
                                 </div>
@@ -155,7 +215,7 @@
 
 
             // ----- SUBMIT FORM -----
-            $(document).on('submit', '#formQualityPolicy', function(e) {
+            $(document).on('submit', '#formCompanySettings', function(e) {
                 let is_validated = $(this).attr('validated') == "true";
                 let form_todo = $(this).attr('form-todo');
 
@@ -185,7 +245,7 @@
                                 keys: ['enter'],
                                 action: function() {
                                     preventRefresh(false);
-                                    $('#formQualityPolicy').attr('validated', 'true').submit();
+                                    $('#formCompanySettings').attr('validated', 'true').submit();
 
                                     confirmation.buttons.yes.setText(`<span class="spinner-border spinner-border-sm"></span> Please wait...`);
                                     confirmation.buttons.yes.disable();

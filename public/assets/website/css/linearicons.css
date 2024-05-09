@@ -69,3 +69,6 @@
 .lnr-arrow-right:before {
 	content: "\e87a";
 }
+.lnr-calendar-full:before {
+	content: "\e836";
+}

@@ -10,10 +10,9 @@
                     <div class="single-footer-widget mt-10">
                         <h6>FOLLOW US</h6>
                         <div class="footer-social d-flex align-items-center">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                            <a href="#"><i class="fa fa-behance"></i></a>
+                            <a href="{{ $company_information->facebook_link ?? '#' }}" target="_blank"><i class="fa fa-facebook"></i></a>
+                            <a href="{{ $company_information->instagram_link ?? '#' }}" target="_blank"><i class="fa fa-instagram"></i></a>
+                            <a href="{{ $company_information->twitter_link ?? '#' }}" target="_blank"><i class="fa fa-twitter"></i></a>
                         </div>
                     </div>
                 </div>
@@ -40,6 +39,16 @@
                             <div class="contact-details">
                                 <p>
                                     {{ $company_information->address }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="single-contact-address d-flex flex-row">
+                            <div class="icon">
+                                <span class="lnr lnr-calendar-full"></span>
+                            </div>
+                            <div class="contact-details">
+                                <p>
+                                    {{ $company_information->business_hours }}
                                 </p>
                             </div>
                         </div>
@@ -79,6 +88,9 @@
         </p>
     </div>
 
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+
+    <!-- JS Files -->
     <script src="{{ asset('assets/website/js/vendor/jquery-2.2.4.min.js') }}"></script>
     <script src="{{ asset('assets/website/js/popper.min.js') }}"></script>
     <script src="{{ asset('assets/website/js/vendor/bootstrap.min.js') }}"></script>

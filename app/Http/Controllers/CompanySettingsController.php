@@ -44,18 +44,22 @@ class CompanySettingsController extends Controller
     public function update($id, Request $request)
     {
         $request->validate([
-            'quality_policy' => [
-                'required',
-                'string',
-                'min:10',
-                'max:5000'
-            ]
+            'address' => 'required',
+            'contact_number' => 'required',
+            'email_address' => 'required',
+            'business_hours' => 'required'
         ]);
 
         $update = DB::table('company_information')
             ->where('id', $id)
             ->update([
-                'quality_policy' => $request->quality_policy,
+                'address' => $request->address,
+                'contact_number' => $request->contact_number,
+                'email_address' => $request->email_address,
+                'business_hours' => $request->business_hours,
+                'facebook_link' => $request->facebook_link,
+                'instagram_link' => $request->instagram_link,
+                'twitter_link' => $request->twitter_link,
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
 
