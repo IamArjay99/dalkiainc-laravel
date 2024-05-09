@@ -19,10 +19,12 @@ use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\CertificationsAndAwardsController;
 use App\Http\Controllers\CareerController;
+use App\Http\Controllers\CompanyOverviewController;
 use App\Http\Controllers\CompanyHistoryController;
 use App\Http\Controllers\MissionAndVisionController;
 use App\Http\Controllers\QualityPolicyController;
 use App\Http\Controllers\ScopeAndServicesController;
+use App\Http\Controllers\CompanySettingsController;
 
 // WEBSITE
 Route::get('/', [WebsiteController::class, 'index'])->name('website.index');
@@ -71,6 +73,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('/admin/careers/{id}/update', [CareerController::class, 'update'])->name('admin.careers.update');
     Route::delete('/admin/careers/{id}/delete', [CareerController::class, 'delete'])->name('admin.careers.delete');
     
+    // COMPANY OVERVIEW
+    Route::get('/admin/company-overview', [CompanyOverviewController::class, 'index'])->name('admin.company-overview');
+    Route::get('/admin/company-overview/{id}/edit', [CompanyOverviewController::class, 'edit'])->name('admin.company-overview.edit');
+    Route::put('/admin/company-overview/{id}/update', [CompanyOverviewController::class, 'update'])->name('admin.company-overview.update');
+
     // COMPANY HISTORY
     Route::get('/admin/company-history', [CompanyHistoryController::class, 'index'])->name('admin.company-history');
     Route::get('/admin/company-history/create', [CompanyHistoryController::class, 'create'])->name('admin.company-history.create');
@@ -98,4 +105,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/scope-and-services/{id}/edit', [ScopeAndServicesController::class, 'edit'])->name('admin.scope-and-services.edit');
     Route::put('/admin/scope-and-services/{id}/update', [ScopeAndServicesController::class, 'update'])->name('admin.scope-and-services.update');
     Route::delete('/admin/scope-and-services/{id}/delete', [ScopeAndServicesController::class, 'delete'])->name('admin.scope-and-services.delete');
+
+    // COMPANY SETTINGS
+    Route::get('/admin/company-settings', [CompanySettingsController::class, 'index'])->name('admin.company-settings');
+    Route::get('/admin/company-settings/{id}/edit', [CompanySettingsController::class, 'edit'])->name('admin.company-settings.edit');
+    Route::put('/admin/company-settings/{id}/update', [CompanySettingsController::class, 'update'])->name('admin.company-settings.update');
 });

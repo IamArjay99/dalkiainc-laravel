@@ -48,12 +48,15 @@
                         data-bs-toggle="collapse"
                         data-bs-target="#menu-company-information"
                         href="#"
-                        aria-expanded="{{ in_array($uri_mainpage, ['company-history', 'mission-and-vision', 'quality-policy', 'scope-and-services']) ? 'true' : 'false' }}">
+                        aria-expanded="{{ in_array($uri_mainpage, ['company-overview', 'company-history', 'mission-and-vision', 'quality-policy', 'scope-and-services']) ? 'true' : 'false' }}">
                         <img src="{{ asset('assets/admin/img/icons/company-information.png') }}" alt="Company Information" width="20" height="20">
                         <span class="ms-2">Company Information</span>
                         <span class="arrow fa fa-angle-right ms-auto text-end"></span>
                     </a>
-                    <ul class="sub-menu collapse {{ in_array($uri_mainpage, ['company-history', 'mission-and-vision', 'quality-policy', 'scope-and-services']) ? 'collapsed show' : '' }}" id="menu-company-information">
+                    <ul class="sub-menu collapse {{ in_array($uri_mainpage, ['company-overview', 'company-history', 'mission-and-vision', 'quality-policy', 'scope-and-services']) ? 'collapsed show' : '' }}" id="menu-company-information">
+                        <li>
+                            <a class="ms-link {{ $uri_mainpage == 'company-overview' ? 'active' : '' }}" href="{{ route('admin.company-overview') }}">Company Overview</a>
+                        </li>
                         <li>
                             <a class="ms-link {{ $uri_mainpage == 'company-history' ? 'active' : '' }}" href="{{ route('admin.company-history') }}">History</a>
                         </li>
@@ -86,6 +89,13 @@
                             <a class="ms-link {{ $uri_subpage == 'inquiry-report' ? 'active' : '' }}" href="#">Inquiry Report</a>
                         </li>
                     </ul>
+                </li>
+                <li>
+                    <a class="m-link {{ $uri_mainpage == 'company-settings' ? 'active' : '' }}"
+                        href="{{ route('admin.company-settings') }}">
+                        <img src="{{ asset('assets/admin/img/icons/settings.png') }}" alt="Company Settings" width="20" height="20">
+                        <span class="ms-2">Company Settings</span>
+                    </a>
                 </li>
             </ul>
         </div>
