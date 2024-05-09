@@ -18,6 +18,7 @@
                         <ul>
                             <li><a href="{{ route('website.about') }}#our-history" class="uppercase">Our History / Timeline</a></li>
                             <li><a href="{{ route('website.about') }}#our-mission" class="uppercase">Our Mission and Vision</a></li>
+                            <li><a href="{{ route('website.about') }}#our-quality-policy" class="uppercase">Our Quality Policy</a></li>
                             <li><a href="{{ route('website.about') }}#scope-and-services" class="uppercase">Scope and Services</a></li>
                         </ul>
                     </li>

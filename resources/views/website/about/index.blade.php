@@ -63,22 +63,10 @@
 						{{ $company_information->vision }}
 					</blockquote>
 				</div>
-				<div class="col-md-12" data-aos="fade-up">
+				<div class="col-md-12" data-aos="fade-up" id="our-quality-policy">
 					<h3 class="mt-20 pb-10 subtitle">OUR QUALITY POLICY</h3>
 					<p class="text-justify">
 						{!! nl2br(e($company_information->quality_policy)) !!}
-
-						{{-- <b>​Dalkia Incorporated</b> shall pursue sustainable growth by continuously developing products and providing reliable services of quality, safe, top of the line, and superior range of curtain walls, windows & metal cladding.​
-						<br><br>
-						Our endeavors shall focus on:​
-						<ol class="ordered-list">
-							<li>Developing and sustaining constructive relationship with our clients thru effective customer care all throughout the engagement</li>
-							<li>Continuously enhancing the competency of our employees through trainings to meet current and future industry demands</li>
-							<li>Providing quality products by adapting a systematic procurement procedure and partnering with reliable suppliers of quality materials</li>
-							<li>Maintaining our status as a leader in our field of expertise by using “Top of the Line” equipments and software in our design, engineering and fabrication and by acquiring certification and recognition from international organizations on operational excellence and green building initiatives</li>
-							<li>Ensuring the improvement of our quality management system by communication our quality policy to all levels of our organization by measuring our products and services against industry standards, and</li>
-							<li>Meeting customer, regulatory, statutory and the ISO 9001:2015 standard requirements</li>
-						</ol> --}}
 					</p>
 				</div>
 				<div class="col-md-12" id="scope-and-services">

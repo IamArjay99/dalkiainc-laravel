@@ -30,7 +30,7 @@
 
 </head>
 
-<body class="layout-1 font-raleway radius-0" data-luno="theme-green">
+<body class="layout-1 font-raleway radius-0" data-luno="theme-black">
 
 	<div id="pageloader">
 		<div class="cssload-loader"></div>

@@ -21,6 +21,7 @@ use App\Http\Controllers\CertificationsAndAwardsController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CompanyHistoryController;
 use App\Http\Controllers\MissionAndVisionController;
+use App\Http\Controllers\QualityPolicyController;
 
 // WEBSITE
 Route::get('/', [WebsiteController::class, 'index'])->name('website.index');
@@ -78,8 +79,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('/admin/company-history/{id}/update', [CompanyHistoryController::class, 'update'])->name('admin.company-history.update');
     Route::delete('/admin/company-history/{id}/delete', [CompanyHistoryController::class, 'delete'])->name('admin.company-history.delete');
 
-    // COMPANY HISTORY
+    // MISSION AND VISION
     Route::get('/admin/mission-and-vision', [MissionAndVisionController::class, 'index'])->name('admin.mission-and-vision');
     Route::get('/admin/mission-and-vision/{id}/edit', [MissionAndVisionController::class, 'edit'])->name('admin.mission-and-vision.edit');
     Route::put('/admin/mission-and-vision/{id}/update', [MissionAndVisionController::class, 'update'])->name('admin.mission-and-vision.update');
+
+    // QUALITY POLICY
+    Route::get('/admin/quality-policy', [QualityPolicyController::class, 'index'])->name('admin.quality-policy');
+    Route::get('/admin/quality-policy/{id}/edit', [QualityPolicyController::class, 'edit'])->name('admin.quality-policy.edit');
+    Route::put('/admin/quality-policy/{id}/update', [QualityPolicyController::class, 'update'])->name('admin.quality-policy.update');
 });
