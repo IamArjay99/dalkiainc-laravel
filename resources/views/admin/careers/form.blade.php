@@ -91,7 +91,7 @@
         <div class="page-toolbar px-xl-4 px-sm-2 px-0 py-3">
             <div class="container-fluid">
                 <div class="row g-3 align-items-center">
-                    <div class="col">
+                    <div class="col-9">
                         <h4 class="mb-0">{{ $page_title }}</h4>
                         <ol class="breadcrumb bg-transparent mb-0">
                             <li class="breadcrumb-item"><a class="text-secondary" href="#">Home</a></li>
@@ -99,7 +99,7 @@
                             <li class="breadcrumb-item active" aria-current="page">{{ $page_title }}</li>
                         </ol>
                     </div>
-                    <div class="col text-end">
+                    <div class="col-3 text-end">
                         <button type="button"
                             target-module="{{ route('admin.careers') }}"
                             class="btn btn-secondary btnCancel">

@@ -58,7 +58,7 @@
                             <a class="ms-link {{ $uri_mainpage == 'company-history' ? 'active' : '' }}" href="{{ route('admin.company-history') }}">History</a>
                         </li>
                         <li>
-                            <a class="ms-link {{ $uri_mainpage == 'our-mission-and-vision' ? 'active' : '' }}" href="#">Mission and Vision</a>
+                            <a class="ms-link {{ $uri_mainpage == 'mission-and-vision' ? 'active' : '' }}" href="{{ route('admin.mission-and-vision') }}">Mission and Vision</a>
                         </li>
                         <li>
                             <a class="ms-link {{ $uri_mainpage == 'scope-and-services' ? 'active' : '' }}" href="#">Scope and Services</a>

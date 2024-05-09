@@ -20,6 +20,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\CertificationsAndAwardsController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CompanyHistoryController;
+use App\Http\Controllers\MissionAndVisionController;
 
 // WEBSITE
 Route::get('/', [WebsiteController::class, 'index'])->name('website.index');
@@ -76,4 +77,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/company-history/{id}/edit', [CompanyHistoryController::class, 'edit'])->name('admin.company-history.edit');
     Route::put('/admin/company-history/{id}/update', [CompanyHistoryController::class, 'update'])->name('admin.company-history.update');
     Route::delete('/admin/company-history/{id}/delete', [CompanyHistoryController::class, 'delete'])->name('admin.company-history.delete');
+
+    // COMPANY HISTORY
+    Route::get('/admin/mission-and-vision', [MissionAndVisionController::class, 'index'])->name('admin.mission-and-vision');
+    Route::get('/admin/mission-and-vision/{id}/edit', [MissionAndVisionController::class, 'edit'])->name('admin.mission-and-vision.edit');
+    Route::put('/admin/mission-and-vision/{id}/update', [MissionAndVisionController::class, 'update'])->name('admin.mission-and-vision.update');
 });
