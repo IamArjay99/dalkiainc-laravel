@@ -52,7 +52,7 @@
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-4">
-                    <a href="{{ route('admin.projects') }}">
+                    <a href="{{ route('admin.certifications-and-awards') }}">
                         <div class="card overflow-hidden h-100 border-0" style="background: linear-gradient(240deg, #53b577, #136f7e0d);">
                             <div class="card-body d-flex flex-column justify-content-between">
                                 <img src="{{ asset('assets/admin/img/icons/dashboard-award.png') }}" alt="Projects"
@@ -66,7 +66,7 @@
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-4">
-                    <a href="{{ route('admin.projects') }}">
+                    <a href="{{ route('admin.careers') }}">
                         <div class="card overflow-hidden h-100 border-0" style="background: linear-gradient(240deg, #a04e71, #136f7e0d);">
                             <div class="card-body d-flex flex-column justify-content-between">
                                 <img src="{{ asset('assets/admin/img/icons/dashboard-career.png') }}" alt="Projects"
@@ -94,7 +94,7 @@
 
 <script>
     const ctx = document.getElementById('myChart');
-    
+
     let website_data = {!! json_encode($data['website_data']) !!};
     let total_users = website_data.map(x => Number(x.total_users));
     let total_page_views = website_data.map(x => Number(x.total_page_views));
