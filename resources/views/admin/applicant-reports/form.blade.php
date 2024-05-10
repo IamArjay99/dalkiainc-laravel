@@ -203,7 +203,7 @@
                                                     background: #b5e4ce;
                                                     border: 1px solid green;
                                                     color: green;">
-                                                {{ $full_name . ' - ' . $resume }}
+                                                {{ $resume }}
                                             </a>
                                         </div>
                                     </div>

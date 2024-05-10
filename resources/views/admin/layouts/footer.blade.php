@@ -35,17 +35,13 @@
     <!-- Custom -->
     <script src="{{ asset('assets/admin/js/custom.js') }}"></script>
 
-    <?php
-        if (Session::get('status'))
-        {
-            echo "
-            <script>
-                $(window).on('load', function() {
-                    showToast('". Session::get('status') ."', '". Session::get('message') ."')
-                })
-            </script>";
-        }
-    ?>
+    @if (Session::has('status'))
+    <script>
+        $(window).on('load', function() {
+            showToast('{{ Session::get('status') }}', '{{ Session::get('message') }}')
+        })
+    </script>
+    @endif
 
 
     <script>

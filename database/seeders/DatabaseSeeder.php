@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Project ' . rand(1, 100),
                 'client' => 'Client ' . rand(1, 100),
                 'description' => 'Description ' . rand(1, 100),
+                'floor' => 'Floor ' . rand(1, 100),
                 'scope_of_work' => 'Scope of work ' . rand(1, 100),
                 'image' => 'default.png',
                 'status' => ['ONGOING', 'COMPLETED'][rand(0, 1)],

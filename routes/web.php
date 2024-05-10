@@ -35,6 +35,7 @@ Route::get('/projects/filter', [WebsiteController::class, 'project_filter'])->na
 Route::get('/certifications-and-awards', [WebsiteController::class, 'certifications_and_awards'])->name('website.certifications-and-awards');
 Route::get('/careers', [WebsiteController::class, 'careers'])->name('website.careers');
 Route::get('/careers/{id}', [WebsiteController::class, 'career_details'])->name('website.careers.details');
+Route::post('/careers/{id}/apply', [WebsiteController::class, 'career_apply'])->name('website.careers.apply');
 Route::get('/contacts', [WebsiteController::class, 'contacts'])->name('website.contacts');
 
 // LOGIN & LOGOUT

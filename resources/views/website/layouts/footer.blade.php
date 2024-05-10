@@ -105,7 +105,24 @@
     <script src="{{ asset('assets/website/js/timeline.min.js') }}"></script>
     <script src="{{ asset('assets/website/js/aos.js') }}"></script>
     <script src="{{ asset('assets/website/js/main.js') }}"></script>
+    <script src="{{ asset('assets/website/js/notify.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/jquery-confirm.min.js') }}"></script>
     <script src="{{ asset('assets/website/js/custom.js') }}"></script>
+
+    @if (Session::has('status'))
+    <script>
+        $(window).on('load', function() {
+            $.notify('{{ Session::get('message') }}', {
+                'className': '{{ Session::get('status') }}',
+                'autoHide': true,
+                'autoHideDelay': 8000,
+                'position': 'bottom right',
+                'showAnimation': 'slideDown'
+            });
+        })
+    </script>
+    @endif
+
 </body>
 
 </html>

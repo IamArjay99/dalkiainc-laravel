@@ -163,13 +163,80 @@ class WebsiteController extends Controller
 
     public function career_details($id)
     {
-        $data['page_title'] = 'Career Details';
-        $data['company_information'] = $this->get_company_information();
-        $data['career'] = DB::table('careers')
+        $page_data = DB::table('careers')
             ->where('id', $id)
+            ->where('status', 1)
             ->first();
 
+        if (!$page_data) {
+            return redirect()
+                ->route('website.careers')
+                ->with([
+                    'status' => 'error',
+                    'message' => "Something went wrong, please contact your system administrator."
+                ]);
+        }
+
+        $data['page_title'] = 'Career Details';
+        $data['company_information'] = $this->get_company_information();
+        $data['career'] = $page_data;
+
         return view('website.careers.details', $data);
+    }
+
+    public function career_apply(Request $request, $id) 
+    {
+        $request->validate([
+            'full_name' => 'required|min:2|max:255',
+            'email_address' => 'required|email|max:255',
+            'subject' => 'required|min:2|max:255',
+            'message' => 'required|min:2|max:500',
+            'file' => 'required|mimes:pdf,doc,docx|max:2048'
+        ]);
+
+        $career = DB::table('careers')->where('id', $id)->first();
+        $job_title = $career->job_title;
+
+        $full_name = $request->full_name;
+        $file = $request->file('file');
+        $destination_path = 'uploads/resume/';
+
+        $filename_arr = explode('.', $file->getClientOriginalName());
+        $extension = array_splice($filename_arr, count($filename_arr)-1, 1);
+
+        $filename = str_replace(' ', '-', strtolower($full_name)) . time() . '.' . $extension[0];
+        $file->move($destination_path, $filename);
+
+        $insert = DB::table('applicant_reports')->insert([
+            'career_id' => $id,
+            'job_title' => $job_title,
+            'full_name' => $full_name,
+            'email_address' => $request->email_address,
+            'subject' => $request->subject,
+            'message' => $request->message,
+            'resume' => $filename,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+
+        if ($insert)
+        {
+            return redirect()
+                ->route('website.careers')
+                ->with([
+                    'status' => 'success',
+                    'message' => 'Your application has been submitted successfully. We will get back to you soon.'
+                ]);
+        }
+        else
+        {
+            return redirect()
+                ->route('website.careers')
+                ->with([
+                    'status' => 'error',
+                    'message' => 'Something went wrong, please contact your system administrator.'
+                ]);
+        }
     }
 
     public function contacts()

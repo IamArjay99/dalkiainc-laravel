@@ -24,6 +24,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="{{ asset('assets/website/css/timeline.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/website/css/aos.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/admin/css/jquery-confirm.min.css') }}">
 	
 	<link rel="stylesheet" href="{{ asset('assets/website/css/custom-loader.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/website/css/main.css') }}">
