@@ -39,16 +39,13 @@
 										<p>{{ $pcat->name }} <span class="text-muted" style="font-size: 0.9rem;">({{ $pcat->project_count ?? 0 }})</span></p>
 									</div>
 									<div class="col-2">
-										<input class="project-checkbox" type="checkbox" value="{{ $pcat->id }}" name="project-category">
+										<input class="project-checkbox" type="checkbox" value="{{ $pcat->id }}" name="project-category"
+											onchange="getProjectBasedOnCategory()">
 									</div>
 								</div>
 							@endforeach
-
-							<div class="text-center">
-								<button class="primary-btn mt-20" onclick="getProjectBasedOnCategory()">Apply</button>
-							</div>
 						@else
-							<h5>No Project Category</h5>
+							<h4 class="text-center text-muted py-5">No project category available.</h4>
 						@endif
 					</div>
 				</div>

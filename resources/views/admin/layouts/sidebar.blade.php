@@ -43,7 +43,7 @@
                         <span class="ms-2">Careers</span>
                     </a>
                 </li>
-                <li class="{{ in_array($uri_mainpage, ['company-history', 'mission-and-vision', 'scope-and-services']) ? 'collapsed' : '' }}">
+                <li class="{{ in_array($uri_mainpage, ['company-overview', 'company-history', 'mission-and-vision', 'quality-policy', 'scope-and-services']) ? 'collapsed' : '' }}">
                     <a class="m-link"
                         data-bs-toggle="collapse"
                         data-bs-target="#menu-company-information"
@@ -71,22 +71,22 @@
                         </li>
                     </ul>
                 </li>
-                <li class="{{ $uri_mainpage == 'reports' ? 'collapsed' : '' }}">
+                <li class="{{ in_array($uri_mainpage, ['applicant-reports', 'inquiry-reports']) ? 'collapsed' : '' }}">
                     <a class="m-link"
                         data-bs-toggle="collapse"
                         data-bs-target="#menu-reports"
                         href="#"
-                        aria-expanded="{{ $uri_mainpage == 'reports' ? 'true' : 'false' }}">
+                        aria-expanded="{{ in_array($uri_mainpage, ['applicant-reports', 'inquiry-reports']) ? 'true' : 'false' }}">
                         <img src="{{ asset('assets/admin/img/icons/reports.png') }}" alt="Reports" width="20" height="20">
                         <span class="ms-2">Reports</span>
                         <span class="arrow fa fa-angle-right ms-auto text-end"></span>
                     </a>
-                    <ul class="sub-menu collapse {{ $uri_mainpage == 'reports' ? 'collapsed show' : '' }}" id="menu-reports">
+                    <ul class="sub-menu collapse {{ in_array($uri_mainpage, ['applicant-reports', 'inquiry-reports']) ? 'collapsed show' : '' }}" id="menu-reports">
                         <li>
-                            <a class="ms-link {{ $uri_subpage == 'applicant-report' ? 'active' : '' }}" href="#">Applicant Report</a>
+                            <a class="ms-link {{ $uri_mainpage == 'applicant-reports' ? 'active' : '' }}" href="{{ route('admin.applicant-reports') }}">Applicant Report</a>
                         </li>
                         <li>
-                            <a class="ms-link {{ $uri_subpage == 'inquiry-report' ? 'active' : '' }}" href="#">Inquiry Report</a>
+                            <a class="ms-link {{ $uri_mainpage == 'inquiry-report' ? 'active' : '' }}" href="#">Inquiry Report</a>
                         </li>
                     </ul>
                 </li>

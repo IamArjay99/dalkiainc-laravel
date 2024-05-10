@@ -25,6 +25,7 @@ use App\Http\Controllers\MissionAndVisionController;
 use App\Http\Controllers\QualityPolicyController;
 use App\Http\Controllers\ScopeAndServicesController;
 use App\Http\Controllers\CompanySettingsController;
+use App\Http\Controllers\ApplicantReportsController;
 
 // WEBSITE
 Route::get('/', [WebsiteController::class, 'index'])->name('website.index');
@@ -111,4 +112,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/company-settings', [CompanySettingsController::class, 'index'])->name('admin.company-settings');
     Route::get('/admin/company-settings/{id}/edit', [CompanySettingsController::class, 'edit'])->name('admin.company-settings.edit');
     Route::put('/admin/company-settings/{id}/update', [CompanySettingsController::class, 'update'])->name('admin.company-settings.update');
+
+    // APPLICANT REPORTS
+    Route::get('/admin/applicant-reports', [ApplicantReportsController::class, 'index'])->name('admin.applicant-reports');
+    Route::get('/admin/applicant-reports/create', [ApplicantReportsController::class, 'create'])->name('admin.applicant-reports.create');
+    Route::post('/admin/applicant-reports/save', [ApplicantReportsController::class, 'save'])->name('admin.applicant-reports.save');
+    Route::get('/admin/applicant-reports/{id}/view', [ApplicantReportsController::class, 'view'])->name('admin.applicant-reports.view');
+    Route::get('/admin/applicant-reports/{id}/edit', [ApplicantReportsController::class, 'edit'])->name('admin.applicant-reports.edit');
+    Route::put('/admin/applicant-reports/{id}/update', [ApplicantReportsController::class, 'update'])->name('admin.applicant-reports.update');
+    Route::delete('/admin/applicant-reports/{id}/delete', [ApplicantReportsController::class, 'delete'])->name('admin.applicant-reports.delete');
 });

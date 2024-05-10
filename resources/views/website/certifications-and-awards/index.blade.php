@@ -24,7 +24,7 @@
 
     <section class="award-area section-gap" id="award" style="padding-bottom: 10px;">
 		<div class="container">
-			@if (!empty($certifications_and_awards))
+			@if ($certifications_and_awards && count($certifications_and_awards))
 				
 				@foreach ( $certifications_and_awards as $key => $award )
 					@if ($key % 2 == 0)
@@ -59,7 +59,7 @@
 				@endforeach
 
 			@else
-				<h5>No Certifications and Awards</h5>
+				<h4 class="text-center text-danger py-5">No certifications and awards available.</h4>
 			@endif
 		</div>
 	</section>

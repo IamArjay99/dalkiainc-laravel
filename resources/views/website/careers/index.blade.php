@@ -25,7 +25,7 @@
     <section class="career-opportunity-area section-gap" id="career-opportunity">
 		<div class="container">
 
-			@if (!empty($careers))
+			@if ($careers && count($careers))
 				<div class="row">
 					@foreach($careers as $career)
 						<div class="col-lg-4">
@@ -45,7 +45,7 @@
 				</div>
 				
 			@else
-				<h3>No Jobs</h3>
+				<h4 class="text-center text-danger py-5">No careers available.</h4>
 			@endif
 
 		</div>
