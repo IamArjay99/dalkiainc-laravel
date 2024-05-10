@@ -5076,7 +5076,7 @@ input[type=submit].btn-block {
   padding: .5rem .75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #007bff;
+  color: #be972f;
   background-color: #fff;
   border: 1px solid #dee2e6
 }
@@ -5113,8 +5113,8 @@ input[type=submit].btn-block {
 .page-item.active .page-link {
   z-index: 1;
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff
+  background-color: #be972f;
+  border-color: #be972f
 }
 
 .page-item.disabled .page-link {

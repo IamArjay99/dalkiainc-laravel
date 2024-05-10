@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +13,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        for ($i = 0; $i < 100; $i++) {
+            DB::table('projects')->insert([
+                'project_category_id' => rand(1, 4),
+                'name' => 'Project ' . rand(1, 100),
+                'client' => 'Client ' . rand(1, 100),
+                'description' => 'Description ' . rand(1, 100),
+                'scope_of_work' => 'Scope of work ' . rand(1, 100),
+                'image' => 'default.png',
+                'status' => ['ONGOING', 'COMPLETED'][rand(0, 1)],
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+        }
     }
 }

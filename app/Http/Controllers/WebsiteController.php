@@ -43,17 +43,104 @@ class WebsiteController extends Controller
     public function project_filter(Request $request)
     {
         $project_categories = $request->projectCategories;
-        if (empty($project_categories)) {
-            $data = $this->get_projects();
+        $status = $request->status;
+        $current_page = $request->current_page ?? 1;
+        $offset = $request->offset ?? 0;
+        $limit = $request->limit ?? 6;
+
+        $where_project_categories = empty($project_categories) ? '1=1' : 'project_category_id IN ('. implode(',', $project_categories) .')';
+
+        $project_summary = DB::table('projects')
+            ->selectRaw('(SELECT COUNT(*) FROM projects WHERE status = "ONGOING" AND '. $where_project_categories .') as ongoing_projects')
+            ->selectRaw('(SELECT COUNT(*) FROM projects WHERE status = "COMPLETED" AND '. $where_project_categories .') as completed_projects')
+            ->selectRaw('CEILING((SELECT COUNT(*) FROM projects WHERE status = "ONGOING" AND '. $where_project_categories .') / '. $limit .') as ongoing_pages')
+            ->selectRaw('CEILING((SELECT COUNT(*) FROM projects WHERE status = "COMPLETED" AND '. $where_project_categories .') / '. $limit .') as completed_pages')
+            ->first();
+
+        $ongoing_pages = $project_summary->ongoing_pages ?? 1;
+        $ongoing_pages_data = [];
+        for ($i = 1; $i <= $ongoing_pages; $i++) {
+            $ongoing_pages_data[] = [
+                'label' => $i,
+                'offset' => ($i - 1) * $limit,
+                'limit' => $limit
+            ];
+        }
+
+        $completed_pages = $project_summary->completed_pages ?? 1;
+        $completed_pages_data = [];
+        for ($i = 1; $i <= $completed_pages; $i++) {
+            $completed_pages_data[] = [
+                'label' => $i,
+                'offset' => ($i - 1) * $limit,
+                'limit' => $limit
+            ];
+        }
+
+        if ($status) {
+            $data = DB::table('projects')
+                ->select('id', 'name', 'image', 'floor', 'scope_of_work', 'status')
+                ->where('status', $status)
+                ->whereRaw('('. $where_project_categories .')')
+                ->offset($offset)
+                ->limit($limit)
+                ->get();
         }
         else {
             $data = DB::table('projects')
-                ->whereIn('project_category_id', $project_categories)
+                ->select('id', 'name', 'image', 'floor', 'scope_of_work', 'status')
+                ->whereRaw('('. $where_project_categories .')')
+                ->offset($offset)
+                ->limit($limit)
                 ->get();
         }
 
+        if ($status == 'ONGOING') {
+            $output = [
+                'ongoing_projects' => [
+                    'current_page' => $current_page,
+                    'pages' => $ongoing_pages_data,
+                    'data' => $data
+                ]
+            ];
+        }
+        else if ($status == 'COMPLETED') {
+            $output = [
+                'completed_projects' => [
+                    'current_page' => $current_page,
+                    'pages' => $completed_pages_data,
+                    'data' => $data
+                ]
+            ];
+        }
+        else {
+            $output = [
+                'ongoing_projects' => [
+                    'current_page' => $current_page,
+                    'pages' => $ongoing_pages_data,
+                    'data' => DB::table('projects')
+                        ->select('id', 'name', 'image', 'floor', 'scope_of_work', 'status')
+                        ->where('status', 'ONGOING')
+                        ->whereRaw('('. $where_project_categories .')')
+                        ->offset($offset)
+                        ->limit($limit)
+                        ->get()
+                ],
+                'completed_projects' => [
+                    'current_page' => $current_page,
+                    'pages' => $completed_pages_data,
+                    'data' => DB::table('projects')
+                        ->select('id', 'name', 'image', 'floor', 'scope_of_work', 'status')
+                        ->where('status', 'COMPLETED')
+                        ->whereRaw('('. $where_project_categories .')')
+                        ->offset($offset)
+                        ->limit($limit)
+                        ->get()
+                ]
+            ];
+        }
         
-        echo json_encode($data);
+        echo json_encode($output);
     }
 
     public function certifications_and_awards()
@@ -118,26 +205,65 @@ class WebsiteController extends Controller
 
     private function get_projects()
     {
+        $limit = 6;
+
+        $project_summary = DB::table('projects')
+            ->selectRaw('(SELECT COUNT(*) FROM projects WHERE status = "ONGOING") as ongoing_projects')
+            ->selectRaw('(SELECT COUNT(*) FROM projects WHERE status = "COMPLETED") as completed_projects')
+            ->selectRaw('CEILING((SELECT COUNT(*) FROM projects WHERE status = "ONGOING") / '. $limit .') as ongoing_pages')
+            ->selectRaw('CEILING((SELECT COUNT(*) FROM projects WHERE status = "COMPLETED") / '. $limit .') as completed_pages')
+            ->first();
+
+        $ongoing_pages = $project_summary->ongoing_pages ?? 1;
+        $ongoing_pages_data = [];
+        for ($i = 1; $i <= $ongoing_pages; $i++) {
+            $ongoing_pages_data[] = [
+                'label' => $i,
+                'offset' => ($i - 1) * $limit,
+                'limit' => $limit
+            ];
+        }
+
+        $completed_pages = $project_summary->completed_pages ?? 1;
+        $completed_pages_data = [];
+        for ($i = 1; $i <= $completed_pages; $i++) {
+            $completed_pages_data[] = [
+                'label' => $i,
+                'offset' => ($i - 1) * $limit,
+                'limit' => $limit
+            ];
+        }
+
         $showcase_projects = DB::table('projects')
             ->orderBy('id', 'asc')
             ->limit(6)
             ->get();
-        $all_projects = DB::table('projects')
-            ->orderBy('id', 'asc')
-            ->get();
+
         $ongoing_projects = DB::table('projects')
             ->where('status', 'ONGOING')
             ->orderBy('id', 'asc')
+            ->limit($limit)
             ->get();
         $completed_projects = DB::table('projects')
             ->where('status', 'COMPLETED')
             ->orderBy('id', 'asc')
+            ->limit($limit)
             ->get();
+
+        $ongoing_data = [
+            'pages' => $ongoing_pages_data,
+            'data' => $ongoing_projects
+        ];
+
+        $completed_data = [
+            'pages' => $completed_pages_data,
+            'data' => $completed_projects
+        ];
+
         return [
             'showcase_projects' => $showcase_projects,
-            'all_projects' => $all_projects,
-            'ongoing_projects' => $ongoing_projects,
-            'completed_projects' => $completed_projects
+            'ongoing_projects' => $ongoing_data,
+            'completed_projects' => $completed_data
         ];
     }
 
