@@ -31,7 +31,7 @@
                                     width="40" height="40" class="position-absolute top-0 end-0 mt-4 me-3">
                                 <div class="mb-2 text-uppercase pe-5">TOTAL PROJECTS</div>
                                 <div>
-                                    <span class="h3">125</span> 
+                                    <span class="h3">{{ $data['total_projects'] ?? 0 }}</span> 
                                 </div>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                                     width="40" height="40" class="position-absolute top-0 end-0 mt-4 me-3">
                                 <div class="mb-2 text-uppercase pe-5">ONGOING PROJECTS</div>
                                 <div>
-                                    <span class="h3">125</span> 
+                                    <span class="h3">{{ $data['ongoing_projects'] ?? 0 }}</span> 
                                 </div>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                                     width="40" height="40" class="position-absolute top-0 end-0 mt-4 me-3">
                                 <div class="mb-2 text-uppercase pe-5">TOTAL CERTIFICATION & AWARDS</div>
                                 <div>
-                                    <span class="h3">125</span> 
+                                    <span class="h3">{{ $data['total_awards'] }}</span> 
                                 </div>
                             </div>
                         </div>
@@ -73,7 +73,7 @@
                                     width="40" height="40" class="position-absolute top-0 end-0 mt-4 me-3">
                                 <div class="mb-2 text-uppercase pe-5">TOTAL CAREERS</div>
                                 <div>
-                                    <span class="h3">125</span> 
+                                    <span class="h3">{{ $data['total_careers'] }}</span> 
                                 </div>
                             </div>
                         </div>
@@ -82,7 +82,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="mb-30 text-uppercase">Website Views</h5>
+                            <h5 class="mb-30 text-uppercase">Website Analytics</h5>
                             <canvas id="myChart"></canvas>
                         </div>
                     <div>
@@ -94,16 +94,26 @@
 
 <script>
     const ctx = document.getElementById('myChart');
+    
+    let website_data = {!! json_encode($data['website_data']) !!};
+    let total_users = website_data.map(x => Number(x.total_users));
+    let total_page_views = website_data.map(x => Number(x.total_page_views));
 
     const data = {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         datasets: [
             {
                 label: 'Users',
-                data: [12, 19, 3, 5, 2, 3],
+                data: total_users,
                 borderColor: '#3771e0',
                 backgroundColor: '#3771e0'
-            }
+            },
+            {
+                label: 'Page Views',
+                data: total_page_views,
+                borderColor: '#f371e0',
+                backgroundColor: '#f371e0'
+            },
         ]
     };
 
