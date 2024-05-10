@@ -1,3 +1,7 @@
+@php
+	update_analytics();
+@endphp
+
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 

@@ -26,6 +26,7 @@ use App\Http\Controllers\QualityPolicyController;
 use App\Http\Controllers\ScopeAndServicesController;
 use App\Http\Controllers\CompanySettingsController;
 use App\Http\Controllers\ApplicantReportsController;
+use App\Http\Controllers\InquiryReportsController;
 
 // WEBSITE
 Route::get('/', [WebsiteController::class, 'index'])->name('website.index');
@@ -117,10 +118,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     // APPLICANT REPORTS
     Route::get('/admin/applicant-reports', [ApplicantReportsController::class, 'index'])->name('admin.applicant-reports');
-    Route::get('/admin/applicant-reports/create', [ApplicantReportsController::class, 'create'])->name('admin.applicant-reports.create');
-    Route::post('/admin/applicant-reports/save', [ApplicantReportsController::class, 'save'])->name('admin.applicant-reports.save');
     Route::get('/admin/applicant-reports/{id}/view', [ApplicantReportsController::class, 'view'])->name('admin.applicant-reports.view');
-    Route::get('/admin/applicant-reports/{id}/edit', [ApplicantReportsController::class, 'edit'])->name('admin.applicant-reports.edit');
-    Route::put('/admin/applicant-reports/{id}/update', [ApplicantReportsController::class, 'update'])->name('admin.applicant-reports.update');
-    Route::delete('/admin/applicant-reports/{id}/delete', [ApplicantReportsController::class, 'delete'])->name('admin.applicant-reports.delete');
+
+    // INQUIRY REPORTS
+    Route::get('/admin/inquiry-reports', [InquiryReportsController::class, 'index'])->name('admin.inquiry-reports');
+    Route::get('/admin/inquiry-reports/{id}/view', [InquiryReportsController::class, 'view'])->name('admin.inquiry-reports.view');
 });

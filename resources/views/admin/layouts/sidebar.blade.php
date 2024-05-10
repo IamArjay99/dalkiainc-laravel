@@ -86,7 +86,7 @@
                             <a class="ms-link {{ $uri_mainpage == 'applicant-reports' ? 'active' : '' }}" href="{{ route('admin.applicant-reports') }}">Applicant Report</a>
                         </li>
                         <li>
-                            <a class="ms-link {{ $uri_mainpage == 'inquiry-report' ? 'active' : '' }}" href="#">Inquiry Report</a>
+                            <a class="ms-link {{ $uri_mainpage == 'inquiry-reports' ? 'active' : '' }}" href="{{ route('admin.inquiry-reports') }}">Inquiry Report</a>
                         </li>
                     </ul>
                 </li>

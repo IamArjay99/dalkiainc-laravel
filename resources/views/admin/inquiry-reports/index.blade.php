@@ -6,10 +6,10 @@
             <div class="container-fluid">
                 <div class="row g-3 align-items-center">
                     <div class="col">
-                        <h4 class="mb-0">Applicant Reports</h4>
+                        <h4 class="mb-0">Inquiry Reports</h4>
                         <ol class="breadcrumb bg-transparent mb-0">
                             <li class="breadcrumb-item"><a class="text-secondary" href="#">Reports</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Applicant Reports</li>
+                            <li class="breadcrumb-item active" aria-current="page">Inquiry Reports</li>
                         </ol>
                     </div>
                 </div>
@@ -21,14 +21,14 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <table class="table table-striped table-hover" id="tableApplicantReports">
+                        <table class="table table-striped table-hover" id="tableInquiryReports">
                             <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>Full Name</th>
-                                    <th>Job Title</th>
                                     <th>Email Address</th>
-                                    <th>Date Applied</th>
+                                    <th>Subject</th>
+                                    <th>Date Inquired</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -37,12 +37,12 @@
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
                                             <td>
-                                                <a href="{{ route('admin.applicant-reports.view', ['id' => $dt->id]) }}" class="d-flex align-items-center justify-content-start gap-2">
+                                                <a href="{{ route('admin.inquiry-reports.view', ['id' => $dt->id]) }}" class="d-flex align-items-center justify-content-start gap-2">
                                                     <div>{{ $dt->full_name }}</div>
                                                 </a>
                                             </td>
-                                            <td>{{ $dt->job_title ?? '-' }}</td>
                                             <td>{{ $dt->email_address ?? '-' }}</td>
+                                            <td>{{ $dt->subject ?? '-' }}</td>
                                             <td>{{ date('F d, Y h:i A', strtotime($dt->created_at)) }}</td>
                                         </tr>
                                     @endforeach
@@ -58,7 +58,7 @@
     <script>
         $(document).ready(function() {
             // ----- DATATABLES -----
-            let tableApplicantReports = $('#tableApplicantReports')
+            let tableInquiryReports = $('#tableInquiryReports')
                 .css({ "min-width": "99%" })
                 .removeAttr("width")
                 .DataTable({

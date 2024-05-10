@@ -32,6 +32,7 @@
     <script src="{{ asset('assets/admin/js/bs5-toast.js') }}"></script>
     <script src="{{ asset('assets/admin/js/drag-arrange.js') }}"></script>
 
+
     <!-- Custom -->
     <script src="{{ asset('assets/admin/js/custom.js') }}"></script>
 

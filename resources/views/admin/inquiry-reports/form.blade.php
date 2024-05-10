@@ -9,12 +9,10 @@
         {
             // TABLE FIELDS
             $id            = $data->id;
-            $job_title     = $data->job_title;
             $full_name     = $data->full_name;
             $email_address = $data->email_address;
             $subject       = $data->subject;
             $message       = $data->message;
-            $resume        = $data->resume;
 
             $prevent_refresh = 'false';
             $form_action = '';
@@ -32,13 +30,13 @@
                         <h4 class="mb-0">{{ $page_title }}</h4>
                         <ol class="breadcrumb bg-transparent mb-0">
                             <li class="breadcrumb-item"><a class="text-secondary" href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a class="btnCancel" href="#" target-module="{{ route('admin.applicant-reports') }}">Reports</a></li>
+                            <li class="breadcrumb-item"><a class="btnCancel" href="#" target-module="{{ route('admin.inquiry-reports') }}">Reports</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{ $page_title }}</li>
                         </ol>
                     </div>
                     <div class="col-3 text-end">
                         <button type="button"
-                            target-module="{{ route('admin.applicant-reports') }}"
+                            target-module="{{ route('admin.inquiry-reports') }}"
                             class="btn btn-secondary btnCancel">
                             <i class="fa fa-arrow-left" aria-hidden="true"></i> Back
                         </button>
@@ -77,28 +75,6 @@
 
                             <div class="card">
                                 <div class="card-body py-3">
-                                    <div class="form-group row my-2">
-                                        <label for="job_title" class="col-sm-2 col-form-label">
-                                            Job Title <?= $form_required ?>
-                                        </label>
-                                        <div class="col-sm-10">
-                                            @if ($form_todo == 'READ')
-                                                <input type="text"
-                                                    class="form-control"
-                                                    value="{{ $job_title ?? '-' }}"
-                                                    disabled>
-                                            @else
-                                                <input type="text"
-                                                    class="form-control"
-                                                    id="job_title"
-                                                    name="job_title"
-                                                    placeholder="Enter job title"
-                                                    value="{{ $job_title }}"
-                                                    autocomplete="off"
-                                                    required>
-                                            @endif
-                                        </div>
-                                    </div>
                                     <div class="form-group row my-2">
                                         <label for="full_name" class="col-sm-2 col-form-label">
                                             Full Name <?= $form_required ?>
@@ -177,22 +153,6 @@
                                                 <textarea name="message" id="message" rows="8" style="resize: none;"
                                                     class="form-control" autocomplete="off" required>{{ $message }}</textarea>
                                             @endif
-                                        </div>
-                                    </div>
-                                    <div class="form-group row my-2">
-                                        <label for="resume" class="col-sm-2 col-form-label">
-                                            Resume <?= $form_required ?>
-                                        </label>
-                                        <div class="col-sm-10">
-                                            <a href="{{ asset('uploads/resume/' . $resume)}}"
-                                                target="_blank"
-                                                style="padding: 5px 10px;
-                                                    border-radius: 10px;
-                                                    background: #b5e4ce;
-                                                    border: 1px solid green;
-                                                    color: green;">
-                                                {{ $resume }}
-                                            </a>
                                         </div>
                                     </div>
                                 </div>
