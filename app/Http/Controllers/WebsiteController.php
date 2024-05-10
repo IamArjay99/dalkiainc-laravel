@@ -247,6 +247,45 @@ class WebsiteController extends Controller
         return view('website.contacts.index', $data);
     }
 
+    public function contact_inquire(Request $request)
+    {
+        $request->validate([
+            'full_name' => 'required|min:2|max:255',
+            'email_address' => 'required|email|max:255',
+            'subject' => 'required|min:2|max:255',
+            'message' => 'required|min:2|max:500',
+        ]);
+
+        $full_name = $request->full_name;
+        $insert = DB::table('inquiry_reports')->insert([
+            'full_name' => $full_name,
+            'email_address' => $request->email_address,
+            'subject' => $request->subject,
+            'message' => $request->message,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+
+        if ($insert)
+        {
+            return redirect()
+                ->route('website.contacts')
+                ->with([
+                    'status' => 'success',
+                    'message' => 'Your inquiry has been submitted successfully. We will get back to you soon.'
+                ]);
+        }
+        else
+        {
+            return redirect()
+                ->route('website.contacts')
+                ->with([
+                    'status' => 'error',
+                    'message' => 'Something went wrong, please contact your system administrator.'
+                ]);
+        }
+    }
+
     // RETRIEVE DATA
     private function get_company_information()
     {

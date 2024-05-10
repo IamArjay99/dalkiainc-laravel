@@ -37,6 +37,7 @@ Route::get('/careers', [WebsiteController::class, 'careers'])->name('website.car
 Route::get('/careers/{id}', [WebsiteController::class, 'career_details'])->name('website.careers.details');
 Route::post('/careers/{id}/apply', [WebsiteController::class, 'career_apply'])->name('website.careers.apply');
 Route::get('/contacts', [WebsiteController::class, 'contacts'])->name('website.contacts');
+Route::post('/contacts/inquire', [WebsiteController::class, 'contact_inquire'])->name('website.contacts.inquire');
 
 // LOGIN & LOGOUT
 Route::get('/admin', [LoginController::class, 'index'])->name('login');

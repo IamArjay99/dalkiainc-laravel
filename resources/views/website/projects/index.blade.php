@@ -189,6 +189,13 @@
 
 <script>
 
+	$(window).on('load', function() {
+		let hash = window.location.hash;
+		if (hash) {
+			$(`.nav-project[href="${hash}"]`).trigger('click')
+		}
+	});
+
 	function getProjectBasedOnPagination(status, page, offset, limit) {
 		let projectCategories = $('.project-checkbox:checked').map(function() {
 			return $(this).val();

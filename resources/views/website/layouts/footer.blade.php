@@ -115,7 +115,7 @@
             $.notify('{{ Session::get('message') }}', {
                 'className': '{{ Session::get('status') }}',
                 'autoHide': true,
-                'autoHideDelay': 8000,
+                'autoHideDelay': 10000,
                 'position': 'bottom right',
                 'showAnimation': 'slideDown'
             });

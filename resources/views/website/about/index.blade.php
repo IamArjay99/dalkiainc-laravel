@@ -51,13 +51,13 @@
 						<h5>No History</h5>
 					@endif
 				</div>
-				<div class="col-md-12" data-aos="fade-right" id="our-mission">
+				<div class="col-md-12" data-aos="fade-up" id="our-mission">
 					<h3 class="mt-20 pb-10 subtitle">OUR MISSION</h3>
 					<blockquote class="generic-blockquote">
 						{{ $company_information->mission }}
 					</blockquote>
 				</div>
-				<div class="col-md-12" data-aos="fade-left">
+				<div class="col-md-12" data-aos="fade-up">
 					<h3 class="mt-20 pb-10 subtitle">OUR VISION</h3>
 					<blockquote class="generic-blockquote">
 						{{ $company_information->vision }}
