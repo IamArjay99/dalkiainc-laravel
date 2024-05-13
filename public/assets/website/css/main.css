@@ -3085,7 +3085,7 @@ a.nav-project.active {
 }
 
 @media screen and (max-width: 768px) {
-  .d-sm-none {
+  .custom-d-sm-none {
     display: none !important
   }
 

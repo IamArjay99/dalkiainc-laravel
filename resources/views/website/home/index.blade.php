@@ -215,7 +215,7 @@
 			@endif
 	</section>
 
-	<section class="career-opportunity-area career-area section-gap relative d-sm-none">
+	<section class="career-opportunity-area career-area section-gap relative custom-d-sm-none">
 		<div class="overlay overlay-bg"></div>
 	</section>
 	<section class="career-opportunity-area section-gap" id="career-opportunity2">
