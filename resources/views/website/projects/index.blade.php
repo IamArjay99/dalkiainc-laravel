@@ -100,7 +100,7 @@
 							@endif
 							
 							@if (!empty($projects['ongoing_projects']['pages']))
-								<div class="pagination-wrap mt-20 mb-20">
+								<div class="pagination-wrap mt-20 mb-20" style="width: 100%; overflow-x: auto;">
 									<nav aria-label="">
 										<ul class="pagination justify-content-center">
 
@@ -159,7 +159,7 @@
 							@endif
 
 							@if (!empty($projects['completed_projects']['pages']))
-								<div class="pagination-wrap mt-20 mb-20">
+								<div class="pagination-wrap mt-20 mb-20" style="width: 100%; overflow-x: auto;">
 									<nav aria-label="">
 										<ul class="pagination justify-content-center">
 
@@ -260,7 +260,7 @@
 			});
 
 			outputHTML = `
-			<div class="pagination-wrap mt-20 mb-20">
+			<div class="pagination-wrap mt-20 mb-20" style="width: 100%; overflow-x: auto;">
 				<nav aria-label="">
 					<ul class="pagination justify-content-center">
 						${bodyHTML}

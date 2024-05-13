@@ -17,6 +17,8 @@
             $image               = old('image');
             $image_store         = old('image_store') ?? 'default.png';
             $status              = old('status');
+            $showcase            = old('showcase');
+            $project_type        = old('project_type');
 
             $prevent_refresh = 'true';
             $form_action = route('admin.projects.save');
@@ -48,6 +50,8 @@
             $image               = $data->image;
             $image_store         = $data->image ?? 'default.png';
             $status              = $data->status;
+            $showcase           = $data->showcase;
+            $project_type       = $data->project_type;
 
             $prevent_refresh = 'false';
             $form_action = '';
@@ -81,6 +85,8 @@
             $image               = old('image') ?? $data->image;
             $image_store         = old('image_store') ?? $data->image;
             $status              = old('status') ?? $data->status;
+            $showcase            = old('showcase') ?? $data->showcase;
+            $project_type        = old('project_type') ?? $data->project_type;
 
             $prevent_refresh = 'true';
             $form_action = route('admin.projects.update', ['id' => $id]);
@@ -289,6 +295,54 @@
                                         </div>
                                     </div>
                                     <div class="form-group row my-2">
+                                        <label for="status" class="col-sm-2 col-form-label">Status</label>
+                                        <div class="col-sm-10 d-flex align-items-center">
+                                            @if ($form_todo == 'READ')
+                                                <?= $data->status == 'COMPLETED' ? "<span class='badge bg-success'>COMPLETED</span>" : "<span class='badge bg-warning'>ONOGOING</span></span>" ?>
+                                            @else
+                                                <select name="status" id="status" class="form-select" select2 required>
+                                                    <option value="COMPLETED" {{ $status == 'COMPLETED' ? 'selected' : '' }}>Completed</option>
+                                                    <option value="ONGOING" {{ $status == 'ONGOING' ? 'selected' : '' }}>Ongoing</option>
+                                                </select>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="form-group row my-2">
+                                        <label for="project_type" class="col-sm-2 col-form-label">
+                                            Project Type <?= $form_required ?>
+                                        </label>
+                                        <div class="col-sm-10">
+                                            @if ($form_todo == 'READ')
+                                                <input type="text"
+                                                    class="form-control"
+                                                    value="{{ $project_type ?? '-' }}"
+                                                    disabled>
+                                            @else
+                                                <select name="project_type" id="project_type" class="form-select" select2 required>
+                                                    <option value="Major" {{ $project_type == 'Major' ? 'selected' : '' }}>Major</option>
+                                                    <option value="Minor" {{ $project_type == 'Minor' ? 'selected' : '' }}>Minor</option>
+                                                </select>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="form-group row my-2">
+                                        <label for="project_type" class="col-sm-2 col-form-label">Showcase</label>
+                                        <div class="col-sm-10 d-flex align-items-center">
+                                            @if ($form_todo == 'READ')
+                                                <input type="checkbox"
+                                                    class=""
+                                                    {{ $showcase == 1 ? 'checked' : '' }}
+                                                    disabled>
+                                            @else
+                                                <input type="checkbox"
+                                                    class=""
+                                                    {{ $showcase == 1 ? 'checked' : '' }}
+                                                    name="showcase"
+                                                    id="showcase">
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="form-group row my-2">
                                         <label for="image" class="col-sm-2 col-form-label">Image</label>
                                         <div class="col-sm-10">
                                             @if ($form_todo == 'READ')
@@ -301,20 +355,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="form-group row my-2">
-                                        <label for="status" class="col-sm-2 col-form-label">Status</label>
-                                        <div class="col-sm-10">
-                                            @if ($form_todo == 'READ')
-                                                <?= $data->status == 'COMPLETED' ? "<span class='badge bg-success'>COMPLETED</span>" : "<span class='badge bg-warning'>ONOGOING</span></span>" ?>
-                                            @else
-                                                <select name="status" id="status" class="form-select" select2>
-                                                    <option value="COMPLETED" {{ $status == 'COMPLETED' ? 'selected' : '' }}>COMPLETED</option>
-                                                    <option value="ONGOING" {{ $status == 'ONGOING' ? 'selected' : '' }}>ONGOING
-                                                    </option>
-                                                </select>
-                                            @endif
-                                        </div>
-                                    </div>
+                                    
                                 </div>
 
                                 <div class="card-footer text-end">

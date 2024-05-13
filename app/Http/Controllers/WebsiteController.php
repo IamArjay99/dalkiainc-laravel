@@ -390,6 +390,7 @@ class WebsiteController extends Controller
         }
 
         $showcase_projects = DB::table('projects')
+            ->where('showcase', 1)
             ->orderBy('id', 'asc')
             ->limit(6)
             ->get();

@@ -27,6 +27,8 @@ use App\Http\Controllers\ScopeAndServicesController;
 use App\Http\Controllers\CompanySettingsController;
 use App\Http\Controllers\ApplicantReportsController;
 use App\Http\Controllers\InquiryReportsController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\SystemSettingsController;
 
 Route::get('/', [WebsiteController::class, 'index'])->name('website.index');
 Route::get('/about', [WebsiteController::class, 'about'])->name('website.about');
@@ -125,4 +127,19 @@ Route::group(['middleware' => 'auth'], function () {
     // INQUIRY REPORTS
     Route::get('/admin/inquiry-reports', [InquiryReportsController::class, 'index'])->name('admin.inquiry-reports');
     Route::get('/admin/inquiry-reports/{id}/view', [InquiryReportsController::class, 'view'])->name('admin.inquiry-reports.view');
+
+    // USERS
+    Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');
+    Route::get('/admin/users/{id}/view', [UserController::class, 'view'])->name('admin.users.view');
+    Route::get('/admin/users/{id}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
+    Route::put('/admin/users/{id}/update', [UserController::class, 'update'])->name('admin.users.update');
+
+    // SYSTEM SETTINGS
+    Route::get('/admin/system-settings', [SystemSettingsController::class, 'index'])->name('admin.system-settings');
+    Route::get('/admin/system-settings/create', [SystemSettingsController::class, 'create'])->name('admin.system-settings.create');
+    Route::post('/admin/system-settings/save', [SystemSettingsController::class, 'save'])->name('admin.system-settings.save');
+    Route::get('/admin/system-settings/{id}/view', [SystemSettingsController::class, 'view'])->name('admin.system-settings.view');
+    Route::get('/admin/system-settings/{id}/edit', [SystemSettingsController::class, 'edit'])->name('admin.system-settings.edit');
+    Route::put('/admin/system-settings/{id}/update', [SystemSettingsController::class, 'update'])->name('admin.system-settings.update');
+    Route::delete('/admin/system-settings/{id}/delete', [SystemSettingsController::class, 'delete'])->name('admin.system-settings.delete');
 });

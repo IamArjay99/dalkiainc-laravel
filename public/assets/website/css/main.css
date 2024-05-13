@@ -2955,8 +2955,8 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  text-align: justify;
+  /* align-items: center; */
+  /* text-align: justify; */
 }
 
 .award-left .award-description .subtitle,
@@ -3084,6 +3084,20 @@ a.nav-project.active {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .d-sm-none {
+    display: none !important
+  }
+
+  .container.page-title {
+    padding-bottom: 0 !important;
+  }
+
+  .page-title h1 {
+    font-size: 25px;
+  }
+}
+
 /* Set scrollbar colors for the entire body */
 * {
   scrollbar-color: var(--highlight-color) #212529;
@@ -3103,3 +3117,4 @@ a.nav-project.active {
 ::-webkit-scrollbar-track {
   background: #212529; /* Track color */
 }
+

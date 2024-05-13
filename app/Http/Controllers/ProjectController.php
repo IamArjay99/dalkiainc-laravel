@@ -43,7 +43,8 @@ class ProjectController extends Controller
             'project_category_id' => 'required',
             'scope_of_work' => 'required|string|max:255',
             'floor' => 'required|string|max:100',
-            'status' => 'required'
+            'status' => 'required',
+            'project_type' => 'required'
         ]);
 
         $destination_path = 'uploads/img/projects';
@@ -76,6 +77,8 @@ class ProjectController extends Controller
             'floor' => $request->floor,
             'status' => $request->status,
             'image' => $filename,
+            'project_type' => $request->project_type,
+            'showcase' => isset($request->showcase) ? 1 : 0,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
@@ -141,7 +144,8 @@ class ProjectController extends Controller
             'project_category_id' => 'required',
             'scope_of_work' => 'required|string|max:255',
             'floor' => 'required|string|max:100',
-            'status' => 'required'
+            'status' => 'required',
+            'project_type' => 'required'
         ]);
 
         $destination_path = 'uploads/img/projects';
@@ -176,6 +180,8 @@ class ProjectController extends Controller
                 'floor' => $request->floor,
                 'status' => $request->status,
                 'image' => $filename,
+                'project_type' => $request->project_type,
+                'showcase' => isset($request->showcase) ? 1 : 0,
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
 

@@ -117,7 +117,7 @@
 	<section class="project-area section-gap" id="project">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-md-8 pb-30 header-text text-center" data-aos="zoom-out">
+				<div class="col-md-8 pb-30 header-text text-center" data-aos="fade-up">
 					<h2 class="mb-10">PROJECTS</h2>
 					<div class="title-divider"></div>
 				</div>
@@ -215,7 +215,7 @@
 			@endif
 	</section>
 
-	<section class="career-opportunity-area career-area section-gap relative">
+	<section class="career-opportunity-area career-area section-gap relative d-sm-none">
 		<div class="overlay overlay-bg"></div>
 	</section>
 	<section class="career-opportunity-area section-gap" id="career-opportunity2">
@@ -228,7 +228,7 @@
 					<p class="pb-20">
 						We at Dalkia Inc. are searching for people that are excited to grow and use their abilities to influence the future. Apply by emailing your resume to info@dalkiainc.com if you are already qualified, experienced, and competent and would want to be considered for any of the positions listed below. We would love to speak with someone who is driven to achieve.
 					</p>
-					<a class="primary-btn" href="{{ route('website.careers') }}">Apply Now</a>
+					<a class="primary-btn mb-20" href="{{ route('website.careers') }}">Apply Now</a>
 				</div>
 				<div class="col-lg-4 col-md-12">
 					<img src="{{ asset('assets/website/img/careers/apply-now.jpg') }}" alt="" class="img-fluid">

@@ -99,19 +99,22 @@
                 </li>
 
                 @if (is_super_admin())
-                    <li class="{{ in_array($uri_mainpage, ['admin-users']) ? 'collapsed' : '' }}">
+                    <li class="{{ in_array($uri_mainpage, ['users', 'system-settings']) ? 'collapsed' : '' }}">
                         <a class="m-link"
                             data-bs-toggle="collapse"
                             data-bs-target="#menu-administrator"
                             href="#"
-                            aria-expanded="{{ in_array($uri_mainpage, ['admin-users']) ? 'true' : 'false' }}">
+                            aria-expanded="{{ in_array($uri_mainpage, ['users', 'system-settings']) ? 'true' : 'false' }}">
                             <img src="{{ asset('assets/admin/img/icons/lock.png') }}" alt="Administrator" width="20" height="20">
                             <span class="ms-2">Administrator</span>
                             <span class="arrow fa fa-angle-right ms-auto text-end"></span>
                         </a>
-                        <ul class="sub-menu collapse {{ in_array($uri_mainpage, ['admin-users']) ? 'collapsed show' : '' }}" id="menu-administrator">
+                        <ul class="sub-menu collapse {{ in_array($uri_mainpage, ['users', 'system-settings']) ? 'collapsed show' : '' }}" id="menu-administrator">
                             <li>
-                                <a class="ms-link {{ $uri_mainpage == 'admin-users' ? 'active' : '' }}" href="{{ '#' }}">Users</a>
+                                <a class="ms-link {{ $uri_mainpage == 'users' ? 'active' : '' }}" href="{{ route('admin.users') }}">Users</a>
+                            </li>
+                            <li>
+                                <a class="ms-link {{ $uri_mainpage == 'system-settings' ? 'active' : '' }}" href="{{ route('admin.system-settings') }}">System Settings</a>
                             </li>
                         </ul>
                     </li>
@@ -207,7 +210,7 @@
                                         </div>
                                     </div>
                                     <div class="list-group m-2 mb-3">
-                                        <a class="list-group-item list-group-item-action border-0" href="#">
+                                        <a class="list-group-item list-group-item-action border-0" href="{{ route('admin.users.view', ['id' => Auth::user()->id]) }}">
                                             <i class="w30 fa fa-user"></i>My Profile
                                         </a>
                                     </div>
