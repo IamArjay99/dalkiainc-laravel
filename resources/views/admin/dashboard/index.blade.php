@@ -87,7 +87,7 @@
                                     width="40" height="40" class="position-absolute top-0 end-0 mt-4 me-3">
                                 <div class="mb-2 text-uppercase pe-5">TOTAL APPLICANTS</div>
                                 <div>
-                                    <span class="h3">{{ $data['total_careers'] }}</span> 
+                                    <span class="h3">{{ $data['total_applicants'] }}</span> 
                                 </div>
                             </div>
                         </div>
@@ -101,7 +101,7 @@
                                     width="40" height="40" class="position-absolute top-0 end-0 mt-4 me-3">
                                 <div class="mb-2 text-uppercase pe-5">TOTAL INQUIRIES</div>
                                 <div>
-                                    <span class="h3">{{ $data['total_careers'] }}</span> 
+                                    <span class="h3">{{ $data['total_inquiries'] }}</span> 
                                 </div>
                             </div>
                         </div>

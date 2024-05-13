@@ -14,6 +14,8 @@ class DashboardController extends Controller
         $ongoing_projects = DB::table('projects')->where('status', 'ONGOING')->count();
         $total_awards = DB::table('certification_awards')->count();
         $total_careers = DB::table('careers')->count();
+        $total_applicants = DB::table('applicant_reports')->count();
+        $total_inquiries = DB::table('inquiry_reports')->count();
 
         $website_data = [];
         for ($month = 1; $month <= 12; $month++) {
@@ -30,7 +32,9 @@ class DashboardController extends Controller
             'ongoing_projects' => $ongoing_projects,
             'total_awards' => $total_awards,
             'total_careers' => $total_careers,
-            'website_data' => $website_data
+            'website_data' => $website_data,
+            'total_applicants' => $total_applicants,
+            'total_inquiries' => $total_inquiries,
         ];
 
         return view('admin.dashboard.index', $data);
