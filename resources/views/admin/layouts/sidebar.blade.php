@@ -97,6 +97,25 @@
                         <span class="ms-2">Company Settings</span>
                     </a>
                 </li>
+
+                @if (is_super_admin())
+                    <li class="{{ in_array($uri_mainpage, ['admin-users']) ? 'collapsed' : '' }}">
+                        <a class="m-link"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#menu-administrator"
+                            href="#"
+                            aria-expanded="{{ in_array($uri_mainpage, ['admin-users']) ? 'true' : 'false' }}">
+                            <img src="{{ asset('assets/admin/img/icons/lock.png') }}" alt="Administrator" width="20" height="20">
+                            <span class="ms-2">Administrator</span>
+                            <span class="arrow fa fa-angle-right ms-auto text-end"></span>
+                        </a>
+                        <ul class="sub-menu collapse {{ in_array($uri_mainpage, ['admin-users']) ? 'collapsed show' : '' }}" id="menu-administrator">
+                            <li>
+                                <a class="ms-link {{ $uri_mainpage == 'admin-users' ? 'active' : '' }}" href="{{ '#' }}">Users</a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
             </ul>
         </div>
     </div>
@@ -180,10 +199,10 @@
                                             alt="">
                                         <div class="flex-fill ms-3">
                                             <h6 class="card-title mb-0">
-                                                John Doe
+                                                {{ Auth::user()->name }}
                                             </h6>
                                             <small class="text-muted">
-                                                System Administrator
+                                                {{ Auth::user()->role }}
                                             </small>
                                         </div>
                                     </div>

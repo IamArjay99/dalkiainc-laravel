@@ -63,4 +63,11 @@
         }
     }
 
+    function is_super_admin() {
+        if (auth()->user()->role == 'Super Administrator') {
+            return true;
+        }
+        return false;
+    }
+
 ?>

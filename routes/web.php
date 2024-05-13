@@ -45,6 +45,11 @@ Route::get('/admin', [LoginController::class, 'index'])->name('login');
 Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('auth.authenticate');
 Route::get('/logout', [LoginController::class, 'logout'])->name('auth.logout');
 
+// MAINTENANCE
+Route::get('/maintenance', function() { 
+    return view('maintenance.index');
+})->name('maintenance');
+
 // AUTHENTICATED REQUIRED
 Route::group(['middleware' => 'auth'], function () {
 
