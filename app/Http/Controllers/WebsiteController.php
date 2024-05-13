@@ -10,6 +10,10 @@ class WebsiteController extends Controller
 {
     public function index()
     {
+        if (is_website_maintenance()) {
+            return to_route('maintenance');
+        }
+
         $data['page_title'] = 'Home';
         $data['company_information'] = $this->get_company_information();
         $data['company_history'] = $this->get_company_history();
@@ -22,6 +26,10 @@ class WebsiteController extends Controller
 
     public function about()
     {
+        if (is_website_maintenance()) {
+            return to_route('maintenance');
+        }
+
         $data['page_title'] = 'About Us';
         $data['company_information'] = $this->get_company_information();
         $data['company_history'] = $this->get_company_history();
@@ -32,6 +40,10 @@ class WebsiteController extends Controller
 
     public function projects()
     {
+        if (is_website_maintenance()) {
+            return to_route('maintenance');
+        }
+
         $data['page_title'] = 'Projects';
         $data['company_information'] = $this->get_company_information();
         $data['projects'] = $this->get_projects();
@@ -42,6 +54,10 @@ class WebsiteController extends Controller
 
     public function project_filter(Request $request)
     {
+        if (is_website_maintenance()) {
+            return to_route('maintenance');
+        }
+
         $project_categories = $request->projectCategories;
         $status = $request->status;
         $current_page = $request->current_page ?? 1;
@@ -145,6 +161,10 @@ class WebsiteController extends Controller
 
     public function certifications_and_awards()
     {
+        if (is_website_maintenance()) {
+            return to_route('maintenance');
+        }
+
         $data['page_title'] = 'Certifications and Awards';
         $data['company_information'] = $this->get_company_information();
         $data['certifications_and_awards'] = $this->get_certifications_and_awards();
@@ -154,6 +174,10 @@ class WebsiteController extends Controller
 
     public function careers()
     {
+        if (is_website_maintenance()) {
+            return to_route('maintenance');
+        }
+
         $data['page_title'] = 'Careers';
         $data['company_information'] = $this->get_company_information();
         $data['careers'] = $this->get_careers();
@@ -163,6 +187,10 @@ class WebsiteController extends Controller
 
     public function career_details($id)
     {
+        if (is_website_maintenance()) {
+            return to_route('maintenance');
+        }
+
         $page_data = DB::table('careers')
             ->where('id', $id)
             ->where('status', 1)
@@ -186,6 +214,10 @@ class WebsiteController extends Controller
 
     public function career_apply(Request $request, $id) 
     {
+        if (is_website_maintenance()) {
+            return to_route('maintenance');
+        }
+
         $request->validate([
             'full_name' => 'required|min:2|max:255',
             'email_address' => 'required|email|max:255',
@@ -241,6 +273,10 @@ class WebsiteController extends Controller
 
     public function contacts()
     {
+        if (is_website_maintenance()) {
+            return to_route('maintenance');
+        }
+
         $data['page_title'] = 'Contacts';
         $data['company_information'] = $this->get_company_information();
         
@@ -249,6 +285,10 @@ class WebsiteController extends Controller
 
     public function contact_inquire(Request $request)
     {
+        if (is_website_maintenance()) {
+            return to_route('maintenance');
+        }
+
         $request->validate([
             'full_name' => 'required|min:2|max:255',
             'email_address' => 'required|email|max:255',
@@ -284,6 +324,15 @@ class WebsiteController extends Controller
                     'message' => 'Something went wrong, please contact your system administrator.'
                 ]);
         }
+    }
+
+    public function maintenance()
+    {
+        if (!is_website_maintenance()) {
+            return to_route('website.index');    
+        }
+
+        return view('maintenance.index');
     }
 
     // RETRIEVE DATA

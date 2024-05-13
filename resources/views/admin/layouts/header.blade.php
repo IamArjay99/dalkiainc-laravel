@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="base-url" content="{{ URL::to('/') }}">
     <meta name="asset-url" content="{{ env('ASSET_URL', '/') }}">
-    <title>Dalkia Inc. - {{ $page_title ?? '' }} {{ is_super_admin() ? '1' : '0' }}</title>
+    <title>Dalkia Inc. - {{ $page_title ?? '' }}</title>
 
     <link href="{{ asset('assets/website/img/logo/dalikiainc-fav.png') }}" rel="icon">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/jquery-confirm.min.css') }}">

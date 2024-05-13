@@ -67,7 +67,21 @@
         if (auth()->user()->role == 'Super Administrator') {
             return true;
         }
+
         return false;
+    }
+
+    function get_system_settings($key) {
+        $data = DB::table('system_settings')
+            ->select('value')
+            ->where('key', $key)
+            ->first();
+        
+        return $data->value ?? '';
+    }
+
+    function is_website_maintenance() {
+        return get_system_settings('website_maintenance') == '1';
     }
 
 ?>

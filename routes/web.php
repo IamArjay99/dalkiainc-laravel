@@ -28,7 +28,6 @@ use App\Http\Controllers\CompanySettingsController;
 use App\Http\Controllers\ApplicantReportsController;
 use App\Http\Controllers\InquiryReportsController;
 
-// WEBSITE
 Route::get('/', [WebsiteController::class, 'index'])->name('website.index');
 Route::get('/about', [WebsiteController::class, 'about'])->name('website.about');
 Route::get('/projects', [WebsiteController::class, 'projects'])->name('website.projects');
@@ -40,15 +39,13 @@ Route::post('/careers/{id}/apply', [WebsiteController::class, 'career_apply'])->
 Route::get('/contacts', [WebsiteController::class, 'contacts'])->name('website.contacts');
 Route::post('/contacts/inquire', [WebsiteController::class, 'contact_inquire'])->name('website.contacts.inquire');
 
+// MAINTENANCE
+Route::get('/maintenance', [WebsiteController::class, 'maintenance'])->name('maintenance');
+
 // LOGIN & LOGOUT
 Route::get('/admin', [LoginController::class, 'index'])->name('login');
 Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('auth.authenticate');
 Route::get('/logout', [LoginController::class, 'logout'])->name('auth.logout');
-
-// MAINTENANCE
-Route::get('/maintenance', function() { 
-    return view('maintenance.index');
-})->name('maintenance');
 
 // AUTHENTICATED REQUIRED
 Route::group(['middleware' => 'auth'], function () {

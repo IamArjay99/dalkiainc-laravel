@@ -52,6 +52,18 @@
     top: 50%;
     width: 20px;
     z-index: 1
+    
+    /* content: '';
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    width: 0px;
+    height: 0px;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 25px solid #6c757d;
+    transform: translateY(-50%);
+    z-index: 1; */
 }
 
 .timeline__item.animated {
@@ -188,11 +200,11 @@
 .timeline--horizontal .timeline__item:after {
     left: 50%;
     right: auto;
+    top: 100%;
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    top: 100%;
-    background: #b18307;
+    /* background: #b18307; */
 }
 
 .timeline--horizontal .timeline__item .timeline__item__inner {
