@@ -105,7 +105,7 @@
                 .css({ "min-width": "99%" })
                 .removeAttr("width")
                 .DataTable({
-                    // scrollX: true,
+                    scrollX: true,
                     // scrollY: '300px',
                     sorting: [],
                     scrollCollapse: true,
