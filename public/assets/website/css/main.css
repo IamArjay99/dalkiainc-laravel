@@ -3061,6 +3061,11 @@ a.nav-project.active {
   font-weight: 600 !important;
 }
 
+.display-from-texteditor li {
+  list-style: auto !important;
+  margin-left: 20px !important;
+}
+
 @media screen and (min-width: 768px) {
   .banner-area .owl-carousel {
     height: 65vh;

@@ -103,6 +103,15 @@
             </div>
         </div>
     </main>
+    
+
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#quality_policy' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
 
     <script>
         $(document).ready(function() {

@@ -65,9 +65,9 @@
 				</div>
 				<div class="col-md-12" data-aos="fade-up" id="our-quality-policy">
 					<h3 class="mt-20 pb-10 subtitle">OUR QUALITY POLICY</h3>
-					<p class="text-justify">
-						{!! nl2br(e($company_information->quality_policy)) !!}
-					</p>
+					<div class="text-justify display-from-texteditor">
+						<?= nl2br($company_information->quality_policy) ?>
+					</div>
 				</div>
 				<div class="col-md-12" id="scope-and-services">
 					<div class="container cat-area">

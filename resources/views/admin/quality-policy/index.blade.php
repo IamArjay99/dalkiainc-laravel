@@ -25,8 +25,9 @@
                                 Quality Policy
                             </label>
                             <div class="col-sm-10">
-                                <textarea name="quality_policy" id="quality_policy" rows="16" style="resize: none;"
-                                    class="form-control" disabled>{{ $data->quality_policy ?? '-' }}</textarea>
+                                <div class="display-textarea">
+                                    <?= nl2br($data->quality_policy) ?>
+                                </div>
                             </div>
                         </div>
 
