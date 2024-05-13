@@ -19,9 +19,9 @@
 			<div class="row">
 				<div class="col-md-6">
 					<h3 class="mb-30 subtitle">OUR COMPANY</h3>
-					<p class="text-justify">
-						{!! nl2br(e($company_information->company_overview)) !!}
-					</p>
+					<div class="text-justify display-from-texteditor">
+						<?= nl2br($company_information->company_overview) ?>
+					</div>
 				</div>
 				<div class="col-md-6 d-flex align-items-center justify-content-center">
 					<img src="{{ asset('assets/website/img/about/our-company.png') }}" alt="Our Company" class="img-fluid">
@@ -88,10 +88,11 @@
 						<h3 class="mt-20 pb-10 subtitle" data-aos="fade-down-right">SCOPE AND SERVICES</h3>
 						
 						@if (!empty($company_services))
-							<div class="owl-carousel-scope-and-services" data-aos="fade-up">
+							<div class="row gap-10">
+								
 								@foreach ( $company_services as $service )
-									<div class="item">
-										<div class="single-cat d-flex flex-column align-items-center justify-content-center service-item service-border">
+									<div class="col-lg-4 mt-10">
+										<div class="single-cat d-flex flex-column service-item service-border" data-aos="fade-up">
 											<img src="{{ asset('uploads/img/scope-and-services/'.$service->image) }}" alt="{{ $service->title }}" 
 												class="service-img" loading="lazy" style="height: 180px !important; width: auto;">
 											<h4 class="mb-20 service-title">{{ $service->title }}</h4>
@@ -101,6 +102,7 @@
 										</div>
 									</div>
 								@endforeach
+
 							</div>
 						@else
 							<h5>No Services</h5>

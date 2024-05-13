@@ -90,6 +90,9 @@
                                             <textarea name="company_overview" id="company_overview" rows="16" style="resize: none;"
                                                     class="form-control" autocomplete="off" required>{{ $company_overview }}</textarea>
                                         </div>
+                                        <div class="offset-2 col-10 text-info">
+                                            <small><b>Note:</b> This is used in the landing page.</small>
+                                        </div>
                                     </div>
                                     <div class="form-group row my-2">
                                         <label for="company_overview" class="col-sm-2 col-form-label">
@@ -98,6 +101,9 @@
                                         <div class="col-sm-10">
                                             <textarea name="brief_description" id="brief_description" rows="8" style="resize: none;"
                                                     class="form-control" autocomplete="off" required>{{ $brief_description }}</textarea>
+                                        </div>
+                                        <div class="offset-2 col-10 text-info">
+                                            <small><b>Note:</b> This is used in the footer.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -113,6 +119,21 @@
             </div>
         </div>
     </main>
+
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#company_overview' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+
+        ClassicEditor
+            .create( document.querySelector( '#brief_description' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+    
 
     <script>
         $(document).ready(function() {

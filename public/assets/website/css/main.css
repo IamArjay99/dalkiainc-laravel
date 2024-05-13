@@ -3052,6 +3052,15 @@ a.nav-project.active {
   width: 20px;
 }
 
+.display-from-texteditor p {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.display-from-texteditor strong {
+  font-weight: 600 !important;
+}
+
 @media screen and (min-width: 768px) {
   .banner-area .owl-carousel {
     height: 65vh;
@@ -3068,4 +3077,24 @@ a.nav-project.active {
   .award-right .award-description {
     padding-left: 50px;
   }
+}
+
+/* Set scrollbar colors for the entire body */
+* {
+  scrollbar-color: var(--highlight-color) #212529;
+}
+
+/* Optional: Adjust scrollbar dimensions */
+::-webkit-scrollbar {
+  width: 2em !important; /* Vertical scrollbar width */
+  height: 2em !important; /* Horizontal scrollbar height */
+}
+
+/* Optional: Style the thumb and track */
+::-webkit-scrollbar-thumb {
+  background: var(--highlight-color); /* Thumb color */
+}
+
+::-webkit-scrollbar-track {
+  background: #212529; /* Track color */
 }

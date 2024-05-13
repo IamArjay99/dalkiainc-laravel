@@ -31266,4 +31266,15 @@ tr.active {
 tr.active td {
     color: white;
 }
+.display-textarea {
+    background: #e9ecef;
+    padding: 15px;
+}
+.display-textarea p {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+.display-textarea strong {
+    font-weight: 600 !important;
+  }
 /* ----- END CUSTOM ----- */

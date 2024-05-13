@@ -72,12 +72,13 @@
 				<div class="col-md-12" id="scope-and-services">
 					<div class="container cat-area">
 						<h3 class="mt-20 pb-10 subtitle" data-aos="fade-down-right">SCOPE AND SERVICES</h3>
-						
+
 						@if (!empty($company_services))
-							<div class="owl-carousel-scope-and-services" data-aos="fade-up">
+							<div class="row gap-10">
+								
 								@foreach ( $company_services as $service )
-									<div class="item">
-										<div class="single-cat d-flex flex-column align-items-center justify-content-center service-item service-border">
+									<div class="col-lg-4 mt-10">
+										<div class="single-cat d-flex flex-column service-item service-border" data-aos="fade-up">
 											<img src="{{ asset('uploads/img/scope-and-services/'.$service->image) }}" alt="{{ $service->title }}" 
 												class="service-img" loading="lazy" style="height: 180px !important; width: auto;">
 											<h4 class="mb-20 service-title">{{ $service->title }}</h4>
@@ -87,6 +88,7 @@
 										</div>
 									</div>
 								@endforeach
+
 							</div>
 						@else
 							<h5>No Services</h5>

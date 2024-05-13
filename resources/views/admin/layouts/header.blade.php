@@ -28,6 +28,7 @@
     <!-- Jquery Core Js -->
     <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
 
 </head>
 

@@ -4,9 +4,9 @@
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-12 d-flex flex-column address-wrap">
                     <img src="{{ asset('assets/website/img/logo/dalikiainc-fav.png') }}" alt="Dalkia Inc. Logo" title="Dalkia Inc. Logo" style="max-width: 284px; max-height: 60px; width: 30px; padding-bottom: 20px;">
-                    <p class="text-white" style="padding-right: 40px;">
-                        {{ $company_information->brief_description }}
-                    </p>
+                    <div class="text-white display-from-texteditor" style="padding-right: 40px;">
+                        <?= nl2br($company_information->brief_description) ?>
+                    </div>
                     <div class="single-footer-widget mt-10">
                         <h6>FOLLOW US</h6>
                         <div class="footer-social d-flex align-items-center">

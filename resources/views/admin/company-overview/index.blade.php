@@ -25,8 +25,9 @@
                                 Our Company
                             </label>
                             <div class="col-sm-10">
-                                <textarea name="company_overview" id="company_overview" rows="16" style="resize: none;"
-                                    class="form-control" disabled>{{ $data->company_overview ?? '-' }}</textarea>
+                                <div class="display-textarea">
+                                    <?= nl2br($data->company_overview) ?? '-' ?>
+                                </div>
                             </div>
                             <div class="offset-2 col-10 text-info">
                                 <small><b>Note:</b> This is used in the landing page.</small>
@@ -37,8 +38,9 @@
                                 Brief Description
                             </label>
                             <div class="col-sm-10">
-                                <textarea name="brief_description" id="brief_description" rows="8" style="resize: none;"
-                                    class="form-control" disabled>{{ $data->brief_description ?? '-' }}</textarea>
+                                <div class="display-textarea">
+                                    <?= nl2br($data->brief_description) ?? '-' ?>
+                                </div>
                             </div>
                             <div class="offset-2 col-10 text-info">
                                 <small><b>Note:</b> This is used in the footer.</small>
