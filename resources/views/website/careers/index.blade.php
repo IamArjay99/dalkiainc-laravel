@@ -26,7 +26,7 @@
 		<div class="container">
 
 			@if ($careers && count($careers))
-				<div class="row" style="gap: 15px;">
+				<div class="row" style="gap: 15px 0;">
 					@foreach($careers as $career)
 						<div class="col-lg-4">
 							<div class="card card-career h-100">

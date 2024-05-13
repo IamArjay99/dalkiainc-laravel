@@ -24,7 +24,7 @@
 
     <section class="career-opportunity-area section-gap" id="career-opportunity">
 		<div class="container">
-			<div class="row">
+			<div class="row" style="gap: 15px 0;">
 				<div class="col-lg-7">
 					<div class="card">
 						<div class="card-body">
