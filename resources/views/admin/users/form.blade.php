@@ -235,15 +235,6 @@
                             </div>
                         </form>
 
-                        @if ($form_todo != 'CREATE')
-                            <!-- ----- FORM DELETE ----- -->
-                            <form action='{{ route('admin.users.delete', ['id' => $id]) }}' method='POST' id='formDelete'>
-                                @csrf 
-                                @method('DELETE')
-                            </form>
-                            <!-- ----- END FORM DELETE ----- -->
-                        @endif
-
                     </div>
                 </div>
             </div>
