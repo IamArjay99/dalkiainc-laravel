@@ -23,7 +23,7 @@
     <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-0">
         <div class="container-fluid">
             <div class="row g-3">
-                <div class="col-lg-3 col-md-4">
+                <div class="col-lg-4 col-md-4">
                     <a href="{{ route('admin.projects') }}">
                         <div class="card overflow-hidden h-100 border-0" style="background: linear-gradient(240deg, #dc3545, #136f7e0d);">
                             <div class="card-body d-flex flex-column justify-content-between">
@@ -37,7 +37,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-3 col-md-4">
+                <div class="col-lg-4 col-md-4">
                     <a href="{{ route('admin.projects') }}">
                         <div class="card overflow-hidden h-100 border-0" style="background: linear-gradient(240deg, #7caad2, #136f7e0d);">
                             <div class="card-body d-flex flex-column justify-content-between">
@@ -51,13 +51,13 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-3 col-md-4">
+                <div class="col-lg-4 col-md-4">
                     <a href="{{ route('admin.certifications-and-awards') }}">
                         <div class="card overflow-hidden h-100 border-0" style="background: linear-gradient(240deg, #53b577, #136f7e0d);">
                             <div class="card-body d-flex flex-column justify-content-between">
                                 <img src="{{ asset('assets/admin/img/icons/dashboard-award.png') }}" alt="Projects"
                                     width="40" height="40" class="position-absolute top-0 end-0 mt-4 me-3">
-                                <div class="mb-2 text-uppercase pe-5">TOTAL CERTIFICATION & AWARDS</div>
+                                <div class="mb-2 text-uppercase pe-5">TOTAL CERTS & AWARDS</div>
                                 <div>
                                     <span class="h3">{{ $data['total_awards'] }}</span> 
                                 </div>
@@ -65,13 +65,41 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-3 col-md-4">
+                <div class="col-lg-4 col-md-4">
                     <a href="{{ route('admin.careers') }}">
                         <div class="card overflow-hidden h-100 border-0" style="background: linear-gradient(240deg, #a04e71, #136f7e0d);">
                             <div class="card-body d-flex flex-column justify-content-between">
                                 <img src="{{ asset('assets/admin/img/icons/dashboard-career.png') }}" alt="Projects"
                                     width="40" height="40" class="position-absolute top-0 end-0 mt-4 me-3">
                                 <div class="mb-2 text-uppercase pe-5">TOTAL CAREERS</div>
+                                <div>
+                                    <span class="h3">{{ $data['total_careers'] }}</span> 
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <a href="{{ route('admin.applicant-reports') }}">
+                        <div class="card overflow-hidden h-100 border-0" style="background: linear-gradient(240deg, #4e68a0, #136f7e0d);">
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <img src="{{ asset('assets/admin/img/icons/dashboard-applicant.png') }}" alt="Projects"
+                                    width="40" height="40" class="position-absolute top-0 end-0 mt-4 me-3">
+                                <div class="mb-2 text-uppercase pe-5">TOTAL APPLICANTS</div>
+                                <div>
+                                    <span class="h3">{{ $data['total_careers'] }}</span> 
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <a href="{{ route('admin.inquiry-reports') }}">
+                        <div class="card overflow-hidden h-100 border-0" style="background: linear-gradient(240deg, #a0894e, #136f7e0d);">
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <img src="{{ asset('assets/admin/img/icons/dashboard-inquiry.png') }}" alt="Projects"
+                                    width="40" height="40" class="position-absolute top-0 end-0 mt-4 me-3">
+                                <div class="mb-2 text-uppercase pe-5">TOTAL INQUIRIES</div>
                                 <div>
                                     <span class="h3">{{ $data['total_careers'] }}</span> 
                                 </div>

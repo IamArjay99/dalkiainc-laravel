@@ -143,7 +143,7 @@
                     </button>
                 </div>
                 <ul class="header-right justify-content-end d-flex align-items-center mb-0">
-                    <li>
+                    {{-- <li>
                         <div class="dropdown morphing scale-left notifications">
                             <a class="nav-link dropdown-toggle after-none" href="#" role="button"
                                 data-bs-toggle="dropdown">
@@ -181,21 +181,21 @@
                                 </div>
                             </div>
                         </div>
-                    </li>
+                    </li> --}}
 
                     <li>
                         <div class="dropdown morphing scale-left user-profile mx-lg-3 mx-2">
                             <a class="nav-link dropdown-toggle rounded-circle after-none p-0" href="#"
                                 role="button" data-bs-toggle="dropdown">
                                 <img class="avatar img-thumbnail rounded-circle shadow"
-                                    src="{{ asset('assets/admin/img/profile/default.png') }}"
+                                    src="{{ asset('assets/admin/img/profile/avatar.png') }}"
                                     alt="">
                             </a>
                             <div class="dropdown-menu border-0 rounded-4 shadow p-0">
                                 <div class="card border-0 w240">
                                     <div class="card-body border-bottom d-flex">
                                         <img class="avatar rounded-circle"
-                                            src="{{ asset('assets/admin/img/profile/default.png') }}"
+                                            src="{{ asset('assets/admin/img/profile/avatar.png') }}"
                                             alt="">
                                         <div class="flex-fill ms-3">
                                             <h6 class="card-title mb-0">
