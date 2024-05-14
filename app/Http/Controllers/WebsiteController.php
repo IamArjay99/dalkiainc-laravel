@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use PHPMailer\PHPMailer\PHPMailer;  
+use PHPMailer\PHPMailer\Exception;
+
 class WebsiteController extends Controller
 {
     public function index()
@@ -239,7 +242,7 @@ class WebsiteController extends Controller
         $filename = str_replace(' ', '-', strtolower($full_name)) . time() . '.' . $extension[0];
         $file->move($destination_path, $filename);
 
-        $insert = DB::table('applicant_reports')->insert([
+        $data = [
             'career_id' => $id,
             'job_title' => $job_title,
             'full_name' => $full_name,
@@ -249,15 +252,19 @@ class WebsiteController extends Controller
             'resume' => $filename,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
-        ]);
+        ];
+
+        $insert = DB::table('applicant_reports')->insert($data);
 
         if ($insert)
         {
+            $this->send_email($data, 'applicant');
+
             return redirect()
                 ->route('website.careers')
                 ->with([
                     'status' => 'success',
-                    'message' => 'Your application has been submitted successfully. We will get back to you soon.'
+                    'message' => 'Your application has been submitted successfully. \nWe will get back to you soon.'
                 ]);
         }
         else
@@ -297,22 +304,26 @@ class WebsiteController extends Controller
         ]);
 
         $full_name = $request->full_name;
-        $insert = DB::table('inquiry_reports')->insert([
+        $data = [
             'full_name' => $full_name,
             'email_address' => $request->email_address,
             'subject' => $request->subject,
             'message' => $request->message,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
-        ]);
+        ];
+        $insert = DB::table('inquiry_reports')->insert($data);
 
         if ($insert)
         {
+            // Send Email
+            $this->send_email($data, 'inquiry');
+
             return redirect()
                 ->route('website.contacts')
                 ->with([
                     'status' => 'success',
-                    'message' => 'Your inquiry has been submitted successfully. We will get back to you soon.'
+                    'message' => 'Your inquiry has been submitted successfully. \nWe will get back to you soon.'
                 ]);
         }
         else
@@ -451,5 +462,101 @@ class WebsiteController extends Controller
             ->orderBy('id', 'asc')
             ->get();
         return $data;
+    }
+
+
+
+    public function send_email($data = [], $type = 'inquiry')
+    {
+        require base_path("vendor/autoload.php");
+        $mail = new PHPMailer(true);
+ 
+        try {
+            $full_name = $data['full_name'] ?? 'Arjay Diangzon';
+            $email_address = $data['email_address'] ?? 'arjaydiangzon@gmail.com';
+            $subject = $data['subject'] ?? 'Test Email';
+            $message = $data['message'] ?? 'Test Message';
+            $filename = $data['resume'] ?? '';
+            $date_today = date('F j, Y, g:i A', strtotime($data['created_at']));
+
+            if ($type == 'inquiry') {
+                $set_from = 'Inquiry - Dalkia Inc.';
+                $body = "Hello Team,
+
+You have received a new inquiry, here's the details:
+
+Sender: $full_name
+Email: $email_address
+Subject: $subject
+Message: $message
+Date Submitted: $date_today
+
+Regards,
+Support - Dalkia Inc.";
+            }
+            else {
+                $set_from = 'Job Applicant - Dalkia Inc.';
+                $body = "Hello Team,
+
+You have received a new job applicant, here's the details:
+
+Sender: $full_name
+Email: $email_address
+Subject: $subject
+Message: $message
+Date Submitted: $date_today
+
+Regards,
+Support - Dalkia Inc.";
+
+            }
+
+            $mail = new PHPMailer;
+            $mail->isSMTP();
+            $mail->SMTPDebug = 0;
+            $mail->Host = 'smtp.hostinger.com';
+            $mail->Port = 587;
+            $mail->SMTPAuth = true;
+            $mail->Username = 'support@arjaydiangzon.com';
+            $mail->Password = 'Di@ngz0n13524';
+            $mail->SMTPSecure = 'tls';
+            $mail->setFrom('support@arjaydiangzon.com', $set_from);
+            $mail->addAddress('constarjay@gmail.com', 'Arjay Diangzon');
+            $mail->addAddress('arjaydiangzon@gmail.com', 'Arjay Diangzon');
+            // $mail->addCC('arjaydiangzon@gmail.com', 'Arjay Diangzon');
+            $mail->Subject = $subject;
+            $mail->isHTML(false);
+            $mail->Body = $body;
+
+            if ($type == 'applicant') {
+                $mail->addAttachment('uploads/resume/'.$filename, $filename);
+            }
+ 
+            if(!$mail->send() ) {
+                return redirect()
+                    ->back()
+                    ->withErrors([
+                        'status' => 'error',
+                        'message' => "Email not sent. Error: " . $mail->ErrorInfo
+                    ]);
+            }
+            
+            else {
+                return redirect()
+                    ->back()
+                    ->with([
+                        'status' => 'success',
+                        'message' => "Email has been sent."
+                    ]);
+            }
+ 
+        } catch (Exception $e) {
+             return redirect()
+                ->back()
+                ->withErrors([
+                    'status' => 'error',
+                    'message' => "Email could not be sent. Error: " . $mail->ErrorInfo
+                ]);
+        }
     }
 }

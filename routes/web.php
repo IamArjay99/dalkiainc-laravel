@@ -31,6 +31,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SystemSettingsController;
 
 Route::get('/', [WebsiteController::class, 'index'])->name('website.index');
+Route::get('/send_email', [WebsiteController::class, 'send_email'])->name('website.send_email');
 Route::get('/about', [WebsiteController::class, 'about'])->name('website.about');
 Route::get('/projects', [WebsiteController::class, 'projects'])->name('website.projects');
 Route::get('/projects/filter', [WebsiteController::class, 'project_filter'])->name('website.projects.filter');
