@@ -363,10 +363,10 @@ class WebsiteController extends Controller
         $limit = 6;
 
         $project_summary = DB::table('projects')
-            ->selectRaw('(SELECT COUNT(*) FROM projects WHERE status = "ONGOING") as ongoing_projects')
-            ->selectRaw('(SELECT COUNT(*) FROM projects WHERE status = "COMPLETED") as completed_projects')
-            ->selectRaw('CEILING((SELECT COUNT(*) FROM projects WHERE status = "ONGOING") / '. $limit .') as ongoing_pages')
-            ->selectRaw('CEILING((SELECT COUNT(*) FROM projects WHERE status = "COMPLETED") / '. $limit .') as completed_pages')
+            ->selectRaw('(SELECT COUNT(*) FROM projects WHERE status = "ONGOING" AND project_type = "Major") as ongoing_projects')
+            ->selectRaw('(SELECT COUNT(*) FROM projects WHERE status = "COMPLETED" AND project_type = "Major") as completed_projects')
+            ->selectRaw('CEILING((SELECT COUNT(*) FROM projects WHERE status = "ONGOING" AND project_type = "Major") / '. $limit .') as ongoing_pages')
+            ->selectRaw('CEILING((SELECT COUNT(*) FROM projects WHERE status = "COMPLETED" AND project_type = "Major") / '. $limit .') as completed_pages')
             ->first();
 
         $ongoing_pages = $project_summary->ongoing_pages ?? 1;
@@ -397,11 +397,13 @@ class WebsiteController extends Controller
 
         $ongoing_projects = DB::table('projects')
             ->where('status', 'ONGOING')
+            ->where('project_type', 'Major')
             ->orderBy('id', 'asc')
             ->limit($limit)
             ->get();
         $completed_projects = DB::table('projects')
             ->where('status', 'COMPLETED')
+            ->where('project_type', 'Major')
             ->orderBy('id', 'asc')
             ->limit($limit)
             ->get();
@@ -426,6 +428,7 @@ class WebsiteController extends Controller
     private function get_certifications_and_awards()
     {
         $data = DB::table('certification_awards')
+            ->where('status', 1)
             ->orderBy('id', 'asc')
             ->get();
         return $data;
@@ -435,7 +438,7 @@ class WebsiteController extends Controller
     {
         $data = DB::table('project_category')
             ->select('id', 'name')
-            ->selectRaw('(SELECT COUNT(*) FROM projects WHERE project_category_id = project_category.id GROUP BY project_category_id) as project_count')
+            ->selectRaw('(SELECT COUNT(*) FROM projects WHERE project_category_id = project_category.id AND project_type = "Major" GROUP BY project_category_id) as project_count')
             ->orderBy('id', 'asc')
             ->get();
         return $data;

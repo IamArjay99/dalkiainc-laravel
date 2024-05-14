@@ -32,12 +32,17 @@
                                     <th>#</th>
                                     <th>Title</th>
                                     <th>Description</th>
+                                    <th>Status</th>
                                     <th>&nbsp;</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @if (isset($data) && !empty($data))
                                     @foreach ($data as $index => $dt)
+                                        @php
+                                            $status = $dt->status == 1 ? "<span class='badge bg-success'>Active</span>" : "<span class='badge bg-danger'>Inactive</span>";
+                                        @endphp
+
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
                                             <td>
@@ -48,6 +53,7 @@
                                                 </a>
                                             </td>
                                             <td>{{ $dt->description ?? '-' }}</td>
+                                            <td><?= $status ?></td>
                                             <td class="text-end">
                                                 <a href="#" class="more-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                                     <i class="fa fa-ellipsis-v"></i>
@@ -101,7 +107,8 @@
                         { targets: 0,  width: 10  },
                         { targets: 1,  width: 200 },
                         { targets: 2,  width: 300 },
-                        { targets: 3,  width: 10  },
+                        { targets: 3,  width: 100 },
+                        { targets: 4,  width: 10  },
                     ],
                 });
             // ----- END DATATABLES -----

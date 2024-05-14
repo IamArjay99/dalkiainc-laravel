@@ -14,7 +14,7 @@ class ProjectController extends Controller
         $data['data'] = DB::table('projects')
             ->leftJoin('project_category', 'project_category.id', '=', 'projects.project_category_id')
             ->select('projects.*', 'project_category.name as project_category')
-            ->orderBy('projects.id', 'asc')
+            ->orderBy('projects.start_date', 'desc')
             ->get();
 
         return view('admin.projects.index', $data);
@@ -44,7 +44,9 @@ class ProjectController extends Controller
             'scope_of_work' => 'required|string|max:255',
             'floor' => 'required|string|max:100',
             'status' => 'required',
-            'project_type' => 'required'
+            'project_type' => 'required',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date'
         ]);
 
         $destination_path = 'uploads/img/projects';
@@ -78,6 +80,8 @@ class ProjectController extends Controller
             'status' => $request->status,
             'image' => $filename,
             'project_type' => $request->project_type,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
             'showcase' => isset($request->showcase) ? 1 : 0,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
@@ -145,7 +149,9 @@ class ProjectController extends Controller
             'scope_of_work' => 'required|string|max:255',
             'floor' => 'required|string|max:100',
             'status' => 'required',
-            'project_type' => 'required'
+            'project_type' => 'required',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date'
         ]);
 
         $destination_path = 'uploads/img/projects';
@@ -181,6 +187,8 @@ class ProjectController extends Controller
                 'status' => $request->status,
                 'image' => $filename,
                 'project_type' => $request->project_type,
+                'start_date' => $request->start_date,
+                'end_date' => $request->end_date,
                 'showcase' => isset($request->showcase) ? 1 : 0,
                 'updated_at' => date('Y-m-d H:i:s')
             ]);

@@ -32,7 +32,6 @@
                                     <th>#</th>
                                     <th>Project Name</th>
                                     <th>Project Category</th>
-                                    <th>Client</th>
                                     <th>Scope of Work</th>
                                     <th>Status</th>
                                     <th>&nbsp;</th>
@@ -53,11 +52,14 @@
                                                     <div>{{ $dt->name }}</div>
                                                 </a>
                                             </td>
-                                            <td>{{ $dt->project_category ?? '-' }}</td>
-                                            <td>{{ $dt->client ?? '-' }}</td>
+                                            <td>
+                                                <div>{{ $dt->project_category ?? '-' }}</div>
+                                                <small>Duration: {{ ($dt->start_date && $dt->end_date) ? 
+                                                    date('F d, Y', strtotime($dt->start_date)) . ' - ' . date('F d, Y', strtotime($dt->end_date)) : '-' }}</small>
+                                            </td>
                                             <td>
                                                 <div>{{ $dt->scope_of_work ?? '-' }}</div>
-                                                <small>{{ 'No. of Floors: ' . $dt->floor ?? '-' }}</small>
+                                                <small>No. of Floors: {{ $dt->floor ?? '-' }}</small>
                                             </td>
                                             <td><?= $status ?></td>
                                             <td class="text-end">
@@ -113,11 +115,10 @@
                     columnDefs: [
                         { targets: 0,  width: 10  },
                         { targets: 1,  width: 200 },
-                        { targets: 2,  width: 150 },
-                        { targets: 3,  width: 150 },
-                        { targets: 4,  width: 300 },
-                        { targets: 5,  width: 100 },
-                        { targets: 6,  width: 10  },
+                        { targets: 2,  width: 300 },
+                        { targets: 3,  width: 300 },
+                        { targets: 4,  width: 100 },
+                        { targets: 5,  width: 10  },
                     ],
                 });
             // ----- END DATATABLES -----

@@ -18,20 +18,6 @@
         </footer>
     </div>
 
-    <!-- Jquery Page Js -->
-    <script src="{{ asset('assets/admin/js/theme.js') }}"></script>
-    <!-- Plugin Js -->
-    <script src="{{ asset('assets/admin/js/bundle/apexcharts.bundle.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/bundle/datatablescripts.bundle.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/bundle/daterangepicker.bundle.js') }}"></script>
-    <!-- Vendor Script -->
-    <script src="{{ asset('assets/admin/js/moment.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/jquery-confirm.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/select2.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/bs5-toast.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/drag-arrange.js') }}"></script>
-
 
     <!-- Custom -->
     <script src="{{ asset('assets/admin/js/custom.js') }}"></script>

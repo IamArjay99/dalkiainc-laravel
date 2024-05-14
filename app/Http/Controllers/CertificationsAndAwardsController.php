@@ -35,7 +35,8 @@ class CertificationsAndAwardsController extends Controller
                 'max:100',
                 'unique:certification_awards,title'
             ],
-            'description' => 'required|string|max:2000'
+            'description' => 'required|string|max:2000',
+            'status' => 'required'
         ]);
 
         $destination_path = 'uploads/img/certifications-and-awards';
@@ -62,6 +63,7 @@ class CertificationsAndAwardsController extends Controller
         $insert = DB::table('certification_awards')->insert([
             'title' => $title,
             'description' => $request->description,
+            'status' => $request->status,
             'image' => $filename,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
@@ -118,7 +120,8 @@ class CertificationsAndAwardsController extends Controller
                 'max:100',
                 'unique:certification_awards,title,' . $id
             ],
-            'description' => 'required|string|max:2000'
+            'description' => 'required|string|max:2000',
+            'status' => 'required'
         ]);
 
         $destination_path = 'uploads/img/certifications-and-awards';
@@ -147,6 +150,7 @@ class CertificationsAndAwardsController extends Controller
             ->update([
                 'title' => $title,
                 'description' => $request->description,
+                'status' => $request->status,
                 'image' => $filename,
                 'updated_at' => date('Y-m-d H:i:s')
             ]);

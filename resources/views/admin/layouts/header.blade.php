@@ -30,6 +30,20 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
 
+     <!-- Jquery Page Js -->
+     <script src="{{ asset('assets/admin/js/theme.js') }}"></script>
+     <!-- Plugin Js -->
+     <script src="{{ asset('assets/admin/js/bundle/apexcharts.bundle.js') }}"></script>
+     <script src="{{ asset('assets/admin/js/bundle/datatablescripts.bundle.js') }}"></script>
+     <script src="{{ asset('assets/admin/js/dataTables.bootstrap4.min.js') }}"></script>
+     <script src="{{ asset('assets/admin/js/bundle/daterangepicker.bundle.js') }}"></script>
+     <!-- Vendor Script -->
+     <script src="{{ asset('assets/admin/js/moment.js') }}"></script>
+     <script src="{{ asset('assets/admin/js/jquery-confirm.min.js') }}"></script>
+     <script src="{{ asset('assets/admin/js/select2.min.js') }}"></script>
+     <script src="{{ asset('assets/admin/js/bs5-toast.js') }}"></script>
+     <script src="{{ asset('assets/admin/js/drag-arrange.js') }}"></script>
+
 </head>
 
 <body class="layout-1 font-raleway radius-0" data-luno="theme-black">
