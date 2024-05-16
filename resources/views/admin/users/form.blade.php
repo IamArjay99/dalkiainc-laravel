@@ -45,7 +45,7 @@
             <div class='d-flex justify-content-end'>
                 <a href=". route('admin.users.edit', ['id' => $id]) ."
                     class='btn btn-warning mx-1'>
-                    <i class='bi bi-pencil'></i> Update Password
+                    <i class='bi bi-pencil'></i> Edit
                 </a>
             </div>";
         }
@@ -138,24 +138,46 @@
 
                                     <div class="form-group row my-2">
                                         <label for="name" class="col-sm-2 col-form-label">
-                                            Name
+                                            Name <?= $form_required ?>
                                         </label>
                                         <div class="col-sm-10">
-                                            <input type="text"
-                                                class="form-control"
-                                                value="{{ $name ?? '-' }}"
-                                                disabled>
+                                            @if ($form_todo == 'READ')
+                                                <input type="text"
+                                                    class="form-control"
+                                                    value="{{ $name ?? '-' }}"
+                                                    disabled>
+                                            @else
+                                                <input type="text"
+                                                    class="form-control"
+                                                    id="name"
+                                                    name="name"
+                                                    placeholder="Enter name"
+                                                    value="{{ $name }}"
+                                                    autocomplete="off"
+                                                    required>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="form-group row my-2">
                                         <label for="email" class="col-sm-2 col-form-label">
-                                            Email
+                                            Email Address <?= $form_required ?>
                                         </label>
                                         <div class="col-sm-10">
-                                            <input type="text"
-                                                class="form-control"
-                                                value="{{ $email ?? '-' }}"
-                                                disabled>
+                                            @if ($form_todo == 'READ')
+                                                <input type="text"
+                                                    class="form-control"
+                                                    value="{{ $email ?? '-' }}"
+                                                    disabled>
+                                            @else
+                                                <input type="email"
+                                                    class="form-control"
+                                                    id="email"
+                                                    name="email"
+                                                    placeholder="Enter email"
+                                                    value="{{ $email }}"
+                                                    autocomplete="off"
+                                                    required>
+                                            @endif
                                         </div>
                                     </div>
 

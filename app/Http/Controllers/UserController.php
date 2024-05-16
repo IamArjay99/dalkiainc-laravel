@@ -98,6 +98,14 @@ class UserController extends Controller
     public function update($id, Request $request)
     {
         $request->validate([
+            'name' => 'required|min:2|max:50',
+            'email' => [
+                'required',
+                'email',
+                'min:2',
+                'max:100',
+                'unique:users,email,'.$id
+            ],
             'new_password' => [
                 'required',
                 'string',
@@ -143,6 +151,8 @@ class UserController extends Controller
                 $update = DB::table('users')
                     ->where('id', $id)
                     ->update([
+                        'name' => $request->name,
+                        'email' => $request->email,
                         'password' => $hashed_password
                     ]);
 
