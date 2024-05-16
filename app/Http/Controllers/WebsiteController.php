@@ -258,6 +258,8 @@ class WebsiteController extends Controller
 
         if ($insert)
         {
+            // ----- SEND EMAIL -----
+            $data['id'] = DB::getPdo()->lastInsertId();
             $this->send_email($data, 'applicant');
 
             return redirect()
@@ -316,7 +318,8 @@ class WebsiteController extends Controller
 
         if ($insert)
         {
-            // Send Email
+            // ----- SEND EMAIL -----
+            $data['id'] = DB::getPdo()->lastInsertId();
             $this->send_email($data, 'inquiry');
 
             return redirect()
@@ -472,12 +475,13 @@ class WebsiteController extends Controller
         $mail = new PHPMailer(true);
  
         try {
-            $full_name = $data['full_name'] ?? 'Arjay Diangzon';
-            $email_address = $data['email_address'] ?? 'arjaydiangzon@gmail.com';
-            $subject = $data['subject'] ?? 'Test Email';
+            $id = $data['id'] ?? 0;
+            $full_name = $data['full_name'] ?? 'John Doe';
+            $email_address = $data['email_address'] ?? 'johndoe@email.com';
+            $subject = $data['subject'] ?? 'Test Subject';
             $message = $data['message'] ?? 'Test Message';
             $filename = $data['resume'] ?? '';
-            $date_today = date('F j, Y, g:i A', strtotime($data['created_at']));
+            $date_today = date('F j, Y g:i A', strtotime($data['created_at']));
 
             if ($type == 'inquiry') {
                 $set_from = 'Inquiry - Dalkia Inc.';
@@ -490,6 +494,8 @@ Email: $email_address
 Subject: $subject
 Message: $message
 Date Submitted: $date_today
+
+View Inquiry: " . route('admin.inquiry-reports.view', $id) . "
 
 Regards,
 Support - Dalkia Inc.";
@@ -506,6 +512,8 @@ Subject: $subject
 Message: $message
 Date Submitted: $date_today
 
+View Applicant: " . route('admin.applicant-reports.view', $id) . "
+
 Regards,
 Support - Dalkia Inc.";
 
@@ -514,15 +522,15 @@ Support - Dalkia Inc.";
             $mail = new PHPMailer;
             $mail->isSMTP();
             $mail->SMTPDebug = 0;
-            $mail->Host = 'smtp.hostinger.com';
-            $mail->Port = 587;
+            $mail->Host = env('CUSTOM_MAIL_HOST');
+            $mail->Port = env('CUSTOM_MAIL_PORT');
             $mail->SMTPAuth = true;
-            $mail->Username = 'support@arjaydiangzon.com';
-            $mail->Password = 'Di@ngz0n13524';
+            $mail->Username = env('CUSTOM_MAIL_USERNAME');
+            $mail->Password = env('CUSTOM_MAIL_PASSWORD');
             $mail->SMTPSecure = 'tls';
-            $mail->setFrom('support@arjaydiangzon.com', $set_from);
+            $mail->setFrom(env('CUSTOM_MAIL_USERNAME'), $set_from);
             $mail->addAddress('constarjay@gmail.com', 'Arjay Diangzon');
-            $mail->addAddress('arjaydiangzon@gmail.com', 'Arjay Diangzon');
+            // $mail->addAddress('arjaydiangzon@gmail.com', 'Arjay Diangzon');
             // $mail->addCC('arjaydiangzon@gmail.com', 'Arjay Diangzon');
             $mail->Subject = $subject;
             $mail->isHTML(false);
