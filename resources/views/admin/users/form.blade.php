@@ -45,7 +45,7 @@
             <div class='d-flex justify-content-end'>
                 <a href=". route('admin.users.edit', ['id' => $id]) ."
                     class='btn btn-warning mx-1'>
-                    <i class='bi bi-pencil'></i> Edit
+                    <i class='bi bi-pencil'></i> Edit and Change Password
                 </a>
             </div>";
         }
