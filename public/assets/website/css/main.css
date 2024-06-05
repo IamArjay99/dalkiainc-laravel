@@ -3061,8 +3061,15 @@ a.nav-project.active {
   font-weight: 600 !important;
 }
 
-.display-from-texteditor li {
+.display-from-texteditor ul {
+  list-style: disc !important;
+}
+
+.display-from-texteditor ol {
   list-style: auto !important;
+}
+
+.display-from-texteditor li {
   margin-left: 20px !important;
 }
 

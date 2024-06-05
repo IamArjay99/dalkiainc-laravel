@@ -51,9 +51,12 @@
 										<div class="timeline__item">
 											<div class="timeline__content">
 												<h3 class="text-center mb-10 highlight">{{ $history->year }}</h3>
-												<p>
-													{{ $history->description }}
-												</p>
+												<p class="about-description"></p>
+												<div class="about-description d-flex align-items-center flex-column display-from-texteditor"
+													year="{{ $history->year }}"
+													description="{{ $history->description }}">
+													<?= nl2br($history->description) ?>
+												</div>
 											</div>
 										</div>	
 									@endforeach
@@ -324,6 +327,44 @@
 @endif
 
 <script>
+	document.addEventListener('DOMContentLoaded', function() {
+		$('div.about-description').each(function() {
+			let year = $(this).attr('year');
+			let originalDescription = $(this).attr('description');
+			let description = $(this).text()?.trim();
+			if (description.length > 60) {
+				description = description.substring(0, 60) + '...';
+				let display = description + `<a href="javascript:void(0)" 
+					year="${year}"
+					description="${originalDescription}" 
+					class="btn btn-link pl-1 btnAboutSeeMore">See More</a>`;
+				$(this).html(display);
+			}
+		})
+	})
+
+	$(document).on('click', '.btnAboutSeeMore', function() {
+		let year = $(this).attr('year');
+		let description = $(this).attr('description');
+		description = `
+		<div class="display-from-texteditor">
+			${description}	
+		</div>`;
+
+		$.confirm({
+			title: year,
+			content: description,
+			columnClass: 'col-md-6 col-md-offset-3',
+			type: 'orange',
+			backgroundDismiss: true,
+			buttons: {
+				close: {
+					btnClass: 'btn-default',
+				}
+			}
+		});
+	})
+
 	$('#formInquire').on('submit', function(e) {
 		let isValidated = $(this).attr('validated') == "true";
 

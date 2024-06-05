@@ -42,11 +42,15 @@
                                             <td>{{ $index + 1 }}</td>
                                             <td>
                                                 <a href="{{ route('admin.company-history.view', ['id' => $dt->id]) }}" 
-                                                    class="d-flex align-items-center justify-content-start gap-2">
+                                                    class="d-flex align-items-center justify-content-start gap-2 text-decoration-underline">
                                                     <div>{{ $dt->year }}</div>
                                                 </a>
                                             </td>
-                                            <td>{{ $dt->description ?? '-' }}</td>
+                                            <td>
+                                                <div class="display-textarea">
+                                                    <?= nl2br($dt->description) ?? '-' ?>
+                                                </div>
+                                            </td>
                                             <td class="text-end">
                                                 <a href="#" class="more-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                                     <i class="fa fa-ellipsis-v"></i>
@@ -99,7 +103,7 @@
                     responsive: true,
                     columnDefs: [
                         { targets: 0,  width: 10  },
-                        { targets: 1,  width: 100 },
+                        { targets: 1,  width: 30  },
                         { targets: 2,  width: 300 },
                         { targets: 3,  width: 10  },
                     ],

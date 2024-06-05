@@ -165,8 +165,9 @@
                                         </label>
                                         <div class="col-sm-10">
                                             @if ($form_todo == 'READ')
-                                                <textarea name="description" id="description" rows="8" style="resize: none;"
-                                                    class="form-control" disabled>{{ $description ?? '-' }}</textarea>
+                                                <div class="display-textarea">
+                                                    <?= nl2br($description) ?? '-' ?>
+                                                </div>
                                             @else
                                                 <textarea name="description" id="description" rows="8" style="resize: none;"
                                                     class="form-control" autocomplete="off" required>{{ $description }}</textarea>
@@ -195,6 +196,14 @@
             </div>
         </div>
     </main>
+
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#description' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
 
     <script>
         $(document).ready(function() {

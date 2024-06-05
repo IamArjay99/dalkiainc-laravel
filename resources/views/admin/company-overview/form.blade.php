@@ -95,7 +95,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row my-2">
-                                        <label for="company_overview" class="col-sm-2 col-form-label">
+                                        <label for="brief_description" class="col-sm-2 col-form-label">
                                             Brief Description <?= $form_required ?>
                                         </label>
                                         <div class="col-sm-10">
