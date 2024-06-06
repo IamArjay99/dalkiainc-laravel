@@ -218,7 +218,7 @@
 }
 
 .timeline--horizontal .timeline__item:after {
-    left: 54%;
+    left: 52%;
     right: auto;
     top: 100%;
     -webkit-transform: translate(-50%, -50%);
