@@ -37,7 +37,8 @@
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
                                             <td>
-                                                <a href="{{ route('admin.inquiry-reports.view', ['id' => $dt->id]) }}" class="d-flex align-items-center justify-content-start gap-2">
+                                                <a href="{{ route('admin.inquiry-reports.view', ['id' => $dt->id]) }}" 
+                                                    class="d-flex align-items-center justify-content-start gap-2 text-decoration-underline">
                                                     <div>{{ $dt->full_name }}</div>
                                                 </a>
                                             </td>

@@ -59,13 +59,15 @@
             $email    = old('email') ?? $data->email;
             $password = old('password') ?? $data->password;
 
+            $target_module = !is_super_admin() ? route('admin.users.view', ['id' => $id]) : route('admin.users');
+
             $prevent_refresh = 'true';
             $form_action = route('admin.users.update', ['id' => $id]);
             $form_method = 'PUT';
             $form_required = "<code>*</code>";
             $form_button = "
             <button type='button'
-                target-module='". route('admin.users') ."'
+                target-module='". $target_module ."'
                 class='btn btn-outline-secondary btnCancel'>
                 <i class='fa fa-ban' aria-hidden='true'></i> Cancel
             </button>

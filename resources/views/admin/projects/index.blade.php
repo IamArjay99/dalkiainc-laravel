@@ -47,7 +47,8 @@
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
                                             <td>
-                                                <a href="{{ route('admin.projects.view', ['id' => $dt->id]) }}" class="d-flex align-items-center justify-content-start gap-2">
+                                                <a href="{{ route('admin.projects.view', ['id' => $dt->id]) }}" 
+                                                    class="d-flex align-items-center justify-content-start gap-2 text-decoration-underline">
                                                     <img src="{{ asset('uploads/img/projects/' . $dt->image ?? 'default.png') }}" alt="Project" width="50" height="50">
                                                     <div>{{ $dt->name }}</div>
                                                 </a>

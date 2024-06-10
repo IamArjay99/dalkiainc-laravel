@@ -42,7 +42,7 @@
                                             <td>{{ $index + 1 }}</td>
                                             <td>
                                                 <a href="{{ route('admin.scope-and-services.view', ['id' => $dt->id]) }}" 
-                                                    class="d-flex align-items-center justify-content-start gap-2">
+                                                    class="d-flex align-items-center justify-content-start gap-2 text-decoration-underline">
                                                     <img src="{{ asset('uploads/img/scope-and-services/' . $dt->image ?? 'default.png') }}" 
                                                         alt="CertificationAwards" width="50" height="50">
                                                     <div>{{ $dt->title }}</div>
