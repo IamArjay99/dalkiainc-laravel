@@ -84,7 +84,7 @@
 					<h3 class="mt-20 pb-10 subtitle">OUR QUALITY POLICY</h3>
 					<div class="text-justify display-from-texteditor">
 						<?= nl2br($company_information->quality_policy) ?>
-					</p>
+					</div>
 				</div>
 				<div class="col-md-12">
 					<div class="container cat-area">
