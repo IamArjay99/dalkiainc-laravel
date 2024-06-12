@@ -3042,9 +3042,13 @@ a.nav-project.active {
 }
 
 .card-career:hover {
-  background: #fab70005;
+  /* background: #fab70005;
   transform: scale(1.02);
-  border: 1px solid #fab700;
+  border: 1px dotted #fab700; */
+  background: #fff;
+  transform: scale(1.01);
+  border-style: dashed;
+  box-shadow: 4px 9px 15px 1px gray;
 }
 
 .project-checkbox {

@@ -139,14 +139,14 @@
 										loading="lazy"
 										style="height: 230px !important;">
 								</div>
-								<h4 class="text-uppercase">{{ $project->name }}</h4>
+								<h4 class="text-uppercase pb-2">{{ $project->name }}</h4>
 								<div class="project-details">
-									<div>
+									{{-- <div>
 										<b>No. of floors: </b>
 										<span>
 											{{ $project->floor }}
 										</span>
-									</div>
+									</div> --}}
 									<div>
 										<b>Scope of Work: </b>
 										<span>

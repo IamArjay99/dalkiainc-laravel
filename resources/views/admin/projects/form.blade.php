@@ -216,7 +216,7 @@
                                     </div>
                                     <div class="form-group row my-2">
                                         <label for="client" class="col-sm-2 col-form-label">
-                                            Client
+                                            Developer/Owner
                                         </label>
                                         <div class="col-sm-10">
                                             @if ($form_todo == 'READ')

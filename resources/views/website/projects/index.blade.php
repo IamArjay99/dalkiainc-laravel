@@ -52,16 +52,73 @@
 				<div class="col-lg-9">
 					<ul class="nav nav-tabs" role="tablist">
 						<li class="nav-item">
-						  	<a class="nav-link nav-project active" href="#ongoing-projects" id="nav-ongoing-projects" role="tab" data-toggle="tab" aria-selected="true">Ongoing Projects</a>
+							  <a class="nav-link nav-project active" href="#completed-projects" id="nav-completed-projects" role="tab" data-toggle="tab" aria-selected="true">Completed Projects</a>
 						</li>
 						<li class="nav-item">
-						  	<a class="nav-link nav-project" href="#completed-projects" id="nav-completed-projects" role="tab" data-toggle="tab">Completed Projects</a>
+						  	<a class="nav-link nav-project" href="#ongoing-projects" id="nav-ongoing-projects" role="tab" data-toggle="tab">Ongoing Projects</a>
 						</li>
 					</ul>
 					  
 					<!-- TAB PANES -->
 					<div class="tab-content border projects">
-						<div role="tabpanel" class="tab-pane active" id="ongoing-projects">
+						<div role="tabpanel" class="tab-pane fade show active" id="completed-projects">
+							@if (!empty($projects['completed_projects']['data']))
+								<div class="row" data-aos="zoom-in-up">
+
+									@foreach ( $projects['completed_projects']['data'] as $project )
+										<div class="col-lg-4">
+											<div class="single-service">
+												<div class="thumb">
+													<img src="{{ asset('uploads/img/projects/'.$project->image) }}" 
+														alt="{{ $project->name }}"
+														class="img-fluid"
+														loading="lazy"
+														style="height: 180px !important;">
+												</div>
+												<h4 class="text-uppercase pb-2">{{ $project->name }}</h4>
+												<div class="project-details">
+													{{-- <div>
+														<b>No. of floors: </b>
+														<span>
+															{{ $project->floor }}
+														</span>
+													</div> --}}
+													<div>
+														<b>Scope of Work: </b>
+														<span>
+															{{ $project->scope_of_work }}
+														</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									@endforeach
+								</div>
+							@else
+								<h5>No completed projects found.</h5>
+							@endif
+
+							@if (!empty($projects['completed_projects']['pages']))
+								<div class="pagination-wrap mt-20 mb-20" style="width: 100%; overflow-x: auto;">
+									<nav aria-label="">
+										<ul class="pagination justify-content-center">
+
+											@foreach ( $projects['completed_projects']['pages'] as $index => $page)
+												<li class="page-item ongoing-page-item {{ $index == 0 ? 'active' : '' }}" 
+													id="ongoing-projects-{{ $page['label'] }}">
+													<a class="page-link" href="javascript:void(0)"
+														onclick="getProjectBasedOnPagination('COMPLETED', '{{ $page['label'] }}', '{{ $page['offset'] }}', '{{ $page['limit'] }}')">
+														{{ $page['label'] }}
+													</a>
+												</li>	
+											@endforeach
+											
+										</ul>
+									</nav>
+								</div>
+							@endif
+						</div>
+						<div role="tabpanel" class="tab-pane fade" id="ongoing-projects">
 
 							@if (!empty($projects['ongoing_projects']['data']))
 								<div class="row" data-aos="zoom-in-up">
@@ -120,65 +177,6 @@
 							@endif
 
 						</div>
-
-						<div role="tabpanel" class="tab-pane fade" id="completed-projects">
-							@if (!empty($projects['completed_projects']['data']))
-								<div class="row" data-aos="zoom-in-up">
-
-									@foreach ( $projects['completed_projects']['data'] as $project )
-										<div class="col-lg-4">
-											<div class="single-service">
-												<div class="thumb">
-													<img src="{{ asset('uploads/img/projects/'.$project->image) }}" 
-														alt="{{ $project->name }}"
-														class="img-fluid"
-														loading="lazy"
-														style="height: 180px !important;">
-												</div>
-												<h4 class="text-uppercase">{{ $project->name }}</h4>
-												<div class="project-details">
-													<div>
-														<b>No. of floors: </b>
-														<span>
-															{{ $project->floor }}
-														</span>
-													</div>
-													<div>
-														<b>Scope of Work: </b>
-														<span>
-															{{ $project->scope_of_work }}
-														</span>
-													</div>
-												</div>
-											</div>
-										</div>
-									@endforeach
-								</div>
-							@else
-								<h5>No completed projects found.</h5>
-							@endif
-
-							@if (!empty($projects['completed_projects']['pages']))
-								<div class="pagination-wrap mt-20 mb-20" style="width: 100%; overflow-x: auto;">
-									<nav aria-label="">
-										<ul class="pagination justify-content-center">
-
-											@foreach ( $projects['completed_projects']['pages'] as $index => $page)
-												<li class="page-item ongoing-page-item {{ $index == 0 ? 'active' : '' }}" 
-													id="ongoing-projects-{{ $page['label'] }}">
-													<a class="page-link" href="javascript:void(0)"
-														onclick="getProjectBasedOnPagination('COMPLETED', '{{ $page['label'] }}', '{{ $page['offset'] }}', '{{ $page['limit'] }}')">
-														{{ $page['label'] }}
-													</a>
-												</li>	
-											@endforeach
-											
-										</ul>
-									</nav>
-								</div>
-							@endif
-						</div>
-
 					</div>
 				</div>
 			</div>
@@ -297,14 +295,8 @@
 									loading="lazy"
 									style="height: 180px !important;">
 							</div>
-							<h4 class="text-uppercase">${project.name}</h4>
+							<h4 class="text-uppercase pb-2">${project.name}</h4>
 							<div class="project-details">
-								<div>
-									<b>No. of floors: </b>
-									<span>
-										${project.floor}
-									</span>
-								</div>
 								<div>
 									<b>Scope of Work: </b>
 									<span>
