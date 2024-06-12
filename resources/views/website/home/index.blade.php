@@ -97,7 +97,7 @@
 									<div class="col-lg-4 mt-10">
 										<div class="single-cat d-flex flex-column service-item service-border" data-aos="fade-up">
 											<img src="{{ asset('uploads/img/scope-and-services/'.$service->image) }}" alt="{{ $service->title }}" 
-												class="service-img" loading="lazy" style="height: 180px !important; width: auto;">
+												class="service-img" loading="lazy" style="height: 250px !important; width: auto; margin: 0 30px;">
 											<h4 class="mb-20 service-title">{{ $service->title }}</h4>
 											<p class="text-justify">
 												{{ $service->description }}
