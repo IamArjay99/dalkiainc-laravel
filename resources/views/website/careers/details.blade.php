@@ -129,8 +129,8 @@
 				});
 				$('#file').val('');
 			}
-			else if (filesize > 2) {
-				$.notify('File size is too large. Max file size is 2MB', {
+			else if (filesize > 5) {
+				$.notify('File size is too large. Max file size is 5MB', {
 					'className': 'error',
 					'autoHide': true,
 					'autoHideDelay': 5000,

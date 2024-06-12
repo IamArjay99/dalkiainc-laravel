@@ -400,8 +400,8 @@
                     showToast('error', 'File type is not supported');
                     $('#image').val('');
                 }
-                else if (filesize > 2) {
-                    showToast('error', 'File size is too large. Max file size is 2MB');
+                else if (filesize > 5) {
+                    showToast('error', 'File size is too large. Max file size is 5MB');
                     $('#image').val('');
                 }
                 else {

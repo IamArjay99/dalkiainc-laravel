@@ -228,7 +228,7 @@ class WebsiteController extends Controller
             'email_address' => 'required|email|max:255',
             'subject' => 'required|min:2|max:255',
             'message' => 'required|min:2|max:500',
-            'file' => 'required|mimes:pdf,doc,docx|max:2048'
+            'file' => 'required|mimes:pdf,doc,docx|max:5120'
         ]);
 
         $career = DB::table('careers')->where('id', $id)->first();

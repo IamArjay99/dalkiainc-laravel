@@ -60,7 +60,7 @@ class ProjectController extends Controller
         if ($image && !empty($image))
         {
             $request->validate([
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5120'
             ]);
 
             $filename_arr = explode('.', $image->getClientOriginalName());
@@ -165,7 +165,7 @@ class ProjectController extends Controller
         if ($image && !empty($image))
         {
             $request->validate([
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5120'
             ]);
 
             $filename_arr = explode('.', $image->getClientOriginalName());
