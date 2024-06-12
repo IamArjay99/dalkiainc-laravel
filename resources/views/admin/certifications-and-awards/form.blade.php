@@ -274,7 +274,6 @@
                 $('.preview-image').attr('src', '/uploads/img/certifications-and-awards/default.png');
                 $('#image').val('');
             });
-
             // ----- END BUTTON REMOVE IMAGE -----
 
             // ----- BUTTON CANCEL -----

@@ -11,6 +11,7 @@
             $title       = old('title');
             $description = old('description');
             $image       = old('image');
+            $status      = old('status');
             $image_store = old('image_store') ?? 'default.png';
 
             $prevent_refresh = 'true';
@@ -36,6 +37,7 @@
             $id          = $data->id;
             $title       = $data->title;
             $description = $data->description;
+            $status      = $data->status;
             $image       = $data->image;
             $image_store = $data->image ?? 'default.png';
 
@@ -65,6 +67,7 @@
             $title       = old('title') ?? $data->title;
             $description = old('description') ?? $data->description;
             $image       = old('image') ?? $data->image;
+            $status      = old('status') ?? $data->status;
             $image_store = old('image_store') ?? $data->image;
 
             $prevent_refresh = 'true';
@@ -180,15 +183,35 @@
                                         </div>
                                     </div>
                                     <div class="form-group row my-2">
+                                        <label for="status" class="col-sm-2 col-form-label">
+                                            Status <?= $form_required ?>
+                                        </label>
+                                        <div class="col-sm-10 d-flex align-items-center">
+                                            @if ($form_todo == 'READ')
+                                                <?= $data->status == 1 ? "<span class='badge bg-success'>Active</span>" : "<span class='badge bg-warning'>Inactive</span></span>" ?>
+                                            @else
+                                                <select name="status" id="status" class="form-select" select2>
+                                                    <option value="1" {{ in_array($status, [1, null]) ? 'selected' : '' }}>Active</option>
+                                                    <option value="0" {{ $status == 0 ? 'selected' : '' }}>Inactive</option>
+                                                </select>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="form-group row my-2">
                                         <label for="image" class="col-sm-2 col-form-label">Image</label>
                                         <div class="col-sm-10">
                                             @if ($form_todo == 'READ')
                                                 <img class="preview-image mt-2" src="{{ asset('uploads/img/scope-and-services/'. (old('image_store') ?? $image ?? 'default.png')) }}" 
                                                     alt="image" height="250" width="250">
                                             @else
-                                                <input type="file" class="form-control" id="image" name="image" placeholder="image">
+                                                <input type="file" class="form-control" id="image" name="image" placeholder="image" accept="image/*" onchange="checkFile(this)">
                                                 <input type="hidden" class="form-control" id="image_store" name="image_store" placeholder="image_store" value="{{ $image_store }}">
-                                                <img class="preview-image mt-2" src="{{ asset('uploads/img/scope-and-services/'. (old('image_store') ?? $image ?? 'default.png')) }}" alt="image" height="200" width="200">
+                                                <small class="text-danger">File format: .jpg, .jpeg, .png</small>
+                                                <div>
+                                                    <img class="preview-image mt-2" src="{{ asset('uploads/img/scope-and-services/'. (old('image_store') ?? $image ?? 'default.png')) }}" alt="image" height="200" width="200">
+                                                    <button type="button" id="removePreview" class="btn btn-default rounded position-absolute mt-2" 
+                                                        onclick="removePreview()">x</button>
+                                                </div>
                                             @endif
                                         </div>
                                     </div>
@@ -216,7 +239,41 @@
     </main>
 
     <script>
+        function checkFile(input) {
+            if (input.files && input.files[0]) {
+                let file = input.files[0];
+                let filename = file.name;
+                let extension = filename.split('.').pop();
+                let filesize = file.size / 1024 / 1024;
+
+                if (['png', 'jpg', 'jpeg'].indexOf(extension) == -1) {
+                    showToast('error', 'File type is not supported');
+                    $('#image').val('');
+                }
+                else if (filesize > 2) {
+                    showToast('error', 'File size is too large. Max file size is 2MB');
+                    $('#image').val('');
+                }
+                else {
+                    let reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('.preview-image').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(file);
+                }
+            }
+        }
+
         $(document).ready(function() {
+
+            // ----- BUTTON REMOVE IMAGE -----
+            $(document).on('click', '#removePreview', function()
+            {
+                $('#image_store').val('default.png');
+                $('.preview-image').attr('src', '/uploads/img/scope-and-services/default.png');
+                $('#image').val('');
+            });
+            // ----- END BUTTON REMOVE IMAGE -----
 
             // ----- BUTTON CANCEL -----
             $(document).on('click', '.btnCancel', function()

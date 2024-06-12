@@ -36,7 +36,8 @@ class ScopeAndServicesController extends Controller
                 'max:100',
                 'unique:company_services,title'
             ],
-            'description' => 'required|string|min:10|max:2000'
+            'description' => 'required|string|min:10|max:2000',
+            'status' => 'required'
         ]);
 
         $destination_path = 'uploads/img/scope-and-services';
@@ -63,6 +64,7 @@ class ScopeAndServicesController extends Controller
         $insert = DB::table('company_services')->insert([
             'title' => $title,
             'description' => $request->description,
+            'status' => $request->status,
             'image' => $filename,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
@@ -140,7 +142,8 @@ class ScopeAndServicesController extends Controller
                 'max:100',
                 'unique:company_services,title,' . $id
             ],
-            'description' => 'required|string|min:10|max:2000'
+            'description' => 'required|string|min:10|max:2000',
+            'status' => 'required'
         ]);
 
         $destination_path = 'uploads/img/scope-and-services';
@@ -169,6 +172,7 @@ class ScopeAndServicesController extends Controller
             ->update([
                 'title' => $title,
                 'description' => $request->description,
+                'status' => $request->status,
                 'image' => $filename,
                 'updated_at' => date('Y-m-d H:i:s')
             ]);

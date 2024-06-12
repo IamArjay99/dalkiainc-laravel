@@ -369,6 +369,7 @@ class WebsiteController extends Controller
     private function get_company_services()
     {
         $data = DB::table('company_services')
+            ->where('status', 1)
             ->orderBy('id', 'asc')
             ->get();
         return $data;
