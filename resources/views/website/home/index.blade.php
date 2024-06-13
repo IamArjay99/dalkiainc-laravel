@@ -95,7 +95,7 @@
 								
 								@foreach ( $company_services as $service )
 									<div class="col-lg-4 mt-10">
-										<div class="single-cat d-flex flex-column service-item service-border" data-aos="fade-up">
+										<div class="single-cat d-flex flex-column service-item service-border px-2" data-aos="fade-up">
 											<img src="{{ asset('uploads/img/scope-and-services/'.$service->image) }}" alt="{{ $service->title }}" 
 												class="service-img" loading="lazy" style="height: 250px !important; width: auto; margin: 0 20px;">
 											<h4 class="mb-20 service-title">{{ $service->title }}</h4>
