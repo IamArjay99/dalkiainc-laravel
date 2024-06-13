@@ -21,7 +21,7 @@ $(document).ready(function () {
         forceVerticalMode: 500,
         mode: 'horizontal',
         visibleItems: 3,
-        rtlMode: true
+        rtlMode: false
     });
 
     // SCOPE AND SERVICES
