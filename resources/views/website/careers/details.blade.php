@@ -99,7 +99,16 @@
 									<input type="file" name="file" class="form-control" id="file" accept=".pdf, .doc, .docx" onchange="checkFile(this)" required>
 									<small class="text-danger">File format: .pdf, .doc, .docx</small>
 								</div>
-								<button class="genric-btn primary circle mt-30" id="btnSubmit" style="float: right;">
+								<div class="mt-10">
+									{!! ReCaptcha::htmlScriptTagJsApi() !!}
+									<div class="g-recaptcha" 
+										data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}" 
+										data-callback="recaptchaCallback"
+										data-size="normal" 
+										data-theme="light" 
+										id="recaptcha-element"></div>
+								</div>
+								<button class="genric-btn primary circle mt-30" id="btnSubmit" style="float: right;" disabled>
 									SUBMIT
 								</button>
 							</form>
@@ -112,6 +121,10 @@
 </main>
 
 <script>
+	function recaptchaCallback() {
+		$('#btnSubmit').removeAttr('disabled');
+	}
+
 	function checkFile(input) {
 		if (input.files && input.files[0]) {
 			let file = input.files[0];

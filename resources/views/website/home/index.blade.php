@@ -308,7 +308,16 @@
 							<textarea class="single-textarea" name="message" placeholder="Message" onfocus="this.placeholder = ''"
 								onblur="this.placeholder = 'Message'" required="" rows="3">{{ old('message') }}</textarea>
 						</div>
-						<button class="genric-btn primary circle mt-30" id="btnSubmit" style="float: right;">
+						<div class="mt-10">
+							{!! ReCaptcha::htmlScriptTagJsApi() !!}
+							<div class="g-recaptcha" 
+								data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}" 
+								data-callback="recaptchaCallback"
+								data-size="normal" 
+								data-theme="light" 
+								id="recaptcha-element"></div>
+						</div>
+						<button class="genric-btn primary circle mt-30" id="btnSubmit" style="float: right;" disabled>
 							Send Message
 						</button>
 					</form>
@@ -327,6 +336,10 @@
 @endif
 
 <script>
+	function recaptchaCallback() {
+		$('#btnSubmit').removeAttr('disabled');
+	}
+
 	document.addEventListener('DOMContentLoaded', function() {
 		$('div.about-description').each(function() {
 			let year = $(this).attr('year');

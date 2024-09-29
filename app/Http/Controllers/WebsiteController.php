@@ -228,7 +228,11 @@ class WebsiteController extends Controller
             'email_address' => 'required|email|max:255',
             'subject' => 'required|min:2|max:255',
             'message' => 'required|min:2|max:500',
-            'file' => 'required|mimes:pdf,doc,docx|max:5120'
+            'file' => 'required|mimes:pdf,doc,docx|max:5120',
+            'g-recaptcha-response' => 'recaptcha',
+        ], 
+        [
+            'g-recaptcha-response.recaptcha' => 'Please verify that you are not a robot.'
         ]);
 
         $career = DB::table('careers')->where('id', $id)->first();
@@ -305,6 +309,10 @@ class WebsiteController extends Controller
             'email_address' => 'required|email|max:255',
             'subject' => 'required|min:2|max:255',
             'message' => 'required|min:2|max:500',
+            'g-recaptcha-response' => 'recaptcha',
+        ], 
+        [
+            'g-recaptcha-response.recaptcha' => 'Please verify that you are not a robot.'
         ]);
 
         $full_name = $request->full_name;

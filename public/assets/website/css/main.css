@@ -3129,3 +3129,11 @@ a.nav-project.active {
   background: #212529; /* Track color */
 }
 
+button[disabled], button[disabled]:hover  {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: all !important;
+  background-color: #212529 !important;
+  border-color: #212529 !important;
+  color: #fff !important;
+}
